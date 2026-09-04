@@ -14,7 +14,7 @@ export const site = {
   tagline: "BIM Automation Tools for Architecture, Structure and MEPF",
   description:
     "BIMAC builds BIM automation plugins for architecture, structure and MEPF — stage by stage, from the site study and concept design through detailed design, documentation and coordination to as-built handover.",
-  url: "https://bimac.example",
+  url: "https://bimac.vercel.app",
   email: "bimautomationconsulting@gmail.com",
   phoneDisplay: "+971 50 605 5153",
   /** Digits only, with country code — required by the wa.me link format. */
