@@ -1,0 +1,19 @@
+# Normalise line endings to LF in the repository.
+#
+# The site is authored on Windows but builds and deploys on Linux. Without this
+# every file Git touches would be rewritten with CRLF, producing whole-file
+# diffs that hide the real change.
+* text=auto eol=lf
+
+# Binary and generated assets — never normalise these.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+
+# Lockfile churn is noise in review.
+package-lock.json linguist-generated=true
