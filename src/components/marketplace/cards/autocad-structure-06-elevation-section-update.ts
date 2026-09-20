@@ -11,8 +11,8 @@
 
 export const id = "acad-str-elevation-section-update";
 export const title = "Elevation &amp; Section Update Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = ["height","stroke"];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 369px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 43px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Elevation &amp; Section Update</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 29px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Elevation &amp; Section Update</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Structural elevations and sections updated when plans change.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/autocad.png" alt="Autodesk AutoCAD" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 369px; flex-shrink: 0;"><div style="position: relative; width: 626px; height: 302px; background: #212830; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.220); transform-origin: left top;">
-<svg aria-label="A beam deepened in plan, then the structural elevation and section update to match" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 360px; height: 270px;" viewBox="0 0 360 270"><text fill="#8C95A3" font-size="7.5" x="20" y="16">PLAN · grid 2</text><path d="M20,34H290" stroke="#E0645C" stroke-dasharray="9 3 2 3" stroke-width="0.6"></path><rect fill="#3A4450" height="12" stroke="#E8E8E8" stroke-width="1" width="12" x="34" y="28"></rect><rect fill="#3A4450" height="12" stroke="#E8E8E8" stroke-width="1" width="12" x="114" y="28"></rect><rect fill="#3A4450" height="12" stroke="#E8E8E8" stroke-width="1" width="12" x="194" y="28"></rect><rect fill="#3A4450" height="12" stroke="#E8E8E8" stroke-width="1" width="12" x="274" y="28"></rect><g data-bind-css="pb" style=""><path d="M126,31H194M126,37H194" stroke="#FF9F43" stroke-width="1.2"></path></g><text data-bind-style='[["opacity", "pl"]]' fill="#FF9F43" font-size="7" font-weight="700" style="" text-anchor="middle" x="160" y="52">B2 300×600 → 300×750</text><text fill="#8C95A3" font-size="7.5" x="20" y="72">ELEVATION · GRID 2</text><path d="M20,230H290" stroke="#E8E8E8" stroke-width="1.1"></path><rect fill="none" height="130" stroke="#E8E8E8" stroke-width="1" width="12" x="34" y="100"></rect><rect fill="none" height="130" stroke="#E8E8E8" stroke-width="1" width="12" x="114" y="100"></rect><rect fill="none" height="130" stroke="#E8E8E8" stroke-width="1" width="12" x="194" y="100"></rect><rect fill="none" height="130" stroke="#E8E8E8" stroke-width="1" width="12" x="274" y="100"></rect><path d="M20,86H290V98H20Z" fill="none" stroke="#E8E8E8" stroke-width="1"></path><rect fill="none" height="14" stroke="#E8E8E8" stroke-width="1" width="68" x="46" y="98"></rect><rect fill="none" height="14" stroke="#E8E8E8" stroke-width="1" width="68" x="206" y="98"></rect><rect data-bind-height='"[[bh]]"' data-bind-stroke='"[[bc]]"' fill="none" height="0" stroke="none" stroke-width="1.3" width="68" x="126" y="98"></rect><g data-bind-style='[["opacity", "hl"]]' style=""><rect fill="rgba(255,159,67,0.12)" height="34" stroke="#FF9F43" stroke-dasharray="4 3" stroke-width="1.2" width="80" x="120" y="92"></rect></g><text fill="#8C95A3" font-size="7.5" x="302" y="72">SECT 1-1</text><path d="M302,86H352V98H302Z" fill="none" stroke="#E8E8E8" stroke-width="1"></path><rect data-bind-height='"[[bh]]"' data-bind-stroke='"[[sc]]"' fill="none" height="0" stroke="none" stroke-width="1.3" width="18" x="318" y="98"></rect><path d="M300,230H352" stroke="#E8E8E8" stroke-width="1.1"></path></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Plan → elevation sync · STR</div><div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Change found in plan</div><div style="font-weight: 700; color: #16181C;">B2 depth 600 → 750</div></div><div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Elevations updated</div><div style="font-weight: 700; color: #16181C;">Grid 2</div></div><div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Sections updated</div><div style="font-weight: 700; color: #16181C;">1-1</div></div><div data-bind-style='[["opacity", "k3"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Linked sheets</div><div style="font-weight: 700; color: #16181C;">S-201, S-301</div></div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Elevations and sections match the plan</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

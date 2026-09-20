@@ -179,7 +179,7 @@ function DisciplineHub({ discipline }: { discipline: Discipline }) {
               {/* Two to a row, and only once there is room for two: every card
                   is the proportion the designed cards are drawn at, so a narrow
                   window would leave each one too short to read. */}
-              <div className="grid gap-6 xl:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {hosted.map((tool) => (
                   <FlipToolCard key={tool.id} tool={tool} index={numbers.get(tool.id)} />
                 ))}

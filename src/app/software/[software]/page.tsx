@@ -184,7 +184,7 @@ export default async function SoftwarePlatformPage({
                 </Link>
               </div>
 
-              <div className="grid gap-6 xl:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {hosted.map((tool, position) => (
                   <FlipToolCard key={tool.id} tool={tool} index={position + 1} />
                 ))}

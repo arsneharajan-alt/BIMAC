@@ -11,8 +11,8 @@
 
 export const id = "acad-arch-viewport-scale";
 export const title = "Viewport &amp; Scale Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = ["fill","stroke"];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 369px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Viewport &amp; Scale</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 47px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Viewport &amp; Scale</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Viewport scales, orientation and positions made consistent.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/autocad.png" alt="Autodesk AutoCAD" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 369px; flex-shrink: 0;"><div style="position: relative; width: 626px; height: 302px; background: #212830; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.220); transform-origin: left top;">
-<svg aria-label="Four sheets with mismatched viewport scales and rotations set to the same scale, orientation and position" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 260px; height: 270px;" viewBox="0 0 260 270"><g><rect fill="#FFFFFF" height="112" stroke="#8C95A3" stroke-width="0.8" width="112" x="16" y="20"></rect><g data-bind-css="vp0" style=""><rect data-bind-stroke='"[[vc0]]"' fill="none" height="74" stroke="none" stroke-width="1.2" width="92" x="26" y="30"></rect><path d="M38,42H106V92H38ZM72,42V70H106" fill="none" stroke="#2B2F36" stroke-width="0.8"></path></g><text data-bind-fill='"[[sc0]]"' fill="none" font-size="7.5" font-weight="700" text-anchor="middle" x="72" y="120"></text></g></svg><span data-bind-text="st0"></span><g><rect fill="#FFFFFF" height="112" stroke="#8C95A3" stroke-width="0.8" width="112" x="138" y="20"></rect><g data-bind-css="vp1" style=""><rect data-bind-stroke='"[[vc1]]"' fill="none" height="74" stroke="none" stroke-width="1.2" width="92" x="148" y="30"></rect><path d="M160,42H228V92H160ZM194,42V70H228" fill="none" stroke="#2B2F36" stroke-width="0.8"></path></g><text data-bind-fill='"[[sc1]]"' fill="none" font-size="7.5" font-weight="700" text-anchor="middle" x="194" y="120"><span data-bind-text="st1"></span></text></g><g><rect fill="#FFFFFF" height="112" stroke="#8C95A3" stroke-width="0.8" width="112" x="16" y="148"></rect><g data-bind-css="vp2" style=""><rect data-bind-stroke='"[[vc2]]"' fill="none" height="74" stroke="none" stroke-width="1.2" width="92" x="26" y="158"></rect><path d="M38,170H106V220H38ZM72,170V198H106" fill="none" stroke="#2B2F36" stroke-width="0.8"></path></g><text data-bind-fill='"[[sc2]]"' fill="none" font-size="7.5" font-weight="700" text-anchor="middle" x="72" y="248"><span data-bind-text="st2"></span></text></g><g><rect fill="#FFFFFF" height="112" stroke="#8C95A3" stroke-width="0.8" width="112" x="138" y="148"></rect><g data-bind-css="vp3" style=""><rect data-bind-stroke='"[[vc3]]"' fill="none" height="74" stroke="none" stroke-width="1.2" width="92" x="148" y="158"></rect><path d="M160,170H228V220H160ZM194,170V198H228" fill="none" stroke="#2B2F36" stroke-width="0.8"></path></g><text data-bind-fill='"[[sc3]]"' fill="none" font-size="7.5" font-weight="700" text-anchor="middle" x="194" y="248"><span data-bind-text="st3"></span></text></g><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Viewport rules</div><div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Scale</div><div style="font-weight: 700; color: #16181C;">1:100 on all</div></div><div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Orientation</div><div style="font-weight: 700; color: #16181C;">North up</div></div><div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Position</div><div style="font-weight: 700; color: #16181C;">centred, aligned</div></div><div data-bind-style='[["opacity", "k3"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Frozen layers</div><div style="font-weight: 700; color: #16181C;">A-FURN, A-ANNO-NPLT</div></div><div data-bind-style='[["opacity", "k4"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Viewports locked</div><div style="font-weight: 700; color: #16181C;">4 / 4</div></div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>All viewports at 1:100, aligned and locked</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

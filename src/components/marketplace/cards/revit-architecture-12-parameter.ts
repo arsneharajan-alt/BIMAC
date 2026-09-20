@@ -11,8 +11,8 @@
 
 export const id = "revit-arch-parameter";
 export const title = "Parameter Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,65 +25,22 @@ export const attrs = [];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 364px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 41px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span style="white-space: nowrap;">Parameter</span><br/><span style="color: #F28C28;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 49px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Parameter</span><br/><span style="color: #F28C28;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Create, rename and fill parameters, even inside linked models.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/revit.png" alt="Autodesk Revit" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 364px; flex-shrink: 0;"><div style="position: relative; width: 634px; height: 302px; background: #FFFFFF; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.205); transform-origin: left top;">
-<div data-bind-style='[["opacity", "dO"], ["transform", "dT"]]' style="position: absolute; left: 12px; top: 12px; width: 330px; border-radius: 6px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6, 0 12px 28px rgba(22,24,28,0.14); font-size: 11px;">
-<div style="height: 26px; display: flex; align-items: center; padding: 0 10px; background: #E4E7EB; font-weight: 600; color: #16181C;">Parameter Manager</div>
-<div style="display: flex; align-items: center; height: 22px; padding: 0 8px; background: #F7F8FA; color: #5A626E; font-size: 10px;"><div style="width: 108px;">Name</div><div style="width: 40px;">Type</div><div style="width: 96px;">Categories</div><div style="flex-grow: 1; text-align: right;">Status</div></div>
-<div style="display: flex; align-items: center; height: 28px; border-top: 1px solid #EEF0F2; padding: 0 8px; gap: 0;">
-<div style="width: 108px; flex-shrink: 0; font-weight: 600; color: #16181C; white-space: nowrap; overflow: hidden;"><span data-bind-text="nm0"></span><span data-bind-style='[["opacity", "cur0"]]' style="display: inline-block; width: 1px; height: 12px; background: #16181C; margin-left: 1px; vertical-align: -2px;"></span></div>
-<div data-bind-style='[["opacity", "rest0"]]' style="width: 40px; flex-shrink: 0; color: #4A515C;">Text</div>
-<div data-bind-style='[["opacity", "rest0"]]' style="width: 96px; flex-shrink: 0; color: #4A515C; white-space: nowrap;">Doors</div>
-<div style="flex-grow: 1; display: flex; justify-content: flex-end;"><div data-bind-style='[["opacity", "chip0"]]' style="height: 18px; padding: 0 7px; border-radius: 9px; background: #FFF1E3; color: #9A4F08; font-size: 10px; font-weight: 600; display: flex; align-items: center;">Renamed</div></div>
-</div><div style="display: flex; align-items: center; height: 28px; border-top: 1px solid #EEF0F2; padding: 0 8px; gap: 0;">
-<div style="width: 108px; flex-shrink: 0; font-weight: 600; color: #16181C; white-space: nowrap; overflow: hidden;"><span data-bind-text="nm1"></span><span data-bind-style='[["opacity", "cur1"]]' style="display: inline-block; width: 1px; height: 12px; background: #16181C; margin-left: 1px; vertical-align: -2px;"></span></div>
-<div data-bind-style='[["opacity", "rest1"]]' style="width: 40px; flex-shrink: 0; color: #4A515C;">Text</div>
-<div data-bind-style='[["opacity", "rest1"]]' style="width: 96px; flex-shrink: 0; color: #4A515C; white-space: nowrap;">Walls, Doors</div>
-<div style="flex-grow: 1; display: flex; justify-content: flex-end;"><div data-bind-style='[["opacity", "chip1"]]' style="height: 18px; padding: 0 7px; border-radius: 9px; background: #E3F4EA; color: #1E7F4F; font-size: 10px; font-weight: 600; display: flex; align-items: center;">Created</div></div>
-</div><div style="display: flex; align-items: center; height: 28px; border-top: 1px solid #EEF0F2; padding: 0 8px; gap: 0;">
-<div style="width: 108px; flex-shrink: 0; font-weight: 600; color: #16181C; white-space: nowrap; overflow: hidden;"><span data-bind-text="nm2"></span><span data-bind-style='[["opacity", "cur2"]]' style="display: inline-block; width: 1px; height: 12px; background: #16181C; margin-left: 1px; vertical-align: -2px;"></span></div>
-<div data-bind-style='[["opacity", "rest2"]]' style="width: 40px; flex-shrink: 0; color: #4A515C;">Text</div>
-<div data-bind-style='[["opacity", "rest2"]]' style="width: 96px; flex-shrink: 0; color: #4A515C; white-space: nowrap;">Floors, Walls</div>
-<div style="flex-grow: 1; display: flex; justify-content: flex-end;"><div data-bind-style='[["opacity", "chip2"]]' style="height: 18px; padding: 0 7px; border-radius: 9px; background: #E3F4EA; color: #1E7F4F; font-size: 10px; font-weight: 600; display: flex; align-items: center;">Created</div></div>
-</div><div style="display: flex; align-items: center; height: 28px; border-top: 1px solid #EEF0F2; padding: 0 8px; gap: 0;">
-<div style="width: 108px; flex-shrink: 0; font-weight: 600; color: #16181C; white-space: nowrap; overflow: hidden;"><span data-bind-text="nm3"></span><span data-bind-style='[["opacity", "cur3"]]' style="display: inline-block; width: 1px; height: 12px; background: #16181C; margin-left: 1px; vertical-align: -2px;"></span></div>
-<div data-bind-style='[["opacity", "rest3"]]' style="width: 40px; flex-shrink: 0; color: #4A515C;">Text</div>
-<div data-bind-style='[["opacity", "rest3"]]' style="width: 96px; flex-shrink: 0; color: #4A515C; white-space: nowrap;">Rooms</div>
-<div style="flex-grow: 1; display: flex; justify-content: flex-end;"><div data-bind-style='[["opacity", "chip3"]]' style="height: 18px; padding: 0 7px; border-radius: 9px; background: #E3F4EA; color: #1E7F4F; font-size: 10px; font-weight: 600; display: flex; align-items: center;">Created</div></div>
-</div>
-<div style="display: flex; gap: 8px; justify-content: flex-end; padding: 8px; border-top: 1px solid #EEF0F2;"><div style="height: 24px; padding: 0 12px; border-radius: 4px; background: #F28C28; color: #FFFFFF; font-weight: 600; display: flex; align-items: center;">Apply to host + links</div></div>
-</div><div style="position: absolute; right: 12px; top: 12px; width: 262px; display: flex; flex-direction: column; gap: 10px; font-size: 11px;">
-<div data-bind-style='[["opacity", "hO"]]' style="padding: 10px 12px; border-radius: 8px; background: #FFFFFF; box-shadow: 0 0 0 1px #D5D9DF, 0 6px 16px rgba(22,24,28,0.06);">
-<div style="display: flex; justify-content: space-between;"><div style="font-weight: 600; color: #16181C;">Host model</div><div style="font-size: 10px; color: #5A626E;">Tower_MEP.rvt</div></div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 6px;"><div style="color: #4A515C;">Values written</div><div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-weight: 800; font-size: 20px; color: #172B4D; font-variant-numeric: tabular-nums;"><span data-bind-text="hv"></span></div></div>
-</div>
-<div data-bind-style='[["opacity", "lO"]]' style="padding: 10px 12px; border-radius: 8px; background: #FFFFFF; box-shadow: 0 0 0 1px #D5D9DF, 0 6px 16px rgba(22,24,28,0.06);">
-<div style="display: flex; justify-content: space-between; align-items: center;"><div style="display: flex; align-items: center; gap: 5px; font-weight: 600; color: #16181C;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="13"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"></path></svg><span>Linked model</span></div><div style="font-size: 10px; color: #5A626E;">Tower_ARCH.rvt</div></div>
-<div style="display: flex; flex-direction: column; gap: 1px; padding-top: 6px;"><div style="display: flex; align-items: center; gap: 6px; min-height: 20px;"><div style="position: relative; width: 14px; height: 14px; border-radius: 7px; border: 1px solid #B9BFC8; box-sizing: border-box;"><div data-bind-style='[["opacity", "sg0"]]' style="position: absolute; inset: -1px; border-radius: 7px; background: #1E7F4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="9"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div><div style="color: #2B2F36;">Open in background</div></div><div style="display: flex; align-items: center; gap: 6px; min-height: 20px;"><div style="position: relative; width: 14px; height: 14px; border-radius: 7px; border: 1px solid #B9BFC8; box-sizing: border-box;"><div data-bind-style='[["opacity", "sg1"]]' style="position: absolute; inset: -1px; border-radius: 7px; background: #1E7F4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="9"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div><div style="color: #2B2F36;">Apply changes</div></div><div style="display: flex; align-items: center; gap: 6px; min-height: 20px;"><div style="position: relative; width: 14px; height: 14px; border-radius: 7px; border: 1px solid #B9BFC8; box-sizing: border-box;"><div data-bind-style='[["opacity", "sg2"]]' style="position: absolute; inset: -1px; border-radius: 7px; background: #1E7F4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="9"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div><div style="color: #2B2F36;">Save</div></div><div style="display: flex; align-items: center; gap: 6px; min-height: 20px;"><div style="position: relative; width: 14px; height: 14px; border-radius: 7px; border: 1px solid #B9BFC8; box-sizing: border-box;"><div data-bind-style='[["opacity", "sg3"]]' style="position: absolute; inset: -1px; border-radius: 7px; background: #1E7F4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="9"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div><div style="color: #2B2F36;">Reload link</div></div></div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 4px;"><div style="color: #4A515C;">Values written</div><div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-weight: 800; font-size: 20px; color: #172B4D; font-variant-numeric: tabular-nums;"><span data-bind-text="lv"></span></div></div>
-</div>
-</div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 14px; background: #E3F4EA; color: #1E7F4F; font-size: 11.5px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>4 parameters · 2 models · 1,286 values updated</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

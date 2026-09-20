@@ -11,8 +11,8 @@
 
 export const id = "acad-mep-elevation-section-update";
 export const title = "Elevation &amp; Section Update Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = ["d","stroke","width","x","y"];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 369px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 43px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Elevation &amp; Section Update</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 29px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Elevation &amp; Section Update</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">MEP sections and elevations updated when plans change.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/autocad.png" alt="Autodesk AutoCAD" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 369px; flex-shrink: 0;"><div style="position: relative; width: 626px; height: 302px; background: #212830; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.220); transform-origin: left top;">
-<svg aria-label="A duct resized and lowered in plan, then the coordinated section updates to match" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 310px; height: 270px;" viewBox="0 0 310 270"><text fill="#8C95A3" font-size="7.5" x="20" y="16">PLAN · corridor</text><path d="M20,28H290M20,54H290" stroke="#8C95A3" stroke-width="1"></path><g data-bind-css="pd" style=""><path d="M30,36H280M30,46H280" stroke="#4DD0E1" stroke-width="1.1"></path></g><text data-bind-style='[["opacity", "pl"]]' fill="#FF9F43" font-size="7" font-weight="700" style="" text-anchor="middle" x="150" y="68">SA 800×400 → 1000×400, BOD +2.900 → +2.800</text><text fill="#8C95A3" font-size="7.5" x="20" y="84">SECTION A-A · corridor</text><path d="M20,98H300V104H20Z" fill="none" stroke="#E8E8E8" stroke-width="1"></path><path d="M20,230H300" stroke="#E8E8E8" stroke-width="1.1"></path><path d="M20,170H300" stroke="#8C95A3" stroke-dasharray="6 3" stroke-width="0.7"></path><text fill="#8C95A3" font-size="6.5" x="24" y="166">CEILING +2.700</text><path d="M20,104V230M300,104V230" stroke="#E8E8E8" stroke-width="1.1"></path><rect data-bind-stroke='"[[dc]]"' data-bind-width='"[[dw]]"' data-bind-x='"[[dx]]"' data-bind-y='"[[dy]]"' fill="none" height="24" stroke="none" stroke-width="1.4" width="0" x="0" y="0"></rect><path d="M0 0" data-bind-d='"M[[dx]],[[dy]]L0,0"' stroke="none"></path><circle cx="220" cy="150" fill="none" r="8" stroke="#5DA9FF" stroke-width="1.2"></circle><circle cx="242" cy="150" fill="none" r="8" stroke="#5DA9FF" stroke-dasharray="3 2" stroke-width="1.2"></circle><rect fill="none" height="6" stroke="#FFB74D" stroke-width="1" width="40" x="250" y="110"></rect><g data-bind-style='[["opacity", "hl"]]' style=""><rect fill="rgba(255,159,67,0.12)" height="44" stroke="#FF9F43" stroke-dasharray="4 3" stroke-width="1.2" width="120" x="60" y="108"></rect></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Plan → section sync · MEP</div><div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Change found in plan</div><div style="font-weight: 700; color: #16181C;">SA duct resized, lowered</div></div><div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Sections updated</div><div style="font-weight: 700; color: #16181C;">A-A, B-B</div></div><div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Elevations updated</div><div style="font-weight: 700; color: #16181C;">Riser elevation</div></div><div data-bind-style='[["opacity", "k3"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Linked sheets</div><div style="font-weight: 700; color: #16181C;">M-201, M-301</div></div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Sections and elevations match the plan</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

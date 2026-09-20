@@ -11,8 +11,8 @@
 
 export const id = "acad-mep-mep-routing";
 export const title = "MEP Routing Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = ["stroke-dashoffset"];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 369px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 37px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span style="white-space: nowrap;">MEP Routing</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 49px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">MEP Routing</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Pipe, duct, tray and conduit routes drawn by your routing rules.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/autocad.png" alt="Autodesk AutoCAD" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 369px; flex-shrink: 0;"><div style="position: relative; width: 626px; height: 302px; background: #212830; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.220); transform-origin: left top;">
-<svg aria-label="Duct, cable tray, pipe and branch routes drawn automatically from a riser, avoiding a beam zone" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 290px; height: 270px;" viewBox="0 0 290 270"><rect fill="none" height="180" stroke="#4A535E" stroke-width="1.1" width="240" x="20" y="20"></rect><rect fill="none" height="170" stroke="#4A535E" stroke-width="1.1" width="230" x="25" y="25"></rect><path d="M140,25V90M145,25V90M140,120V195M145,120V195" stroke="#4A535E" stroke-width="1.1"></path><path d="M145,110H200M145,115H200M230,110H255M230,115H255" stroke="#4A535E" stroke-width="1.1"></path><path d="M140,90L110,90M140,90A30,30 0 0 0 110,120" fill="none" stroke="#4A535E" stroke-width="1"></path><path d="M200,115L200,145M200,115A30,30 0 0 1 230,145" fill="none" stroke="#4A535E" stroke-width="1"></path><path d="M60,200V195M90,200V195M90,195A30,30 0 0 0 60,165" fill="none" stroke="#4A535E" stroke-width="1"></path><rect fill="#212830" height="7" width="70" x="40" y="19"></rect><path d="M40,20H110M40,22.5H110M40,25H110M40,20V25M110,20V25" stroke="#4A535E" stroke-width="0.9"></path><rect fill="#212830" height="7" width="60" x="170" y="19"></rect><path d="M170,20H230M170,22.5H230M170,25H230M170,20V25M230,20V25" stroke="#4A535E" stroke-width="0.9"></path><rect fill="#212830" height="40" width="7" x="254" y="50"></rect><path d="M260,50V90M257.5,50V90M255,50V90M255,50H260M255,90H260" stroke="#4A535E" stroke-width="0.9"></path><rect fill="#212830" height="40" width="7" x="254" y="140"></rect><path d="M260,140V180M257.5,140V180M255,140V180M255,140H260M255,180H260" stroke="#4A535E" stroke-width="0.9"></path><rect fill="rgba(255,90,85,0.12)" height="26" stroke="#FF5A55" stroke-dasharray="3 2" stroke-width="0.9" width="44" x="120" y="92"></rect><text fill="#FF5A55" font-size="6.5" text-anchor="middle" x="142" y="108">BEAM ZONE</text><rect fill="none" height="22" stroke="#E8E8E8" stroke-width="1" width="22" x="28" y="28"></rect><text fill="#E8E8E8" font-size="6" text-anchor="middle" x="39" y="42">RISER</text><path d="M50,44H100V140H250" data-bind-stroke-dashoffset='"[[o0]]"' fill="none" stroke="#4DD0E1" stroke-dasharray="330" stroke-dashoffset="0" stroke-linejoin="round" stroke-width="6"></path><path d="M50,34H250" data-bind-stroke-dashoffset='"[[o1]]"' fill="none" stroke="#FFB74D" stroke-dasharray="200" stroke-dashoffset="0" stroke-linejoin="round" stroke-width="4"></path><path d="M39,50V176H250" data-bind-stroke-dashoffset='"[[o2]]"' fill="none" stroke="#5DA9FF" stroke-dasharray="337" stroke-dashoffset="0" stroke-linejoin="round" stroke-width="2.4"></path><path d="M100,140H200V80" data-bind-stroke-dashoffset='"[[o3]]"' fill="none" stroke="#4DD0E1" stroke-dasharray="160" stroke-dashoffset="0" stroke-linejoin="round" stroke-width="3.5"></path><g data-bind-style='[["opacity", "tm"]]' style=""><rect fill="none" height="14" stroke="#4DD0E1" stroke-width="1" width="14" x="193" y="65"></rect><path d="M193,65L207,79M207,65L193,79" stroke="#4DD0E1" stroke-width="0.6"></path></g><g data-bind-style='[["opacity", "tm"]]' style=""><rect fill="none" height="14" stroke="#4DD0E1" stroke-width="1" width="14" x="243" y="125"></rect><path d="M243,125L257,139M257,125L243,139" stroke="#4DD0E1" stroke-width="0.6"></path></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 200px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Routing rules</div><div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Supply duct</div><div style="font-weight: 700; color: #16181C;">routed around beam zone</div></div><div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Cable tray</div><div style="font-weight: 700; color: #16181C;">along corridor wall</div></div><div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">CHW pipe</div><div style="font-weight: 700; color: #16181C;">riser → FCUs</div></div><div data-bind-style='[["opacity", "k3"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Branches</div><div style="font-weight: 700; color: #16181C;">to terminals</div></div><div style="font-size: 9px; color: #6F7782; padding-top: 4px;">Rules: 90° bends · 100 mm clearance · avoid beam zones</div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>4 routes generated by rule</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

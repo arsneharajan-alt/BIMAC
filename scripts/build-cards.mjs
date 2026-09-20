@@ -208,91 +208,140 @@ function swapLockup(markup, label) {
 }
 
 /* ------------------------------------------------------------------ */
-/* The heading                                                         */
-/*                                                                     */
-/* Every card sets its title as "<name><br>Automation" at 50px, which   */
-/* is two lines for a short name and three for a long one — and a card  */
-/* whose heading runs to three lines pushes its step list down out of   */
-/* line with the card beside it.                                        */
-/*                                                                     */
-/* So the hard break comes out and the name is allowed to wrap into the */
-/* line "Automation" sits on, the block is held at exactly two lines'   */
-/* height whatever it holds, and the type steps down only for the names */
-/* too long to fit two lines at full size. Nothing measures text here,  */
-/* so the steps are by character count and deliberately generous.       */
+/* The panel                                                           */
 /* ------------------------------------------------------------------ */
 
-/** Two lines at the size the cards are drawn at — what every heading takes. */
-const HEADING_BLOCK = 106;
-
 /**
- * The width one character takes, as a fraction of the font size.
+ * The card without its drawing.
  *
- * Measured off the rendered page, not guessed: "PDF & DWG Exporter" — 18
- * characters — comes out 404px wide at 50px, which is 0.449. Rounded up,
- * because a heading that is slightly small costs nothing and one that is
- * slightly wide is clipped.
+ * Every card is one flex row of two children: a 380px column carrying the
+ * name, the line under it and the add-in row, and beside it the panel the
+ * animation plays in. The panel comes out, so what is published is what the
+ * tool is called and what it does — no mock of the application, no diagram of
+ * how it works.
+ *
+ * Dropping it lets the card shrink from 1280 wide to the column plus the
+ * stage's own padding, which is the whole point: the type is then rendered at
+ * nearly full size instead of the third of it a 1280-wide card was scaled to.
+ *
+ * Every column is held at one height, so the add-in rows — pinned to
+ * the bottom of their column — line up across a row of cards.
  */
-const CHAR_EM = 0.46;
+const COLUMN = /<div style="width: 380px; flex-shrink: 0; height: (\d+)px;/;
 
-/** How much of the 380px column the heading may use. */
-const HEADING_WIDTH = 360;
+/** The column, its padding, and the box they need. */
+const COLUMN_WIDTH = 380;
+const COLUMN_HEIGHT = 290;
+const STAGE_WIDTH = COLUMN_WIDTH + 48 + 48;
+const STAGE_HEIGHT = COLUMN_HEIGHT + 30 + 36;
 
-/** Below this the type is too small to be a heading; wrap instead. */
-const MIN_KEPT_SIZE = 36;
+function dropPanel(markup, label) {
+  const at = markup.search(COLUMN);
+  if (at < 0) {
+    console.warn(`  ${label}: no text column found — left whole`);
+    return markup;
+  }
 
-/** What fits on one line of the column at a given size. */
-const fits = (chars) => Math.floor(HEADING_WIDTH / (chars * CHAR_EM));
+  // Walk to the tag that closes the column; everything after it is the panel.
+  let depth = 0;
+  let i = at;
+  let end = -1;
+  while (i < markup.length) {
+    const open = markup.indexOf("<div", i);
+    const close = markup.indexOf("</div>", i);
+    if (close < 0) break;
+    if (open >= 0 && open < close) {
+      depth += 1;
+      i = open + 4;
+    } else {
+      depth -= 1;
+      i = close + 6;
+      if (depth === 0) {
+        end = i;
+        break;
+      }
+    }
+  }
+  if (end < 0) {
+    console.warn(`  ${label}: text column does not close — left whole`);
+    return markup;
+  }
+
+  return markup
+    .slice(at, end)
+    .replace(COLUMN, `<div style="width: ${COLUMN_WIDTH}px; flex-shrink: 0; height: ${COLUMN_HEIGHT}px;`);
+}
+
+/* ------------------------------------------------------------------ */
+/* The heading                                                         */
+/* ------------------------------------------------------------------ */
 
 /**
- * Size the heading so it fits the column.
+ * Every heading gets the same height, and nothing else is touched.
  *
- * The design sets the title as two lines — the name, a <br>, then
- * "Automation" — and marks the name `white-space: nowrap` so it never breaks
- * mid-phrase. For most titles that is right and the type only has to step
- * down a little to fit.
+ * This used to resize the type itself, on the assumption that the cards all
+ * set their titles at 50px and the long ones needed stepping down. They do
+ * not: the design sizes each one for its own name, from 50px for "Schedule"
+ * down to 27px for "MEP Coordination & Clash Detection", and every one of
+ * them is already fitted to two lines in the column. Re-deriving that from a
+ * character count only undid it — short names were being *enlarged* to 50px,
+ * which is why the cards no longer agreed with each other.
  *
- * For the long ones it is not: holding "NWF, NWD, NWC & IFC Exporter" on one
- * unbreakable line means either clipping it or shrinking the heading to
- * something that is no longer a heading. Those give up the nowrap and the
- * break, and wrap across both lines instead.
+ * So the size is the design's. All this does is hold the block at two lines
+ * of the largest of them, so that the line under the heading and the add-in
+ * row below it sit at the same height on every card in a row.
+ */
+
+/** Two lines at the largest size any card sets. */
+const HEADING_BLOCK = 104;
+
+/**
+ * The size each heading fits two lines at, measured in the browser.
  *
- * The block is held at two lines' height either way, so the step lists stay
- * level across a row.
+ * The design sizes every title for its own name, and for most of them that is
+ * already two lines in a 380px column. A couple of dozen are not: once the
+ * drawing came out and the card shrank to the column, names like "MEP
+ * Coordination & Clash Detection" ran to three lines and four.
+ *
+ * These sizes come from measuring the rendered text in the real face — text
+ * width scales linearly with size, so the largest size that fits is one
+ * division away. Estimating it from a character count is what broke this
+ * before: no per-character average survives condensed Archivo.
+ *
+ * Regenerate with scratchpad/sizes.cjs against a running build.
+ */
+const HEADING_SIZES = JSON.parse(readFileSync(join("scripts", "heading-sizes.json"), "utf8"));
+
+/** The heading as the measurement saw it: tags gone, entities decoded. */
+const headingKey = (inner) =>
+  inner
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+/**
+ * Hold every heading to two lines, and every block to the same height.
+ *
+ * The size is the design's own unless it overruns the column, and the floor
+ * under the block is what keeps the line below the heading — and the add-in
+ * row under that — level across a row of cards.
  */
 function fitHeading(markup, label) {
   const HEAD = /<h1 style="([^"]*)">([\s\S]*?)<\/h1>/;
   const found = markup.match(HEAD);
   if (!found) {
-    console.warn(`  ${label}: no heading to fit — left as drawn`);
+    console.warn(`  ${label}: no heading to align — left as drawn`);
     return markup;
   }
 
-  const [whole, style] = found;
-  let inner = found[2];
+  const [whole, style, inner] = found;
+  const declared = Number((style.match(/font-size:\s*([\d.]+)px/) ?? [, 0])[1]);
+  const measured = HEADING_SIZES[headingKey(inner)];
+  const size = measured && declared ? Math.min(declared, measured) : declared;
 
-  const plain = (html) =>
-    html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
-
-  const lines = inner.split("<br>").map(plain);
-  const longest = lines.reduce((most, line) => Math.max(most, line.length), 0);
-
-  let size = Math.min(50, fits(longest));
-  if (size < MIN_KEPT_SIZE) {
-    // Let it wrap: both lines' worth of width, shared across two lines.
-    const total = lines.join(" ").length;
-    size = Math.min(50, fits(total / 2));
-    inner = inner
-      .split("<br>")
-      .join(" ")
-      .split(' style="white-space: nowrap;"')
-      .join("");
-  }
-
-  const lineHeight = 1.06;
-  const fitted = style
-    .replace(/font-size:\s*[\d.]+px/, `font-size: ${size}px`)
-    .replace(/line-height:\s*[\d.]+/, `line-height: ${lineHeight}`)
+  const fitted = (size ? style.replace(/font-size:\s*[\d.]+px/, `font-size: ${size}px`) : style)
     .concat(` min-height: ${HEADING_BLOCK}px;`);
 
   return markup.replace(whole, `<h1 style="${fitted}">${inner}</h1>`);
@@ -366,7 +415,32 @@ function extract(path, label, toolId) {
 
   const styleMatch = lines[stageLine].match(/style="([^"]*)"/);
   if (!styleMatch) throw new Error(`${label}: stage has no style`);
-  const style = styleMatch[1];
+
+  // The stage is rebuilt rather than patched.
+  //
+  // The cards do not agree on how they frame themselves: most are a padded
+  // flex row holding the text column beside the drawing, but some are an
+  // unpadded column with the padding on a wrapper inside. Keeping each card's
+  // own stage was fine while the whole of it shipped; now that only the text
+  // column does, a card of the second kind loses the padding with the wrapper
+  // and sits flush against its own border.
+  //
+  // So every card gets the same frame, and only its colours are carried over.
+  const original = styleMatch[1];
+  const carry = (property, fallback) =>
+    // Anchored, so `color` is not read out of `background-color`.
+    (original.match(new RegExp(`(?:^|;)\\s*${property}:\\s*([^;]+)`)) ?? [, fallback])[1].trim();
+
+  const style = [
+    `width: ${STAGE_WIDTH}px`,
+    `height: ${STAGE_HEIGHT}px`,
+    "box-sizing: border-box",
+    "padding: 30px 48px 36px 48px",
+    "display: flex",
+    `background-color: ${carry("background-color", "#FFFFFF")}`,
+    `color: ${carry("color", "#16181C")}`,
+    "overflow: hidden",
+  ].join("; ");
 
   // The line before </section> closes the stage, so the stage's own children
   // run from the line after it to the line before that.
@@ -377,7 +451,7 @@ function extract(path, label, toolId) {
 
   const raw = lines.slice(stageLine + 1, sectionEnd - 1).join("\n");
   const markup = seedAttrs(
-    fitHeading(swapLockup(renameProduct(raw, toolId, label), label), label),
+    dropPanel(fitHeading(swapLockup(renameProduct(raw, toolId, label), label), label), label),
     attrs,
   );
   if (!markup.trim()) throw new Error(`${label}: empty stage`);
@@ -408,8 +482,10 @@ function extract(path, label, toolId) {
     loopMs: Number(loop[1]),
     attrs,
     title,
-    width: Number(style.match(/width:\s*(\d+)px/)[1]),
-    height: Number(style.match(/height:\s*(\d+)px/)[1]),
+    // The design's own box was 1280x616 around a drawing that is no longer
+    // there. What ships is the column and the padding that framed it.
+    width: STAGE_WIDTH,
+    height: STAGE_HEIGHT,
   };
 }
 

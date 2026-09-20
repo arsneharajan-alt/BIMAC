@@ -11,8 +11,8 @@
 
 export const id = "acad-str-foundation-drawing";
 export const title = "Foundation Drawing Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = [];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 369px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Foundation Drawing</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 42px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Foundation Drawing</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Footing, pedestal and foundation drawings from parameters.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/autocad.png" alt="Autodesk AutoCAD" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 369px; flex-shrink: 0;"><div style="position: relative; width: 626px; height: 302px; background: #212830; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.220); transform-origin: left top;">
-<svg aria-label="Footing plan and section drawn from parameters for F1, then F2 generated from its own parameters" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 370px; height: 270px;" viewBox="0 0 370 270"><text fill="#8C95A3" font-size="7.5" x="14" y="16">PLAN</text><g data-bind-style='[["opacity", "f1"]]' style=""><rect fill="none" height="88" stroke="#E8E8E8" stroke-width="1.3" width="88" x="36" y="36"></rect><rect fill="#3A4450" height="20" stroke="#E8E8E8" stroke-width="1" width="20" x="70" y="70"></rect><path d="M26,80H134M80,26V134" stroke="#E0645C" stroke-dasharray="8 3 2 3" stroke-width="0.6"></path></g><g data-bind-style='[["opacity", "d1"]]' style=""><path d="M36,140H124M36,135V145M124,135V145M33,143L39,137M121,143L127,137" stroke="#6FD36F" stroke-width="0.8"></path><text fill="#6FD36F" font-size="7.5" text-anchor="middle" x="80.0" y="150">2400</text></g><text data-bind-style='[["opacity", "f1"]]' fill="#FF9F43" font-size="8" font-weight="700" style="" text-anchor="middle" x="80" y="30">F1</text><g data-bind-style='[["opacity", "f2"]]' style=""><rect fill="none" height="68" stroke="#E8E8E8" stroke-width="1.3" width="68" x="46" y="174"></rect><rect fill="#3A4450" height="20" stroke="#E8E8E8" stroke-width="1" width="20" x="70" y="198"></rect><path d="M36,208H124M80,164V252" stroke="#E0645C" stroke-dasharray="8 3 2 3" stroke-width="0.6"></path></g><text data-bind-style='[["opacity", "f2"]]' fill="#FF9F43" font-size="8" font-weight="700" style="" text-anchor="middle" x="80" y="166">F2</text><g data-bind-style='[["opacity", "f2"]]' style=""><path d="M46,254H114M46,249V259M114,249V259M43,257L49,251M111,257L117,251" stroke="#6FD36F" stroke-width="0.8"></path><text fill="#6FD36F" font-size="7.5" text-anchor="middle" x="80.0" y="264">1800</text></g><text fill="#8C95A3" font-size="7.5" x="172" y="16">SECTION F1</text><path d="M172,70H360" stroke="#8C95A3" stroke-dasharray="6 3" stroke-width="0.8"></path><g data-bind-style='[["opacity", "s1"]]' style=""><path d="M200,170H340V210H200Z" fill="none" stroke="#E8E8E8" stroke-width="1.4"></path><path d="M258,70V170H282V70" fill="none" stroke="#E8E8E8" stroke-width="1.3"></path><rect fill="none" height="6" stroke="#8C95A3" stroke-width="0.8" width="148" x="196" y="210"></rect><path d="M208,202H332M208,202V178M332,202V178" fill="none" stroke="#FFD34D" stroke-width="1.6"></path><path d="M264,76V196H244M276,76V196H296" fill="none" stroke="#FFD34D" stroke-width="1.4"></path></g><g data-bind-style='[["opacity", "lv"]]' style=""><text fill="#E8E8E8" font-size="7" x="178" y="66">NGL ±0.00</text><text fill="#E8E8E8" font-size="7" x="178" y="168">TOF −1.80</text><text fill="#E8E8E8" font-size="7" x="178" y="222">FOS −2.40</text><path d="M352,170V210M347,170H357M347,210H357M349,173L355,167M349,213L355,207" stroke="#6FD36F" stroke-width="0.8"></path><text fill="#6FD36F" font-size="7.5" text-anchor="middle" transform="rotate(-90 349 190.0)" x="349" y="190.0">600</text><text fill="#FF9F43" font-size="7" x="236" y="236">T16-05 @150 B1/B2</text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Foundation parameters</div><div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Footing F1</div><div style="font-weight: 700; color: #16181C;">2400 × 2400 × 600</div></div><div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Pedestal</div><div style="font-weight: 700; color: #16181C;">500 × 500</div></div><div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Founding level</div><div style="font-weight: 700; color: #16181C;">FOS −2.40</div></div><div data-bind-style='[["opacity", "k3"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Bottom bars</div><div style="font-weight: 700; color: #16181C;">T16 @150 B1/B2</div></div><div data-bind-style='[["opacity", "k4"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Footing F2</div><div style="font-weight: 700; color: #16181C;">1800 × 1800 × 500</div></div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>F1 and F2 foundation drawings generated</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

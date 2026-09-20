@@ -11,8 +11,8 @@
 
 export const id = "acad-arch-area-quantity-extraction";
 export const title = "Area &amp; Quantity Extraction";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = [];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 369px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 43px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Area &amp; Quantity Extraction</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 29px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Area &amp; Quantity Extraction</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Room and floor areas taken off many drawings, no measuring.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/autocad.png" alt="Autodesk AutoCAD" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 369px; flex-shrink: 0;"><div style="position: relative; width: 626px; height: 302px; background: #212830; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.220); transform-origin: left top;">
-<svg aria-label="Rooms detected and hatched with areas, then totals collected across three drawings" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 300px; height: 270px;" viewBox="0 0 300 270"><rect fill="none" height="180" stroke="#E8E8E8" stroke-width="1.1" width="240" x="20" y="20"></rect><rect fill="none" height="170" stroke="#E8E8E8" stroke-width="1.1" width="230" x="25" y="25"></rect><path d="M140,25V90M145,25V90M140,120V195M145,120V195" stroke="#E8E8E8" stroke-width="1.1"></path><path d="M145,110H200M145,115H200M230,110H255M230,115H255" stroke="#E8E8E8" stroke-width="1.1"></path><path d="M140,90L110,90M140,90A30,30 0 0 0 110,120" fill="none" stroke="#FFD34D" stroke-width="1"></path><path d="M200,115L200,145M200,115A30,30 0 0 1 230,145" fill="none" stroke="#FFD34D" stroke-width="1"></path><path d="M60,200V195M90,200V195M90,195A30,30 0 0 0 60,165" fill="none" stroke="#FFD34D" stroke-width="1"></path><rect fill="#212830" height="7" width="70" x="40" y="19"></rect><path d="M40,20H110M40,22.5H110M40,25H110M40,20V25M110,20V25" stroke="#4DD0E1" stroke-width="0.9"></path><rect fill="#212830" height="7" width="60" x="170" y="19"></rect><path d="M170,20H230M170,22.5H230M170,25H230M170,20V25M230,20V25" stroke="#4DD0E1" stroke-width="0.9"></path><rect fill="#212830" height="40" width="7" x="254" y="50"></rect><path d="M260,50V90M257.5,50V90M255,50V90M255,50H260M255,90H260" stroke="#4DD0E1" stroke-width="0.9"></path><rect fill="#212830" height="40" width="7" x="254" y="140"></rect><path d="M260,140V180M257.5,140V180M255,140V180M255,140H260M255,180H260" stroke="#4DD0E1" stroke-width="0.9"></path><g data-bind-style='[["opacity", "r0"]]' style=""><polygon fill="#2F7BEA" fill-opacity="0.22" points="25,25 135,25 135,195 25,195" stroke="#2F7BEA" stroke-dasharray="5 3" stroke-width="1.4"></polygon><text fill="#F2F2F2" font-size="8.5" font-weight="700" text-anchor="middle" x="80.0" y="108.0">LIVING</text><text fill="#FFD34D" font-size="8" text-anchor="middle" x="80.0" y="120.0">54.0 m²</text></g><g data-bind-style='[["opacity", "r1"]]' style=""><polygon fill="#1E7F4F" fill-opacity="0.22" points="145,25 255,25 255,105 145,105" stroke="#1E7F4F" stroke-dasharray="5 3" stroke-width="1.4"></polygon><text fill="#F2F2F2" font-size="8.5" font-weight="700" text-anchor="middle" x="200.0" y="63.0">BEDROOM</text><text fill="#FFD34D" font-size="8" text-anchor="middle" x="200.0" y="75.0">27.0 m²</text></g><g data-bind-style='[["opacity", "r2"]]' style=""><polygon fill="#C9690F" fill-opacity="0.22" points="145,115 255,115 255,195 145,195" stroke="#C9690F" stroke-dasharray="5 3" stroke-width="1.4"></polygon><text fill="#F2F2F2" font-size="8.5" font-weight="700" text-anchor="middle" x="200.0" y="153.0">KITCHEN</text><text fill="#FFD34D" font-size="8" text-anchor="middle" x="200.0" y="165.0">27.0 m²</text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Area take-off</div><div style="display: flex; gap: 4px; font-size: 9px; color: #5A626E;"><div style="flex-grow: 1;">Drawing</div><div style="width: 44px; text-align: right;">Rooms</div><div style="width: 56px; text-align: right;">Area m²</div></div><div data-bind-style='[["opacity", "d0"]]' style="display: flex; gap: 4px; min-height: 19px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="flex-grow: 1; font-weight: 600;">A-101 GF</div><div style="width: 44px; text-align: right;">3</div><div style="width: 56px; text-align: right; font-weight: 700;">108.0</div></div><div data-bind-style='[["opacity", "d1"]]' style="display: flex; gap: 4px; min-height: 19px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="flex-grow: 1; font-weight: 600;">A-102 L1</div><div style="width: 44px; text-align: right;">4</div><div style="width: 56px; text-align: right; font-weight: 700;">112.5</div></div><div data-bind-style='[["opacity", "d2"]]' style="display: flex; gap: 4px; min-height: 19px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="flex-grow: 1; font-weight: 600;">A-103 L2</div><div style="width: 44px; text-align: right;">4</div><div style="width: 56px; text-align: right; font-weight: 700;">112.5</div></div><div data-bind-style='[["opacity", "tt"]]' style="display: flex; justify-content: space-between; padding-top: 5px; border-top: 1px solid #16181C; font-weight: 700;"><div>Total GIA</div><div>333.0 m²</div></div><div data-bind-style='[["opacity", "xl"]]' style="display: flex; justify-content: space-between;"><div style="color: #4A515C;">Exported</div><div style="font-weight: 700; color: #1E7F4F;">Areas.xlsx</div></div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Areas extracted from 3 drawings</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

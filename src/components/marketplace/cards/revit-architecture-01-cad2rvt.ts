@@ -11,8 +11,8 @@
 
 export const id = "revit-arch-cad2rvt";
 export const title = "CAD2RVT – CAD to Revit Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 14000;
 
 /**
@@ -25,134 +25,22 @@ export const attrs = ["d"];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
   "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "gap": "40px",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
-  "alignItems": "flex-start",
 };
 
 export const markup = `
-<div style="width: 380px; flex-shrink: 0; height: 388px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>CAD to Revit</span><br/><span style="color: #F28C28;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 49px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">CAD to Revit</span><br/><span style="color: #F28C28;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Drop in the CAD plan. Build the Revit model step by step.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/revit.png" alt="Autodesk Revit" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 388px; flex-shrink: 0;"><div style="position: relative; width: 594px; height: 302px; background: linear-gradient(#FFFFFF 0%, #FFFFFF 55%, #EEF1F4 100%); border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.286); transform-origin: left top;">
-<svg aria-label="Isometric Revit view: slab, walls, doors and families building up over a linked CAD plan" preserveAspectRatio="xMidYMid meet" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;" viewBox="0 0 594 454">
-<g data-bind-style='[["opacity", "slabO"], ["transform", "slabT"]]' style=""><polygon fill="#A3A9B2" points="92.7,225.8 333.1,434.0 333.1,428.9 92.7,220.7" stroke="#5F6773" stroke-width="0.6"></polygon><polygon fill="#8B929C" points="501.4,288.3 333.1,434.0 333.1,428.9 501.4,283.2" stroke="#5F6773" stroke-width="0.6"></polygon><polygon fill="#DCD6CB" points="261.0,75.0 501.4,283.2 333.1,428.9 92.7,220.7" stroke="#5F6773" stroke-width="0.8"></polygon></g>
-<g data-bind-style='[["opacity", "cad"]]' style=""><line stroke="#1F2328" stroke-width="1.2" x1="261.0" x2="501.4" y1="74.8" y2="283.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="501.4" x2="496.6" y1="283.0" y2="287.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="496.6" x2="256.2" y1="287.2" y2="79.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="256.2" x2="261.0" y1="79.0" y2="74.8"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="256.2" x2="261.0" y1="79.0" y2="83.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="261.0" x2="97.5" y1="83.2" y2="224.7"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="97.5" x2="92.7" y1="224.7" y2="220.6"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="92.7" x2="256.2" y1="220.6" y2="79.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="102.3" x2="145.6" y1="220.6" y2="258.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="145.6" x2="140.8" y1="258.0" y2="262.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="140.8" x2="97.5" y1="262.2" y2="224.7"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="97.5" x2="102.3" y1="224.7" y2="220.6"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="174.5" x2="337.9" y1="283.0" y2="424.6"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="337.9" x2="333.1" y1="424.6" y2="428.8"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="333.1" x2="169.6" y1="428.8" y2="287.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="169.6" x2="174.5" y1="287.2" y2="283.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="491.8" x2="496.6" y1="283.0" y2="287.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="496.6" x2="337.9" y1="287.2" y2="424.6"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="337.9" x2="333.1" y1="424.6" y2="420.4"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="333.1" x2="491.8" y1="420.4" y2="283.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="398.0" x2="402.8" y1="201.8" y2="206.0"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="402.8" x2="335.5" y1="206.0" y2="264.3"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="335.5" x2="330.7" y1="264.3" y2="260.1"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="330.7" x2="398.0" y1="260.1" y2="201.8"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="306.7" x2="311.5" y1="280.9" y2="285.1"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="311.5" x2="244.2" y1="285.1" y2="343.4"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="244.2" x2="239.4" y1="343.4" y2="339.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="239.4" x2="306.7" y1="339.2" y2="280.9"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="301.9" x2="323.5" y1="293.4" y2="312.2"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="323.5" x2="318.7" y1="312.2" y2="316.3"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="318.7" x2="297.1" y1="316.3" y2="297.6"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="297.1" x2="301.9" y1="297.6" y2="293.4"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="345.1" x2="390.8" y1="330.9" y2="370.5"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="390.8" x2="386.0" y1="370.5" y2="374.6"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="386.0" x2="340.3" y1="374.6" y2="335.1"></line>
-<line stroke="#1F2328" stroke-width="1.2" x1="340.3" x2="345.1" y1="335.1" y2="330.9"></line>
-<polyline fill="none" points="174.5,233.1 179.0,237.8 182.6,243.1 185.0,248.9 186.2,255.0 186.2,261.1 185.0,267.2 182.6,273.0 179.0,278.3 174.5,283.0" stroke="#0A9BB0" stroke-dasharray="3 2" stroke-width="1"></polyline>
-<line stroke="#0A9BB0" stroke-width="1.2" x1="145.6" x2="174.5" y1="258.0" y2="233.1"></line>
-<polyline fill="none" points="306.7,280.9 302.9,277.0 299.9,272.6 297.9,267.7 296.8,262.7 296.8,257.6 297.9,252.5 299.9,247.7 302.9,243.2 306.7,239.3" stroke="#0A9BB0" stroke-dasharray="3 2" stroke-width="1"></polyline>
-<line stroke="#0A9BB0" stroke-width="1.2" x1="330.7" x2="306.7" y1="260.1" y2="239.3"></line>
-<polyline fill="none" points="345.1,293.4 348.6,297.0 351.2,301.0 353.1,305.3 354.0,309.9 354.0,314.5 353.1,319.0 351.2,323.4 348.6,327.4 345.1,330.9" stroke="#0A9BB0" stroke-dasharray="3 2" stroke-width="1"></polyline>
-<line stroke="#0A9BB0" stroke-width="1.2" x1="323.5" x2="345.1" y1="312.2" y2="293.4"></line>
-<line stroke="#C0379F" stroke-width="1" x1="241.8" x2="257.4" y1="99.8" y2="113.3"></line>
-<line stroke="#C0379F" stroke-width="1" x1="257.4" x2="185.3" y1="113.3" y2="175.8"></line>
-<line stroke="#C0379F" stroke-width="1" x1="185.3" x2="169.6" y1="175.8" y2="162.3"></line>
-<line stroke="#C0379F" stroke-width="1" x1="169.6" x2="241.8" y1="162.3" y2="99.8"></line>
-<line stroke="#C0379F" stroke-width="1" x1="388.4" x2="441.3" y1="218.5" y2="264.3"></line>
-<line stroke="#C0379F" stroke-width="1" x1="441.3" x2="390.8" y1="264.3" y2="308.0"></line>
-<line stroke="#C0379F" stroke-width="1" x1="390.8" x2="337.9" y1="308.0" y2="262.2"></line>
-<line stroke="#C0379F" stroke-width="1" x1="337.9" x2="388.4" y1="262.2" y2="218.5"></line>
-<line stroke="#C0379F" stroke-width="1" x1="291.1" x2="305.5" y1="307.0" y2="319.5"></line>
-<line stroke="#C0379F" stroke-width="1" x1="305.5" x2="293.5" y1="319.5" y2="329.9"></line>
-<line stroke="#C0379F" stroke-width="1" x1="293.5" x2="279.0" y1="329.9" y2="317.4"></line>
-<line stroke="#C0379F" stroke-width="1" x1="279.0" x2="291.1" y1="317.4" y2="307.0"></line>
-<line stroke="#C0379F" stroke-width="1" x1="343.9" x2="358.4" y1="340.3" y2="352.8"></line>
-<line stroke="#C0379F" stroke-width="1" x1="358.4" x2="346.3" y1="352.8" y2="363.2"></line>
-<line stroke="#C0379F" stroke-width="1" x1="346.3" x2="331.9" y1="363.2" y2="350.7"></line>
-<line stroke="#C0379F" stroke-width="1" x1="331.9" x2="343.9" y1="350.7" y2="340.3"></line>
-<line stroke="#C0379F" stroke-width="1" x1="287.4" x2="347.5" y1="114.4" y2="166.4"></line>
-<line stroke="#C0379F" stroke-width="1" x1="347.5" x2="328.3" y1="166.4" y2="183.1"></line>
-<line stroke="#C0379F" stroke-width="1" x1="328.3" x2="268.2" y1="183.1" y2="131.0"></line>
-<line stroke="#C0379F" stroke-width="1" x1="268.2" x2="287.4" y1="131.0" y2="114.4"></line>
-<line stroke="#C0379F" stroke-width="1" x1="390.8" x2="401.6" y1="226.8" y2="236.2"></line>
-<line stroke="#C0379F" stroke-width="1" x1="401.6" x2="382.4" y1="236.2" y2="252.8"></line>
-<line stroke="#C0379F" stroke-width="1" x1="382.4" x2="371.6" y1="252.8" y2="243.5"></line>
-<line stroke="#C0379F" stroke-width="1" x1="371.6" x2="390.8" y1="243.5" y2="226.8"></line>
-<line stroke="#C0379F" stroke-width="1" x1="366.8" x2="377.6" y1="247.6" y2="257.0"></line>
-<line stroke="#C0379F" stroke-width="1" x1="377.6" x2="358.4" y1="257.0" y2="273.7"></line>
-<line stroke="#C0379F" stroke-width="1" x1="358.4" x2="347.5" y1="273.7" y2="264.3"></line>
-<line stroke="#C0379F" stroke-width="1" x1="347.5" x2="366.8" y1="264.3" y2="247.6"></line>
-<line stroke="#C0379F" stroke-width="1" x1="408.9" x2="358.4" y1="236.2" y2="279.9"></line>
-<line stroke="#C0379F" stroke-width="1" x1="408.9" x2="390.8" y1="236.2" y2="308.0"></line></g>
-<g data-bind-style='[["opacity", "wo"]]' style=""><path d="M0 0" data-bind-d='"[[w0.rev]]"' fill="#B9BFC8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w0.end]]"' fill="#B9BFC8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w0.front]]"' fill="#D9DDE3" fill-rule="evenodd" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w0.top]]"' fill="#F7F8FA" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-css="fam" style=""><polygon fill="#908A81" points="282.6,118.7 342.7,170.8 342.7,156.3 282.6,104.3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#78736B" points="347.5,166.6 342.7,170.8 342.7,156.3 347.5,152.2" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#A9A39A" points="287.4,100.1 347.5,152.2 342.7,156.3 282.6,104.3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#908A81" points="268.2,131.2 328.3,183.3 328.3,176.5 268.2,124.4" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#78736B" points="342.7,170.8 328.3,183.3 328.3,176.5 342.7,164.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#A9A39A" points="282.6,111.9 342.7,164.0 328.3,176.5 268.2,124.4" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#908A81" points="268.2,124.4 273.0,128.6 273.0,125.2 268.2,121.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#78736B" points="287.4,116.1 273.0,128.6 273.0,125.2 287.4,112.7" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#A9A39A" points="282.6,108.5 287.4,112.7 273.0,125.2 268.2,121.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-style='[["opacity", "wo"]]' style=""><path d="M0 0" data-bind-d='"[[w1.rev]]"' fill="#D9DDE3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w1.end]]"' fill="#D9DDE3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w1.front]]"' fill="#B9BFC8" fill-rule="evenodd" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w1.top]]"' fill="#F7F8FA" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-css="fam" style=""><polygon fill="#858A91" points="169.6,162.4 184.1,174.9 184.1,161.0 169.6,148.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#6E737A" points="256.2,112.5 184.1,174.9 184.1,161.0 256.2,98.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#9CA1A8" points="241.8,86.0 256.2,98.5 184.1,161.0 169.6,148.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#CFCAC0" points="169.6,148.5 185.3,162.0 185.3,160.7 169.6,147.1" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#B8B2A7" points="257.4,99.6 185.3,162.0 185.3,160.7 257.4,98.2" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#E6E2DA" points="241.8,84.7 257.4,98.2 185.3,160.7 169.6,147.1" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#908A81" points="323.5,172.3 328.3,176.5 328.3,173.1 323.5,168.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#78736B" points="342.7,164.0 328.3,176.5 328.3,173.1 342.7,160.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#A9A39A" points="337.9,156.4 342.7,160.6 328.3,173.1 323.5,168.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-style='[["opacity", "do"]]' style=""><path d="M0 0" data-bind-d='"[[d1.fy]]"' fill="#C29A6C" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[d1.fx]]"' fill="#9E7549" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[d1.top]]"' fill="#D9B68A" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-style='[["opacity", "do"]]' style=""><path d="M0 0" data-bind-d='"[[d0.fy]]"' fill="#C29A6C" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[d0.fx]]"' fill="#9E7549" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[d0.top]]"' fill="#D9B68A" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-style='[["opacity", "wo"]]' style=""><path d="M0 0" data-bind-d='"[[w4.rev]]"' fill="#D9DDE3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w4.end]]"' fill="#D9DDE3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w4.front]]"' fill="#B9BFC8" fill-rule="evenodd" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w4.top]]"' fill="#F7F8FA" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-css="fam" style=""><polygon fill="#A97B4E" points="337.9,262.4 341.5,265.5 341.5,247.7 337.9,244.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#8A613B" points="392.0,221.8 341.5,265.5 341.5,247.7 392.0,203.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#C79A6B" points="388.4,200.8 392.0,203.9 341.5,247.7 337.9,244.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#A97B4E" points="341.5,265.5 390.8,308.2 390.8,303.1 341.5,260.4" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#8A613B" points="441.3,264.5 390.8,308.2 390.8,303.1 441.3,259.4" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#C79A6B" points="392.0,216.7 441.3,259.4 390.8,303.1 341.5,260.4" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#E7E4DE" points="342.7,259.4 359.6,273.9 359.6,270.2 342.7,255.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#D3CFC7" points="407.7,232.3 359.6,273.9 359.6,270.2 407.7,228.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#FBFAF7" points="390.8,214.0 407.7,228.6 359.6,270.2 342.7,255.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#ECEBE7" points="371.6,234.8 382.4,244.2 382.4,242.1 371.6,232.8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#DAD8D2" points="401.6,227.5 382.4,244.2 382.4,242.1 401.6,225.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#FFFFFF" points="390.8,216.1 401.6,225.5 382.4,242.1 371.6,232.8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#ECEBE7" points="347.5,255.6 358.4,265.0 358.4,262.9 347.5,253.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#DAD8D2" points="377.6,248.3 358.4,265.0 358.4,262.9 377.6,246.3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#FFFFFF" points="366.8,236.9 377.6,246.3 358.4,262.9 347.5,253.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#76898A" points="357.9,275.4 390.8,303.9 390.8,299.2 357.9,270.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#5F7072" points="442.3,259.4 390.8,303.9 390.8,299.2 442.3,254.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#8FA3A0" points="409.3,226.1 442.3,254.6 390.8,299.2 357.9,270.6" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#E9ECEF" points="279.0,317.6 282.6,320.7 282.6,307.1 279.0,304.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#D3D8DD" points="294.7,310.3 282.6,320.7 282.6,307.1 294.7,296.7" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#FFFFFF" points="291.1,293.5 294.7,296.7 282.6,307.1 279.0,304.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-style='[["opacity", "do"]]' style=""><path d="M0 0" data-bind-d='"[[d2.fy]]"' fill="#C29A6C" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[d2.fx]]"' fill="#9E7549" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[d2.top]]"' fill="#D9B68A" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-style='[["opacity", "wo"]]' style=""><path d="M0 0" data-bind-d='"[[w5.rev]]"' fill="#B9BFC8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w5.end]]"' fill="#B9BFC8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w5.front]]"' fill="#D9DDE3" fill-rule="evenodd" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w5.top]]"' fill="#F7F8FA" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-css="fam" style=""><polygon fill="#E9ECEF" points="283.8,319.6 294.7,329.0 294.7,321.9 283.8,312.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#D3D8DD" points="304.3,320.7 294.7,329.0 294.7,321.9 304.3,313.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#FFFFFF" points="293.5,304.2 304.3,313.5 294.7,321.9 283.8,312.5" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#858A91" points="331.9,350.9 346.3,363.4 346.3,349.4 331.9,336.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#6E737A" points="358.4,352.9 346.3,363.4 346.3,349.4 358.4,339.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#9CA1A8" points="343.9,326.5 358.4,339.0 346.3,349.4 331.9,336.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-css="fam" style=""><polygon fill="#E9ECEF" points="331.0,336.9 346.3,350.2 346.3,349.2 331.0,335.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#D3D8DD" points="359.3,339.0 346.3,350.2 346.3,349.2 359.3,338.0" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon><polygon fill="#FFFFFF" points="343.9,324.7 359.3,338.0 346.3,349.2 331.0,335.9" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></polygon></g>
-<g data-bind-style='[["opacity", "wo"]]' style=""><path d="M0 0" data-bind-d='"[[w3.rev]]"' fill="#D9DDE3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w3.end]]"' fill="#D9DDE3" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w3.front]]"' fill="#B9BFC8" fill-rule="evenodd" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w3.top]]"' fill="#F7F8FA" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-<g data-bind-style='[["opacity", "wo"]]' style=""><path d="M0 0" data-bind-d='"[[w2.rev]]"' fill="#B9BFC8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w2.end]]"' fill="#B9BFC8" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w2.front]]"' fill="#D9DDE3" fill-rule="evenodd" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path><path d="M0 0" data-bind-d='"[[w2.top]]"' fill="#F7F8FA" stroke="#5F6773" stroke-linejoin="round" stroke-width="0.6"></path></g>
-</svg>
-<div data-bind-style='[["opacity", "dwgO"], ["transform", "dwgT"]]' style="position: absolute; left: 36px; top: 30px; width: 150px; padding: 10px; border-radius: 8px; background: #0E1013; box-shadow: 0 0 0 1px #0A9BB0, 0 12px 28px rgba(22,24,28,0.25); display: flex; flex-direction: column; gap: 8px;">
-<svg aria-hidden="true" height="91" viewBox="0 0 100 70" width="130"><rect fill="none" height="66" stroke="#E8E8E8" stroke-width="1.4" width="96" x="2" y="2"></rect><line stroke="#E8E8E8" stroke-width="1.4" x1="61" x2="61" y1="2" y2="30"></line><line stroke="#E8E8E8" stroke-width="1.4" x1="61" x2="61" y1="40" y2="68"></line><line stroke="#E8E8E8" stroke-width="1.4" x1="61" x2="70" y1="45" y2="45"></line><line stroke="#E8E8E8" stroke-width="1.4" x1="79" x2="98" y1="45" y2="45"></line><path d="M20 68 A12 12 0 0 1 32 56" fill="none" stroke="#3FD0E0" stroke-width="1"></path><rect fill="none" height="21" stroke="#E36BD3" stroke-width="1" width="21" x="62" y="8"></rect><rect fill="none" height="8" stroke="#E36BD3" stroke-width="0.8" width="4.5" x="63.5" y="9.5"></rect><rect fill="none" height="8" stroke="#E36BD3" stroke-width="0.8" width="4.5" x="63.5" y="19.5"></rect><path d="M69.5 8V29M69.5 8L83 29" fill="none" stroke="#E36BD3" stroke-width="0.8"></path><rect fill="none" height="8" stroke="#E36BD3" stroke-width="1" width="25" x="15" y="4"></rect><rect fill="none" height="30" stroke="#E36BD3" stroke-width="1" width="6.5" x="2" y="10"></rect><rect fill="none" height="5" stroke="#E36BD3" stroke-width="0.8" width="6" x="62" y="49.5"></rect><rect fill="none" height="5" stroke="#E36BD3" stroke-width="0.8" width="6" x="81" y="46.5"></rect></svg>
-<div style="color: #E9ECF0; font-size: 11.5px;">GF_Plan.dwg</div>
-</div>
-<div style="position: absolute; right: 14px; top: 12px; display: flex; flex-direction: column; gap: 4px; font-size: 10.5px; color: #4A515C;"><div style="display: flex; align-items: center; gap: 6px;"><div style="width: 14px; height: 2px; background: #1F2328;"></div><div>Wall layers</div></div><div style="display: flex; align-items: center; gap: 6px;"><div style="width: 14px; height: 2px; background: #0A9BB0;"></div><div>Door blocks</div></div><div style="display: flex; align-items: center; gap: 6px;"><div style="width: 14px; height: 2px; background: #C0379F;"></div><div>Furniture blocks</div></div></div>
-</div></div>
-
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

@@ -18,8 +18,25 @@ import type { SoftwarePlatform, Tool } from "@/types";
  * — a tight one that sits the card on the page and a wide soft one that lifts
  * it off. The sheen itself is a separate pass, below.
  */
-const GLOSS =
-  "shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_1px_2px_rgba(6,20,34,0.05),0_14px_30px_-10px_rgba(6,20,34,0.18),0_34px_64px_-28px_rgba(6,20,34,0.28)]";
+/**
+ * The card's material.
+ *
+ * Four things, and it falls apart if any one of them is missing: a hairline
+ * of white along the top edge where the light catches, a tight shadow that
+ * sits the card on the page, a wide soft one that lifts it off it, and — from
+ * the host application's own colour — a ring just outside the border, so the
+ * edge reads as lit rather than drawn. The ring is at four per cent: enough
+ * to see on white, not enough to be a glow.
+ *
+ * The face itself stays white, and nothing is laid over it. A wash across
+ * the top is the obvious way to draw gloss and the wrong one here: the
+ * heading starts a tenth of the way down, so the wash lands on the words
+ * and greys them. The lit top edge is the highlight.
+ */
+/** The lit ring, in the colour of whatever the tool plugs into. */
+const ringFor = (accent: string) => ({
+  boxShadow: `0 0 0 4px ${accent}0A, inset 0 1px 0 rgba(255,255,255,0.95), 0 1px 2px rgba(6,20,34,0.04), 0 10px 24px -12px rgba(6,20,34,0.14), 0 28px 56px -28px rgba(6,20,34,0.22)`,
+});
 
 /**
  * The colour of the application a card plugs into — Revit blue on a Revit’s
@@ -241,11 +258,11 @@ export function FlipToolCard({
     <div className={cn("group [perspective:1600px]", className)}>
       <div
         className={cn(
-          // The stage is drawn 1280x616, but the Lite cards pin their content
-          // to the top of it — the tallest animation panel ends at 418 and the
-          // rest is the design's own trailing space. Cropping to 480 keeps
-          // every panel and its bottom padding and drops the empty third.
-          "relative aspect-[1280/480] w-full",
+          // The stage is now the text column and its padding — 476x356 — since the
+          // drawing came out. The card is cut to exactly that, so the type renders
+          // at very nearly full size instead of the third it was scaled to before.
+          
+          "relative aspect-[476/356] w-full",
           "transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
           "[transform-style:preserve-3d]",
           "[@media(hover:hover)]:group-hover:[transform:rotateY(180deg)]",
@@ -256,12 +273,13 @@ export function FlipToolCard({
         {/* Front. */}
         <div
           className={cn(
-            "absolute inset-0 overflow-hidden rounded-2xl border-2 bg-gradient-to-b from-white to-ink-50",
-            GLOSS,
+            // A hairline border rather than 2px: at this size the heavier one
+            // was the loudest thing on a card made of type.
+            "absolute inset-0 overflow-hidden rounded-2xl border bg-white",
             "transition-shadow duration-300",
             "[backface-visibility:hidden]",
           )}
-          style={{ borderColor: accent }}
+          style={{ borderColor: `${accent}59`, ...ringFor(accent) }}
         >
           {/* A designed card already ends in its own add-in lockup and its own
               demo button — now that the face is cropped to the design rather
@@ -360,12 +378,11 @@ export function FlipToolCard({
         <div
           className={cn(
             "absolute inset-0 hidden flex-col overflow-hidden rounded-2xl",
-            "border-2 bg-white p-6 lg:p-7",
-            GLOSS,
+            "border bg-white p-6 lg:p-7",
             "[backface-visibility:hidden] [transform:rotateY(180deg)]",
             "[@media(hover:hover)]:flex",
           )}
-          style={{ borderColor: accent }}
+          style={{ borderColor: `${accent}59`, ...ringFor(accent) }}
         >
           <PlatformCorner platform={platform} />
 

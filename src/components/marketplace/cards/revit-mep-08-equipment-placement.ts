@@ -11,8 +11,8 @@
 
 export const id = "revit-mep-equipment-placement";
 export const title = "Equipment Placement Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,30 +25,22 @@ export const attrs = ["fill","stroke"];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 364px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Equipment Placement</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 39px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Equipment Placement</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Equipment placed at set locations, clearances checked and fixed.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/revit.png" alt="Autodesk Revit" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 364px; flex-shrink: 0;"><div style="position: relative; width: 634px; height: 302px; background: #FFFFFF; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.205); transform-origin: left top;">
-<svg aria-label="Plant room with equipment placed on predefined spots and service clearances checked" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 6px; width: 400px; height: 290px;" viewBox="0 0 400 290"><rect fill="#FFFFFF" height="250" stroke="#16181C" stroke-width="3" width="370" x="20" y="20"></rect><rect fill="#FFFFFF" height="8" width="50" x="180" y="266"></rect><text fill="#16181C" font-size="8.5" font-weight="700" x="28" y="36">PLANT ROOM · B1</text><rect data-bind-fill='"[[cf0]]"' data-bind-stroke='"[[cs0]]"' data-bind-style='[["opacity", "cl"]]' fill="none" height="90" stroke="none" stroke-dasharray="3 2" stroke-width="0.9" style="" width="130" x="30" y="40"></rect><rect data-bind-fill='"[[cf1]]"' data-bind-stroke='"[[cs1]]"' data-bind-style='[["opacity", "cl"]]' fill="none" height="60" stroke="none" stroke-dasharray="3 2" stroke-width="0.9" style="" width="60" x="180" y="45"></rect><rect data-bind-fill='"[[cf2]]"' data-bind-stroke='"[[cs2]]"' data-bind-style='[["opacity", "cl"]]' fill="none" height="60" stroke="none" stroke-dasharray="3 2" stroke-width="0.9" style="" width="60" x="240" y="45"></rect><rect data-bind-fill='"[[cf3]]"' data-bind-stroke='"[[cs3]]"' data-bind-style='[["opacity", "cl"]]' fill="none" height="68" stroke="none" stroke-dasharray="3 2" stroke-width="0.9" style="" width="50" x="320" y="112"></rect><rect data-bind-fill='"[[cf4]]"' data-bind-stroke='"[[cs4]]"' data-bind-style='[["opacity", "cl"]]' fill="none" height="100" stroke="none" stroke-dasharray="3 2" stroke-width="0.9" style="" width="130" x="30" y="160"></rect><rect data-bind-style='[["opacity", "sp"]]' fill="none" height="60" stroke="#6F7782" stroke-dasharray="4 3" stroke-width="0.9" style="" width="110" x="40" y="50"></rect><rect data-bind-style='[["opacity", "sp"]]' fill="none" height="30" stroke="#6F7782" stroke-dasharray="4 3" stroke-width="0.9" style="" width="40" x="190" y="55"></rect><rect data-bind-style='[["opacity", "sp"]]' fill="none" height="30" stroke="#6F7782" stroke-dasharray="4 3" stroke-width="0.9" style="" width="40" x="250" y="55"></rect><rect data-bind-style='[["opacity", "sp"]]' fill="none" height="50" stroke="#6F7782" stroke-dasharray="4 3" stroke-width="0.9" style="" width="30" x="340" y="120"></rect><rect data-bind-style='[["opacity", "sp"]]' fill="none" height="80" stroke="#6F7782" stroke-dasharray="4 3" stroke-width="0.9" style="" width="110" x="40" y="170"></rect><g data-bind-css="e0" style=""><rect fill="#E4E7EB" height="60" rx="2" stroke="#16181C" stroke-width="1.1" width="110" x="40" y="50"></rect><text fill="#16181C" font-size="7.5" font-weight="700" text-anchor="middle" x="95.0" y="83.0">AHU-1</text></g><g data-bind-css="e1" style=""><rect fill="#E4E7EB" height="30" rx="2" stroke="#16181C" stroke-width="1.1" width="40" x="190" y="55"></rect><text fill="#16181C" font-size="7.5" font-weight="700" text-anchor="middle" x="210.0" y="73.0">CHP-1</text></g><g data-bind-css="e2" style=""><rect fill="#E4E7EB" height="30" rx="2" stroke="#16181C" stroke-width="1.1" width="40" x="250" y="55"></rect><text fill="#16181C" font-size="7.5" font-weight="700" text-anchor="middle" x="270.0" y="73.0">CHP-2</text></g><g data-bind-css="e3" style=""><rect fill="#E4E7EB" height="50" rx="2" stroke="#16181C" stroke-width="1.1" width="30" x="340" y="120"></rect><text fill="#16181C" font-size="7.5" font-weight="700" text-anchor="middle" x="355.0" y="148.0">DB-B1</text></g><g data-bind-css="e4" style=""><rect fill="#E4E7EB" height="80" rx="2" stroke="#16181C" stroke-width="1.1" width="110" x="40" y="170"></rect><text fill="#16181C" font-size="7.5" font-weight="700" text-anchor="middle" x="95.0" y="213.0">TANK</text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 190px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Placement checks</div><div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Placed at predefined spots</div><div style="font-weight: 700; color: #16181C;">5 / 5</div></div><div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Service clearance</div><div style="font-weight: 700; color: #16181C;"><span data-bind-text="cc"></span></div></div><div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Door &amp; access route</div><div style="font-weight: 700; color: #16181C;">clear</div></div><div data-bind-style='[["opacity", "k3"]]' style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;"><div style="color: #4A515C;">Connections</div><div style="font-weight: 700; color: #16181C;">CHW · CW · power</div></div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Equipment placed, clearances met</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */

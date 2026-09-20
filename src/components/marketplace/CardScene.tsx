@@ -48,7 +48,13 @@ export interface DesignedCard {
   values: (p: number) => { v: Record<string, unknown> };
 }
 
-/** Where the loop is held for a visitor who has asked for less motion. */
+/**
+ * The frame every card is held at.
+ *
+ * 88 of 100 is the design's own fallback — what its renderVals returns when
+ * nothing is driving it — so it is the state the author chose to be seen in:
+ * the run finished, the model built, the sheets out.
+ */
 const STILL_AT = 88;
 
 /**
@@ -192,32 +198,19 @@ export function CardScene({ toolId, className }: { toolId: string; className?: s
     const resize = new ResizeObserver(fit);
     resize.observe(host);
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      draw(STILL_AT);
-      return () => resize.disconnect();
-    }
+    // One frame, and that is the card.
+    //
+    // These used to run their own loop off requestAnimationFrame, with an
+    // IntersectionObserver to stop the ones nobody was looking at. A page of
+    // thirty-odd cards all moving at once was more motion than it was worth,
+    // so every card is now held at the frame the design itself falls back to
+    // when it has no clock — the finished state, with the work done.
+    //
+    // The scene still has to be painted once: the markup ships with empty
+    // values that only mean something after a frame has been applied.
+    draw(STILL_AT);
 
-    // A card scrolled past is a loop nobody is watching.
-    let onScreen = true;
-    const watch = new IntersectionObserver((entries) => {
-      onScreen = entries[0]?.isIntersecting ?? true;
-    });
-    watch.observe(host);
-
-    const start = performance.now();
-    let frame = 0;
-    const tick = (now: number) => {
-      if (onScreen) draw((((now - start) % card.loopMs) / card.loopMs) * 100);
-      frame = requestAnimationFrame(tick);
-    };
-    draw(0);
-    frame = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      resize.disconnect();
-      watch.disconnect();
-    };
+    return () => resize.disconnect();
   }, [card]);
 
   if (!card) return null;

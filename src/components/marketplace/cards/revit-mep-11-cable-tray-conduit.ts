@@ -11,8 +11,8 @@
 
 export const id = "revit-mep-cable-tray-conduit";
 export const title = "Cable Tray &amp; Conduit Automation";
-export const width = 1280;
-export const height = 616;
+export const width = 476;
+export const height = 356;
 export const loopMs = 15000;
 
 /**
@@ -25,37 +25,22 @@ export const attrs = [];
 
 /** The stage's own styles, off the design's root element. */
 export const stage = {
-  "width": "1280px",
-  "height": "616px",
+  "width": "476px",
+  "height": "356px",
   "boxSizing": "border-box",
+  "padding": "30px 48px 36px 48px",
   "display": "flex",
-  "flexDirection": "column",
   "backgroundColor": "#FFFFFF",
   "color": "#16181C",
   "overflow": "hidden",
 };
 
 export const markup = `
-<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px; align-items: flex-start;">
-<div style="width: 380px; flex-shrink: 0; height: 364px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
-<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.06; letter-spacing: -0.6px; color: #172B4D; min-height: 106px;"><span>Cable Tray &amp; Conduit</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<div style="width: 380px; flex-shrink: 0; height: 290px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; padding-top: 4px;">
+<h1 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 82%; font-weight: 800; font-size: 37px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D; min-height: 104px;"><span style="white-space: nowrap;">Cable Tray &amp; Conduit</span><br/><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
 <h2 style="margin: 0; font-family: Archivo, 'Archivo Narrow', 'Arial Narrow', 'Helvetica Neue Condensed', 'Liberation Sans Narrow', Arial, sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Tray and conduit routes to every board, sized by cable fill.</h2>
 
 <div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start; gap: 22px; margin-top: auto;"><div style="display: flex; align-items: center; gap: 14px;"><div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div><div style="width: 1px; height: 30px; background: #D5D9DF;"></div><img src="/logos/revit.png" alt="Autodesk Revit" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;"></div><a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div></div>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-<div style="height: 364px; flex-shrink: 0;"><div style="position: relative; width: 634px; height: 302px; background: #FFFFFF; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px rgba(23,43,77,0.10), 0 10px 26px rgba(23,43,77,0.10); transform: scale(1.205); transform-origin: left top;">
-<svg aria-label="Cable tray routed from the MDB along the corridor with conduits to each board, and the tray sized by fill" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 6px; width: 400px; height: 290px;" viewBox="0 0 400 290"><rect fill="#FFFFFF" height="250" stroke="#16181C" stroke-width="2.4" width="370" x="20" y="20"></rect><path d="M20,120H390M20,170H390" stroke="#2B2F36" stroke-width="1"></path><text fill="#6F7782" font-size="7.5" x="200" y="148">Corridor</text><rect fill="#E4E7EB" height="34" rx="2" stroke="#16181C" stroke-width="1" width="46" x="28" y="128"></rect><text fill="#16181C" font-size="7.5" font-weight="700" text-anchor="middle" x="51" y="148">MDB</text><g data-bind-style='[["opacity", "tr"]]' style=""><path d="M74,145H370" stroke="#C49A3A" stroke-opacity="0.35" stroke-width="12"></path><path d="M74,139H370M74,151H370" stroke="#C49A3A" stroke-width="1.2"></path><path d="M84,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M98,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M112,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M126,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M140,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M154,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M168,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M182,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M196,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M210,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M224,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M238,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M252,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M266,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M280,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M294,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M308,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M322,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M336,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M350,139V151" stroke="#C49A3A" stroke-width="0.6"></path><path d="M364,139V151" stroke="#C49A3A" stroke-width="0.6"></path></g><path d="M120,139V72" data-bind-style='[["opacity", "cd"]]' stroke="#7A5A1C" stroke-dasharray="4 2" stroke-width="1.6" style=""></path><path d="M250,139V72" data-bind-style='[["opacity", "cd"]]' stroke="#7A5A1C" stroke-dasharray="4 2" stroke-width="1.6" style=""></path><path d="M340,151V208" data-bind-style='[["opacity", "cd"]]' stroke="#7A5A1C" stroke-dasharray="4 2" stroke-width="1.6" style=""></path><path d="M160,151V208" data-bind-style='[["opacity", "cd"]]' stroke="#7A5A1C" stroke-dasharray="4 2" stroke-width="1.6" style=""></path><g data-bind-style='[["opacity", "ld"]]' style=""><rect fill="#FFFFFF" height="24" rx="2" stroke="#16181C" stroke-width="1" width="36" x="102" y="48"></rect><text fill="#16181C" font-size="7" font-weight="700" text-anchor="middle" x="120" y="63">DB-1</text></g><g data-bind-style='[["opacity", "ld"]]' style=""><rect fill="#FFFFFF" height="24" rx="2" stroke="#16181C" stroke-width="1" width="36" x="232" y="48"></rect><text fill="#16181C" font-size="7" font-weight="700" text-anchor="middle" x="250" y="63">DB-2</text></g><g data-bind-style='[["opacity", "ld"]]' style=""><rect fill="#FFFFFF" height="24" rx="2" stroke="#16181C" stroke-width="1" width="36" x="322" y="208"></rect><text fill="#16181C" font-size="7" font-weight="700" text-anchor="middle" x="340" y="223">MCC</text></g><g data-bind-style='[["opacity", "ld"]]' style=""><rect fill="#FFFFFF" height="24" rx="2" stroke="#16181C" stroke-width="1" width="36" x="142" y="208"></rect><text fill="#16181C" font-size="7" font-weight="700" text-anchor="middle" x="160" y="223">DB-3</text></g><g data-bind-style='[["opacity", "lb"]]' style=""><text fill="#7A5A1C" font-size="7.5" font-weight="700" x="240" y="134">CT 300×100 · 38% fill</text><text fill="#7A5A1C" font-size="7" x="130" y="100">25 mm conduit</text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; display: flex; flex-direction: column; gap: 4px;">
-<div style="font-weight: 600; color: #16181C;">Tray sizing · L3 corridor</div>
-<div data-bind-style='[["opacity", "k0"]]' style="display: flex; justify-content: space-between;"><div style="color: #4A515C;">Cables on route</div><div style="font-weight: 700; color: #16181C;">14</div></div>
-<div data-bind-style='[["opacity", "k1"]]' style="display: flex; justify-content: space-between;"><div style="color: #4A515C;">Total cable area</div><div style="font-weight: 700; color: #16181C;">11,400 mm²</div></div>
-<div data-bind-style='[["opacity", "k2"]]' style="display: flex; justify-content: space-between;"><div style="color: #4A515C;">Tray selected</div><div style="font-weight: 700; color: #16181C;">300 × 100</div></div>
-<div data-bind-style='[["opacity", "k3"]]' style="padding-top: 4px;"><div style="display: flex; justify-content: space-between;"><div style="color: #4A515C;">Fill</div><div style="font-weight: 700; color: #1E7F4F;"><span data-bind-text="fp"></span>% / limit 40%</div></div>
-<div style="position: relative; height: 8px; border-radius: 4px; background: #EEF0F2; margin-top: 4px;"><div data-bind-style='[["width", "fw"]]' style="position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: #1E7F4F;"></div><div style="position: absolute; left: 100%; top: -2px; width: 2px; height: 12px; background: #C0392B; transform: translateX(-2px);"></div></div></div>
-<div style="font-size: 9px; color: #6F7782; padding-top: 2px;">Fill limit per [STANDARD]</div></div><div data-bind-style='[["opacity", "fin"]]' style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="13"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Tray and conduits routed and sized</span></div>
-</div></div>
-
-</div>
-</div>
 `;
 
 /** Everything the markup binds to, for one position in the loop. */
