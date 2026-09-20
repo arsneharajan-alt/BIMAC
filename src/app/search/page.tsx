@@ -4,7 +4,6 @@ import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Icon from "@/components/ui/Icon";
 import Button from "@/components/ui/Button";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
 import { EmptyState } from "@/components/marketplace/ToolGrid";
 import { groupResults, search } from "@/lib/search";
 import { searchSuggestions } from "@/lib/site";
@@ -12,7 +11,7 @@ import { pluralise } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Search",
-  description: "Search BIMAC tools, disciplines, and project stages.",
+  description: "Search BIMAC tools, disciplines, and software.",
 };
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -28,11 +27,6 @@ export default async function SearchPage({ searchParams }: { searchParams: Searc
   return (
     <>
       <section className="relative overflow-hidden border-b border-ink-200 bg-white">
-        <BlueprintGrid
-          variant="light"
-          fade={false}
-          className="opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]"
-        />
         <Container className="relative">
           <div className="py-6">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Search" }]} />
@@ -50,11 +44,11 @@ export default async function SearchPage({ searchParams }: { searchParams: Searc
             {query ? (
               <p className="mt-3 text-[1.0625rem] text-ink-600">
                 {results.length} {pluralise(results.length, "result")} across tools, disciplines,
-                and project stages.
+                and software.
               </p>
             ) : (
               <p className="mt-3 text-[1.0625rem] text-ink-600">
-                Search every tool, discipline, and project stage.
+                Search every tool, discipline, and application.
               </p>
             )}
 
@@ -99,7 +93,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Searc
           {query && results.length === 0 ? (
             <EmptyState
               title={`No results for "${query}"`}
-              message="Try a discipline (architecture, electrical), a stage (documentation), or a task (massing, sprinkler, takeoff)."
+              message="Try a discipline (architecture, electrical), an application (Revit, Excel), or a task (massing, sprinkler, takeoff)."
               action={
                 <Button href="/tools" icon="arrow-right">
                   Browse all tools
@@ -109,7 +103,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Searc
           ) : !query ? (
             <EmptyState
               title="Start typing to search"
-              message="Every tool, discipline, and project stage is indexed."
+              message="Every tool, discipline, and application is indexed."
               action={
                 <Button href="/tools" icon="arrow-right">
                   Browse all tools

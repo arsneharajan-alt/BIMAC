@@ -18,3 +18,11 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# Source archives — the extracted card files are what the generators read.
+*.zip
+
+# Working folders of raw source assets. Nothing here is served: the logos the
+# site uses are in public/logos and the project renders in public/projects.
+/software logos/
+/img/

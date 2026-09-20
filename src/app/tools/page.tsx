@@ -2,18 +2,16 @@ import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Catalogue from "@/components/marketplace/Catalogue";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
 import { ContactBand } from "@/components/common/ContactActions";
 import { disciplines } from "@/data/disciplines";
-import { stages } from "@/data/stages";
 import { tools } from "@/data/tools";
 import { statusOrder } from "@/lib/tools";
-import type { DisciplineId, StageId, ToolStatus } from "@/types";
+import type { DisciplineId, ToolStatus } from "@/types";
 
 export const metadata: Metadata = {
   title: "All BIM Automation Tools",
   description:
-    "Browse every BIMAC tool for architecture, structure and MEPF — filter by discipline, project stage, software and availability.",
+    "Browse every BIMAC tool for architecture, structure and MEPF — filter by discipline, software and availability.",
 };
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -26,7 +24,6 @@ export default async function ToolsPage({ searchParams }: { searchParams: Search
   const params = await searchParams;
 
   const disciplineParam = one(params.discipline) as DisciplineId | undefined;
-  const stageParam = one(params.stage) as StageId | undefined;
   const statusParam = one(params.status) as ToolStatus | undefined;
   const queryParam = one(params.q) ?? "";
 
@@ -36,18 +33,12 @@ export default async function ToolsPage({ searchParams }: { searchParams: Search
       disciplineParam && disciplines.some((d) => d.id === disciplineParam)
         ? [disciplineParam]
         : [],
-    stages: stageParam && stages.some((s) => s.id === stageParam) ? [stageParam] : [],
     statuses: statusParam && statusOrder.includes(statusParam) ? [statusParam] : [],
   };
 
   return (
     <>
       <section className="relative overflow-hidden border-b border-ink-200 bg-white">
-        <BlueprintGrid
-          variant="light"
-          fade={false}
-          className="opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]"
-        />
         <Container className="relative">
           <div className="py-6">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tools" }]} />
@@ -62,8 +53,8 @@ export default async function ToolsPage({ searchParams }: { searchParams: Search
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-600">
               {tools.length} tools across architecture, structure, the seven MEPF services, and
-              shared BIM automation — every stage from site study to as-built handover. Filter by
-              discipline, project stage, or the software you already run.
+              shared BIM automation — from site study to as-built handover. Filter by
+              discipline or the software you already run.
             </p>
           </div>
         </Container>

@@ -4,10 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import ContactActions from "@/components/common/ContactActions";
-import ProductMark from "@/components/common/ProductMark";
+import LogoTile from "@/components/common/LogoTile";
 import { disciplineFamilies, disciplineMap } from "@/data/disciplines";
-import { stages } from "@/data/stages";
 import { softwarePlatforms } from "@/data/software";
+import { additionalSoftware, softwareMenuHref } from "@/data/software-menu";
 import { capabilityCount } from "@/lib/software";
 import { familyCount } from "@/lib/tools";
 import { cn } from "@/lib/utils";
@@ -72,7 +72,7 @@ export function MobileNav({
             {disciplineFamilies.map((family) => {
               const isOpen = openSection === family.id;
               const children =
-                family.id === "mepf"
+                family.id === "mep"
                   ? family.members.map((id) => ({
                       label: disciplineMap[id].shortName,
                       href: `/tools/${disciplineMap[id].slug}`,
@@ -119,7 +119,9 @@ export function MobileNav({
                             onClick={onClose}
                             className="block rounded-lg px-2 py-2 text-[0.875rem] font-medium text-brand-600 hover:bg-brand-50"
                           >
-                            All {family.shortName} tools &rarr;
+                            {/* The open section already names the family, so
+                                the link need not repeat it. */}
+                            All tools &rarr;
                           </Link>
                         </li>
                         {children.map((child) => (
@@ -160,7 +162,7 @@ export function MobileNav({
                     onClick={onClose}
                     className="group flex items-center gap-2.5 rounded-lg px-2 py-2 text-[0.875rem] text-ink-600 transition-colors hover:bg-azure-50 hover:text-azure-700"
                   >
-                    <ProductMark platform={platform} size="xs" />
+                    <LogoTile platform={platform} size="sm" />
                     {platform.shortName}
                     <span className="ml-auto font-mono text-2xs text-ink-400">
                       {capabilityCount(platform)}
@@ -168,20 +170,17 @@ export function MobileNav({
                   </Link>
                 </li>
               ))}
-            </ul>
-
-            <p className="px-2 pb-2 pt-4 text-2xs font-semibold uppercase tracking-[0.16em] text-ink-400">
-              Project stages
-            </p>
-            <ul className="pb-2">
-              {stages.map((stage) => (
-                <li key={stage.id}>
+              {/* The rest of the stack: no capability page yet, so each lands on
+                  its tile in the "Also in the stack" grid. */}
+              {additionalSoftware.map((item) => (
+                <li key={item.id}>
                   <Link
-                    href={`/stages/${stage.slug}`}
+                    href={softwareMenuHref(item)}
                     onClick={onClose}
-                    className="block rounded-lg px-2 py-2 text-[0.875rem] text-ink-600 transition-colors hover:bg-ink-50 hover:text-brand-600"
+                    className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-[0.875rem] text-ink-600 transition-colors hover:bg-azure-50 hover:text-azure-700"
                   >
-                    {stage.name}
+                    <LogoTile platform={item} size="sm" />
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -189,8 +188,8 @@ export function MobileNav({
 
             <ul className="mt-2 border-t border-ink-100 pt-2">
               {[
-                { label: "All tools", href: "/tools" },
-                { label: "Custom Development", href: "/custom-development" },
+                { label: "All products", href: "/tools" },
+                { label: "Custom Automation", href: "/custom-automation" },
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },
               ].map((link) => (

@@ -4,7 +4,6 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
 import Accordion from "@/components/ui/Accordion";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
 import { disciplineFamilies } from "@/data/disciplines";
 import { emailLink, site, whatsappLink } from "@/lib/site";
 
@@ -41,11 +40,6 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-ink-200 bg-white">
-        <BlueprintGrid
-          variant="light"
-          fade={false}
-          className="opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]"
-        />
         <Container className="relative">
           <div className="py-6">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />

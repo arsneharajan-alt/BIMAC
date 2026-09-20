@@ -5,13 +5,13 @@ import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Icon from "@/components/ui/Icon";
 import Button from "@/components/ui/Button";
-import Badge from "@/components/ui/Badge";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
-import ProductMark from "@/components/common/ProductMark";
+import LogoTile from "@/components/common/LogoTile";
 import { ContactBand } from "@/components/common/ContactActions";
+import FlipToolCard from "@/components/marketplace/FlipToolCard";
+import { disciplines } from "@/data/disciplines";
 import { findPlatformBySlug, softwarePlatforms } from "@/data/software";
-import { capabilityCount, groupsFor, type SoftwareCapabilityView } from "@/lib/software";
-import { statusLabels } from "@/lib/tools";
+import { toolsForDiscipline } from "@/lib/tools";
+import { capabilityCount, groupsFor } from "@/lib/software";
 import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -34,61 +34,6 @@ export async function generateMetadata({
   };
 }
 
-/**
- * One row in a capability group.
- *
- * A capability that already ships as a catalogue tool becomes a link with its
- * availability badge. The rest are listed plainly — they describe what the
- * platform covers, and the enquiry band at the foot of the page is the way in.
- */
-function CapabilityRow({ capability }: { capability: SoftwareCapabilityView }) {
-  const content = (
-    <>
-      <Icon
-        name={capability.href ? "check-circle" : "check"}
-        className={cn(
-          "mt-0.5 shrink-0 text-[0.9rem]",
-          capability.href ? "text-azure-500" : "text-ink-300",
-        )}
-      />
-      <span
-        className={cn(
-          "flex-1 text-[0.875rem] leading-6",
-          capability.href ? "text-ink-800 group-hover:text-azure-700" : "text-ink-700",
-        )}
-      >
-        {capability.name}
-      </span>
-      {capability.status && capability.status !== "planned" ? (
-        <Badge tone={capability.status === "available" ? "success" : "neutral"}>
-          {statusLabels[capability.status]}
-        </Badge>
-      ) : null}
-      {capability.href ? (
-        <Icon
-          name="arrow-right"
-          className="mt-1 shrink-0 text-[0.75rem] text-azure-500 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
-        />
-      ) : null}
-    </>
-  );
-
-  if (!capability.href) {
-    return <li className="flex items-start gap-2.5 rounded-lg px-2.5 py-2">{content}</li>;
-  }
-
-  return (
-    <li>
-      <Link
-        href={capability.href}
-        className="group flex items-start gap-2.5 rounded-lg px-2.5 py-2 transition-colors hover:bg-azure-50/70"
-      >
-        {content}
-      </Link>
-    </li>
-  );
-}
-
 export default async function SoftwarePlatformPage({
   params,
 }: {
@@ -99,6 +44,17 @@ export default async function SoftwarePlatformPage({
   if (!platform) notFound();
 
   const groups = groupsFor(platform);
+
+  // Every tool that loads into this application, grouped by the discipline it
+  // serves and kept in each discipline's own line-up order.
+  const byDiscipline = disciplines
+    .map((discipline) => ({
+      discipline,
+      tools: toolsForDiscipline(discipline.id).filter(
+        (tool) => tool.software[0] === platform.id,
+      ),
+    }))
+    .filter((group) => group.tools.length > 0);
   const total = capabilityCount(platform);
   const shipping = groups
     .flatMap((group) => group.capabilities)
@@ -107,11 +63,6 @@ export default async function SoftwarePlatformPage({
   return (
     <>
       <section className="relative overflow-hidden border-b border-ink-200 bg-white">
-        <BlueprintGrid
-          variant="light"
-          fade={false}
-          className="opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]"
-        />
         <Container className="relative">
           <div className="py-6">
             <Breadcrumbs
@@ -126,7 +77,7 @@ export default async function SoftwarePlatformPage({
           <div className="grid gap-10 pb-14 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-start">
             <div>
               <div className="mb-5 flex items-center gap-4">
-                <ProductMark platform={platform} size="xl" />
+                <LogoTile platform={platform} size="lg" />
                 <div>
                   <p className="font-mono text-2xs uppercase tracking-[0.16em] text-ink-400">
                     {platform.vendor} &middot; {platform.role}
@@ -193,45 +144,56 @@ export default async function SoftwarePlatformPage({
         </Container>
       </section>
 
+      {/* What this application actually gets, as the cards themselves.
+          Grouped by discipline and counted, because "what runs in Revit" is
+          the question this page exists to answer.
+
+          A platform BIMAC automates but does not yet sell an add-in for —
+          Navisworks, Excel, and the four after them — has no groups, and an
+          empty band of grey is worse than no band at all. The capabilities
+          above and the enquiry below still make the page worth landing on. */}
+      {byDiscipline.length > 0 ? (
       <section className="bg-ink-50/60 py-14 sm:py-16">
         <Container>
-          <div className="grid gap-5 lg:grid-cols-2">
-            {groups.map((group) => (
-              <section
-                key={group.id}
-                id={group.id}
-                className="scroll-mt-24 rounded-2xl border border-ink-200 bg-white p-7"
-              >
-                <div className="flex items-baseline justify-between gap-4">
-                  <h2 className="font-display text-xl font-semibold tracking-tight text-ink-950">
-                    {group.href ? (
-                      <Link href={group.href} className="hover:text-azure-700">
-                        {group.name}
-                      </Link>
-                    ) : (
-                      group.name
-                    )}
-                  </h2>
-                  <span className="shrink-0 font-mono text-2xs text-ink-400">
-                    {group.capabilities.length}
+          {byDiscipline.map(({ discipline, tools: hosted }, index) => (
+            <div
+              key={discipline.id}
+              id={discipline.slug}
+              className={cn("scroll-mt-24", index > 0 && "mt-16")}
+            >
+              <div className="mb-8 flex items-end justify-between gap-6">
+                <div className="flex items-center gap-3.5">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-ink-200 bg-white text-brand-600">
+                    <Icon name={discipline.glyph} className="text-xl" />
                   </span>
+                  <div>
+                    <h2 className="font-display text-2xl font-semibold tracking-tight text-ink-950">
+                      {discipline.shortName}
+                    </h2>
+                    <p className="mt-0.5 font-mono text-2xs uppercase tracking-[0.14em] text-ink-500">
+                      {hosted.length} {hosted.length === 1 ? "tool" : "tools"}
+                    </p>
+                  </div>
                 </div>
-                {group.description ? (
-                  <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-600">
-                    {group.description}
-                  </p>
-                ) : null}
+                <Link
+                  href={`/tools/${discipline.slug}`}
+                  className="hidden shrink-0 items-center gap-1.5 text-[0.8125rem] font-medium text-ink-700 transition-colors hover:text-brand-600 sm:inline-flex"
+                >
+                  All {discipline.shortName.toLowerCase()} tools
+                  <Icon name="arrow-right" className="text-[0.8rem] text-brand-500" />
+                </Link>
+              </div>
 
-                <ul className="mt-5 space-y-px border-t border-ink-100 pt-4">
-                  {group.capabilities.map((capability) => (
-                    <CapabilityRow key={capability.name} capability={capability} />
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
+              <div className="grid gap-6 xl:grid-cols-2">
+                {hosted.map((tool, position) => (
+                  <FlipToolCard key={tool.id} tool={tool} index={position + 1} />
+                ))}
+              </div>
+            </div>
+          ))}
         </Container>
       </section>
+      ) : null}
 
       {/* Sideways navigation — the other seven platforms. */}
       <section className="border-t border-ink-200 bg-white py-14">
@@ -249,7 +211,7 @@ export default async function SoftwarePlatformPage({
                   href={`/software/${other.slug}`}
                   className="group inline-flex items-center gap-2.5 rounded-xl border border-ink-200 px-4 py-2.5 transition-all hover:-translate-y-0.5 hover:border-azure-300 hover:shadow-lift"
                 >
-                  <ProductMark platform={other} size="sm" />
+                  <LogoTile platform={other} size="sm" />
                   <span className="text-[0.875rem] font-medium text-ink-800 group-hover:text-azure-700">
                     {other.shortName}
                   </span>

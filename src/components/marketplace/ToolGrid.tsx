@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import ToolCard from "./ToolCard";
+import FlipToolCard from "./FlipToolCard";
 import Icon from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 import type { Tool } from "@/types";
@@ -36,7 +36,7 @@ export function ToolGrid({
           style={{ "--reveal-delay": `${Math.min(index, 8) * 55}ms` } as CSSProperties}
           className="flex"
         >
-          <ToolCard tool={tool} className="w-full" />
+          <FlipToolCard tool={tool} className="w-full" />
         </div>
       ))}
     </div>

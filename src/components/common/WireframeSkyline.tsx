@@ -131,18 +131,54 @@ export function WireframeSkyline({ className }: { className?: string }) {
           </mask>
         </defs>
 
+        {/* The row draws itself in — street, then each mass from far to near,
+            its frame before its glazing — holds, fades, and starts again.
+            `pathLength={1}` normalises every path to the same length, so one
+            keyframe draws a 20-storey tower and a kerb line at the same rate.
+            Held still for anyone who has asked for less motion. */}
         <g
           mask="url(#skyline-mask)"
           stroke="#FFFFFF"
           fill="none"
           strokeLinejoin="round"
           vectorEffect="non-scaling-stroke"
+          className="motion-reduce:[&_*]:!animate-none"
         >
-          <path d={STREET} strokeWidth="0.6" opacity="0.28" />
+          <path
+            d={STREET}
+            strokeWidth="0.6"
+            opacity="0.28"
+            pathLength={1}
+            strokeDasharray={1}
+            className="animate-draw-loop"
+            style={{ ["--draw-length" as string]: 1 }}
+          />
           {DRAWN.map((mass, index) => (
             <g key={index} opacity={mass.opacity}>
-              <path d={mass.detail} strokeWidth="0.55" opacity="0.55" />
-              <path d={mass.frame} strokeWidth="0.9" opacity="0.85" />
+              <path
+                d={mass.frame}
+                strokeWidth="0.9"
+                opacity="0.85"
+                pathLength={1}
+                strokeDasharray={1}
+                className="animate-draw-loop"
+                style={{
+                  ["--draw-length" as string]: 1,
+                  animationDelay: `${300 + index * 420}ms`,
+                }}
+              />
+              <path
+                d={mass.detail}
+                strokeWidth="0.55"
+                opacity="0.55"
+                pathLength={1}
+                strokeDasharray={1}
+                className="animate-draw-loop"
+                style={{
+                  ["--draw-length" as string]: 1,
+                  animationDelay: `${620 + index * 420}ms`,
+                }}
+              />
             </g>
           ))}
         </g>

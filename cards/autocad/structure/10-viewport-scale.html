@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viewport & Scale Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; }
+  /* Card is designed at 1280 x 616 and scales down to fit its container. */
+  .bimac-card { width: 100%; max-width: 1280px; margin: 0 auto; aspect-ratio: 1280 / 616; position: relative; overflow: hidden;
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+  .bimac-card .bimac-stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .bimac-card a:hover { filter: brightness(1.08); }
+  .bimac-card a:focus-visible { outline: 3px solid #3B8EEA; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ===== Viewport & Scale Automation: start ===== -->
+<section class="bimac-card" aria-label="Viewport & Scale Automation">
+<div class="bimac-stage" style="width: 1280px; height: 616px; box-sizing: border-box; display: flex; flex-direction: column; background-color: #FFFFFF; color: #16181C; overflow: hidden;">
+<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px;">
+<div style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; padding-top: 14px;">
+<h1 style="margin: 0; font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D;"><span style="white-space: nowrap;">Viewport &amp; Scale</span><br><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<h2 style="margin: 0; font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Viewport scales, orientation and positions made consistent.</h2>
+<div style="display: flex; flex-direction: column; gap: 2px; margin-left: -12px;">
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on0"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">1
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done0"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Scan sheets</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Viewports read on every layout.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on1"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">2
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done1"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Set scale</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Every viewport set to the standard scale.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on2"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">3
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done2"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Align</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Rotation and position matched across sheets.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on3"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">4
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done3"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Visibility &amp; lock</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Layers frozen per viewport, then locked.</div></div>
+</div>
+</div>
+</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<div style="height: 470px; flex-shrink: 0; display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6, 0 24px 50px rgba(22,24,28,0.14); font-size: 12px; color: #2B2F36;">
+<div style="height: 30px; flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: #1B2027; color: #C9CED6;"><div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 5px; background: #4A535E;"></div><div style="width: 10px; height: 10px; border-radius: 5px; background: #4A535E;"></div><div style="width: 10px; height: 10px; border-radius: 5px; background: #4A535E;"></div></div><div style="flex-grow: 1; text-align: center;">S-101_GF.dwg  —  Autodesk AutoCAD</div></div>
+<div style="height: 28px; flex-shrink: 0; display: flex; background: #2F3842; font-size: 12px;"><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Home</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Insert</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Annotate</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Parametric</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">View</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Manage</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Output</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #FFFFFF; font-weight: 600; box-shadow: inset 0 -2px 0 #F28C28;">BIMAC</div></div>
+<div style="height: 84px; flex-shrink: 0; display: flex; align-items: stretch; background: #3A4450; border-bottom: 1px solid #1B2027;">
+<div style="display: flex; flex-direction: column; padding: 4px 8px 0 8px; border-right: 1px solid #1B2027;"><div style="display: flex; gap: 4px;"><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on0"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="8" height="7"></rect><rect x="13" y="4" width="8" height="7"></rect><rect x="3" y="13" width="8" height="7"></rect><rect x="13" y="13" width="8" height="7"></rect></svg></div><div style="position: relative;">Scan</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on1"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M4 9v6M20 9v6"></path><path d="M7 10l-3 2 3 2M17 10l3 2-3 2"></path></svg></div><div style="position: relative;">Scale</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on2"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v18M16 3v18M3 8h18M3 16h18"></path><circle cx="8" cy="3" r="1.5"></circle><circle cx="16" cy="3" r="1.5"></circle></svg></div><div style="position: relative;">Align</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on3"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg></div><div style="position: relative;">Lock</div></div></div><div style="text-align: center; font-size: 10.5px; color: #AEB5BF; padding-top: 1px;">BIMAC Viewports</div></div>
+</div>
+<div style="flex-grow: 1; display: flex; min-height: 0;">
+<div style="width: 138px; flex-shrink: 0; background: #2B333D; border-right: 1px solid #1B2027; padding-top: 6px; font-size: 11px; color: #C9CED6;"><div style="padding: 0 8px 6px 8px; color: #FFFFFF; font-weight: 600;">Drawing Set</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">S-101_GF.dwg</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">S-102_L1.dwg</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">S-103_L2.dwg</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">S-201_Sect.dwg</div></div>
+<div style="position: relative; flex-grow: 1; background: #212830;">
+<svg viewBox="0 0 260 270" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 260px; height: 270px;" aria-label="Four sheets with mismatched viewport scales and rotations set to the same scale, orientation and position"><g><rect x="16" y="20" width="112" height="112" fill="#FFFFFF" stroke="#8C95A3" stroke-width="0.8"></rect><g style="" data-bind-css="vp0"><rect x="26" y="30" width="92" height="74" fill="none" stroke="" data-bind-stroke='"[[vc0]]"' stroke-width="1.2"></rect><path d="M38,50H106M38,76H106M46,40V94M72,40V94M98,40V94" fill="none" stroke="#C0392B" stroke-width="0.5" stroke-dasharray="3 1"></path><rect x="43.5" y="47.5" width="5" height="5" fill="#2B2F36"></rect><rect x="43.5" y="73.5" width="5" height="5" fill="#2B2F36"></rect><rect x="69.5" y="47.5" width="5" height="5" fill="#2B2F36"></rect><rect x="69.5" y="73.5" width="5" height="5" fill="#2B2F36"></rect><rect x="95.5" y="47.5" width="5" height="5" fill="#2B2F36"></rect><rect x="95.5" y="73.5" width="5" height="5" fill="#2B2F36"></rect></g><text x="72" y="120" text-anchor="middle" font-size="7.5" font-weight="700" fill="" data-bind-fill='"[[sc0]]"'><span data-bind-text="st0"></span></text></g><g><rect x="138" y="20" width="112" height="112" fill="#FFFFFF" stroke="#8C95A3" stroke-width="0.8"></rect><g style="" data-bind-css="vp1"><rect x="148" y="30" width="92" height="74" fill="none" stroke="" data-bind-stroke='"[[vc1]]"' stroke-width="1.2"></rect><path d="M160,50H228M160,76H228M168,40V94M194,40V94M220,40V94" fill="none" stroke="#C0392B" stroke-width="0.5" stroke-dasharray="3 1"></path><rect x="165.5" y="47.5" width="5" height="5" fill="#2B2F36"></rect><rect x="165.5" y="73.5" width="5" height="5" fill="#2B2F36"></rect><rect x="191.5" y="47.5" width="5" height="5" fill="#2B2F36"></rect><rect x="191.5" y="73.5" width="5" height="5" fill="#2B2F36"></rect><rect x="217.5" y="47.5" width="5" height="5" fill="#2B2F36"></rect><rect x="217.5" y="73.5" width="5" height="5" fill="#2B2F36"></rect></g><text x="194" y="120" text-anchor="middle" font-size="7.5" font-weight="700" fill="" data-bind-fill='"[[sc1]]"'><span data-bind-text="st1"></span></text></g><g><rect x="16" y="148" width="112" height="112" fill="#FFFFFF" stroke="#8C95A3" stroke-width="0.8"></rect><g style="" data-bind-css="vp2"><rect x="26" y="158" width="92" height="74" fill="none" stroke="" data-bind-stroke='"[[vc2]]"' stroke-width="1.2"></rect><path d="M38,178H106M38,204H106M46,168V222M72,168V222M98,168V222" fill="none" stroke="#C0392B" stroke-width="0.5" stroke-dasharray="3 1"></path><rect x="43.5" y="175.5" width="5" height="5" fill="#2B2F36"></rect><rect x="43.5" y="201.5" width="5" height="5" fill="#2B2F36"></rect><rect x="69.5" y="175.5" width="5" height="5" fill="#2B2F36"></rect><rect x="69.5" y="201.5" width="5" height="5" fill="#2B2F36"></rect><rect x="95.5" y="175.5" width="5" height="5" fill="#2B2F36"></rect><rect x="95.5" y="201.5" width="5" height="5" fill="#2B2F36"></rect></g><text x="72" y="248" text-anchor="middle" font-size="7.5" font-weight="700" fill="" data-bind-fill='"[[sc2]]"'><span data-bind-text="st2"></span></text></g><g><rect x="138" y="148" width="112" height="112" fill="#FFFFFF" stroke="#8C95A3" stroke-width="0.8"></rect><g style="" data-bind-css="vp3"><rect x="148" y="158" width="92" height="74" fill="none" stroke="" data-bind-stroke='"[[vc3]]"' stroke-width="1.2"></rect><path d="M160,178H228M160,204H228M168,168V222M194,168V222M220,168V222" fill="none" stroke="#C0392B" stroke-width="0.5" stroke-dasharray="3 1"></path><rect x="165.5" y="175.5" width="5" height="5" fill="#2B2F36"></rect><rect x="165.5" y="201.5" width="5" height="5" fill="#2B2F36"></rect><rect x="191.5" y="175.5" width="5" height="5" fill="#2B2F36"></rect><rect x="191.5" y="201.5" width="5" height="5" fill="#2B2F36"></rect><rect x="217.5" y="175.5" width="5" height="5" fill="#2B2F36"></rect><rect x="217.5" y="201.5" width="5" height="5" fill="#2B2F36"></rect></g><text x="194" y="248" text-anchor="middle" font-size="7.5" font-weight="700" fill="" data-bind-fill='"[[sc3]]"'><span data-bind-text="st3"></span></text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Viewport rules</div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k0"]]'><div style="color: #4A515C;">Scale</div><div style="font-weight: 700; color: #16181C;">1:100 on all</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k1"]]'><div style="color: #4A515C;">Orientation</div><div style="font-weight: 700; color: #16181C;">North up</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k2"]]'><div style="color: #4A515C;">Position</div><div style="font-weight: 700; color: #16181C;">centred, aligned</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k3"]]'><div style="color: #4A515C;">Frozen layers</div><div style="font-weight: 700; color: #16181C;">S-REBAR, S-ANNO-NPLT</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k4"]]'><div style="color: #4A515C;">Viewports locked</div><div style="font-weight: 700; color: #16181C;">4 / 4</div></div></div><div style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;" data-bind-style='[["opacity", "fin"]]'><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>All viewports at 1:100, aligned and locked</span></div>
+</div>
+</div>
+<div style="position: relative; height: 26px; flex-shrink: 0; background: #1B2027; border-top: 1px solid #0F1318; color: #E6E9ED; font-size: 11.5px; font-family: Consolas, 'Courier New', monospace;"><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on0"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_VPSCAN <span style="color: #8C95A3;">·</span> Reading viewports on 4 sheets</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on1"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_VPSCALE <span style="color: #8C95A3;">·</span> Setting scale to 1:100</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on2"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_VPALIGN <span style="color: #8C95A3;">·</span> Aligning orientation and position</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on3"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_VPLOCK <span style="color: #8C95A3;">·</span> Freezing layers and locking</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "done3"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #2E8B57;"></div><div>All viewports at 1:100, aligned and locked</div></div></div>
+</div>
+<div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; gap: 28px;"><div style="display: flex; align-items: center; gap: 14px;"><div style="width: 3px; height: 34px; border-radius: 2px; background: #F28C28;"></div><div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 12px; color: #5A626E;">Add-in for</div><div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 700; font-size: 18px; color: #172B4D;">Autodesk® AutoCAD®</div></div></div><a href="#demo" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div>
+</div>
+</div>
+</div>
+</section>
+<script>
+(function () {
+  var root = document.currentScript.previousElementSibling;
+  var stage = root.querySelector('.bimac-stage');
+  function fit() { stage.style.transform = 'scale(' + (root.clientWidth / 1280) + ')'; }
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(root); else window.addEventListener('resize', fit);
+  var DCLogic = function () {};
+
+
+class Component extends DCLogic {
+componentDidMount() {
+  var rm = false;
+  try { rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (rm) { this.setState({ p: 88 }); return; }
+  var t0 = Date.now(), self = this;
+  this._iv = setInterval(function () { self.setState({ p: ((Date.now() - t0) % 15000) / 150 }); }, 40);
+}
+componentWillUnmount() { if (this._iv) clearInterval(this._iv); }
+renderVals() {
+  var p = (this.state && typeof this.state.p === 'number') ? this.state.p : 88;
+  function lin(k) {
+    if (p <= k[0][0]) return k[0][1];
+    for (var i = 1; i < k.length; i++) if (p <= k[i][0]) { var a = k[i-1], b = k[i], f = (p - a[0]) / (b[0] - a[0]); f = 1 - Math.pow(1 - f, 3); return a[1] + (b[1] - a[1]) * f; }
+    return k[k.length-1][1];
+  }
+  var out = p < 94 ? 1 : Math.max(0, 1 - (p - 94) / 6);
+  var v = {};
+  function phases(ph) { for (var i = 0; i < ph.length; i++) { v['on'+i] = (p >= ph[i][0] && p < ph[i][1]) ? 1 : 0; v['done'+i] = (p >= ph[i][1] && p < 97) ? out : 0; } }
+
+  var C = [[16, 20, 0.8, 8, 6], [138, 20, 1.15, -6, -4], [16, 148, 0.95, 4, 0], [138, 148, 1.0, 0, -8]];
+  phases([[0,14],[14,34],[34,56],[56,80]]);
+  var s = lin([[16,0],[28,1]]), r = lin([[36,0],[44,1]]), m = lin([[46,0],[54,1]]);
+  var labels = ['1:125', '1:75', '1:110', '1:100'];
+  for (var i = 0; i < 4; i++) {
+    var c = C[i], cx = c[0] + 56, cy = c[1] + 47;
+    var sc = c[2] + (1 - c[2]) * s, rot = c[4] * (1 - r), dx = c[3] * (1 - m);
+    v['vp'+i] = 'transform: translate(' + dx.toFixed(1) + 'px,0px) rotate(' + rot.toFixed(1) + 'deg) scale(' + sc.toFixed(3) + '); transform-origin: ' + cx + 'px ' + cy + 'px;';
+    var ok = s > 0.95 && r > 0.95 && m > 0.95;
+    v['vc'+i] = ok ? '#1E7F4F' : (i == 3 && s > 0.95 ? '#1E7F4F' : '#C0392B');
+    v['st'+i] = s > 0.95 ? '1:100' : labels[i]; v['sc'+i] = s > 0.95 ? '#1E7F4F' : '#B42318';
+  }
+  v.k0 = p >= 28 ? out : 0.25 * out; v.k1 = p >= 44 ? out : 0.25 * out; v.k2 = p >= 54 ? out : 0.25 * out; v.k3 = p >= 60 ? out : 0.25 * out; v.k4 = p >= 66 ? out : 0.25 * out;
+  v.fin = (p >= 72 && p < 97) ? out : 0;
+
+  return { v: v };
+}
+}
+
+
+  var comp = new Component();
+  function get(o, path) { return path.split('.').reduce(function (a, k) { return a == null ? a : a[k]; }, o); }
+  function fill(tpl, v) { return tpl.split('[[').map(function (part, n) { if (n === 0) return part; var k = part.indexOf(']]'); var r = get(v, part.slice(0, k)); return (r == null ? '' : r) + part.slice(k + 2); }).join(''); }
+  var cssEls = root.querySelectorAll('[data-bind-css]'), txtEls = root.querySelectorAll('[data-bind-text]');
+  var styleMap = Array.prototype.map.call(root.querySelectorAll('[data-bind-style]'), function (el) { return [el, JSON.parse(el.getAttribute('data-bind-style'))]; });
+  var ATTRS = ["fill", "stroke"], attrMap = [];
+  ATTRS.forEach(function (a) { root.querySelectorAll('[data-bind-' + a + ']').forEach(function (el) { attrMap.push([el, a, JSON.parse(el.getAttribute('data-bind-' + a))]); }); });
+  function render(p) {
+    comp.state = { p: p };
+    var v = comp.renderVals().v;
+    cssEls.forEach(function (el) { el.style.cssText = get(v, el.getAttribute('data-bind-css')); });
+    styleMap.forEach(function (e) { e[1].forEach(function (pr) { e[0].style.setProperty(pr[0], get(v, pr[1])); }); });
+    attrMap.forEach(function (e) { e[0].setAttribute(e[1], fill(e[2], v)); });
+    txtEls.forEach(function (el) { el.textContent = get(v, el.getAttribute('data-bind-text')); });
+  }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { render(88); return; }
+  var t0 = performance.now(), visible = true;
+  if (window.IntersectionObserver) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(root);
+  function tick(now) { if (visible) render(((now - t0) % 15000) / 15000 * 100); requestAnimationFrame(tick); }
+  render(0); requestAnimationFrame(tick);
+})();
+</script>
+<!-- ===== Viewport & Scale Automation: end ===== -->
+
+</body>
+</html>

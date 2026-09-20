@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawing Annotation Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; }
+  /* Card is designed at 1280 x 616 and scales down to fit its container. */
+  .bimac-card { width: 100%; max-width: 1280px; margin: 0 auto; aspect-ratio: 1280 / 616; position: relative; overflow: hidden;
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+  .bimac-card .bimac-stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .bimac-card a:hover { filter: brightness(1.08); }
+  .bimac-card a:focus-visible { outline: 3px solid #3B8EEA; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ===== Drawing Annotation Automation: start ===== -->
+<section class="bimac-card" aria-label="Drawing Annotation Automation">
+<div class="bimac-stage" style="width: 1280px; height: 616px; box-sizing: border-box; display: flex; flex-direction: column; background-color: #FFFFFF; color: #16181C; overflow: hidden;">
+<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px;">
+<div style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; padding-top: 14px;">
+<h1 style="margin: 0; font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D;"><span style="white-space: nowrap;">Drawing Annotation</span><br><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<h2 style="margin: 0; font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Notes, labels, callouts and symbols placed by your rules.</h2>
+<div style="display: flex; flex-direction: column; gap: 2px; margin-left: -12px;">
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on0"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">1
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done0"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Room labels</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Room names and loads from room data.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on1"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">2
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done1"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Service notes</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Insulation and service notes by layer.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on2"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">3
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done2"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Callouts</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Detail callouts with sheet references.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on3"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">4
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done3"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Symbols</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Flow arrows and general notes placed.</div></div>
+</div>
+</div>
+</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<div style="height: 470px; flex-shrink: 0; display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6, 0 24px 50px rgba(22,24,28,0.14); font-size: 12px; color: #2B2F36;">
+<div style="height: 30px; flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: #1B2027; color: #C9CED6;"><div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 5px; background: #4A535E;"></div><div style="width: 10px; height: 10px; border-radius: 5px; background: #4A535E;"></div><div style="width: 10px; height: 10px; border-radius: 5px; background: #4A535E;"></div></div><div style="flex-grow: 1; text-align: center;">M-101_GF.dwg  —  Autodesk AutoCAD</div></div>
+<div style="height: 28px; flex-shrink: 0; display: flex; background: #2F3842; font-size: 12px;"><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Home</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Insert</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Annotate</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Parametric</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">View</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Manage</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #C9CED6;">Output</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #FFFFFF; font-weight: 600; box-shadow: inset 0 -2px 0 #F28C28;">BIMAC</div></div>
+<div style="height: 84px; flex-shrink: 0; display: flex; align-items: stretch; background: #3A4450; border-bottom: 1px solid #1B2027;">
+<div style="display: flex; flex-direction: column; padding: 4px 8px 0 8px; border-right: 1px solid #1B2027;"><div style="display: flex; gap: 4px;"><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on0"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12V4h8l8 8-8 8z"></path><circle cx="8.5" cy="8.5" r="1.3"></circle></svg></div><div style="position: relative;">Labels</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on1"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l6-6"></path><path d="M10 14h10M10 10h7"></path></svg></div><div style="position: relative;">Notes</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on2"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6" stroke-dasharray="3 2"></circle><path d="M15.5 15.5L20 20"></path><circle cx="20" cy="20" r="1.5"></circle></svg></div><div style="position: relative;">Callouts</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #E6E9ED; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on3"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13M14 5l3 3-3 3M20 16H7M10 13l-3 3 3 3"></path></svg></div><div style="position: relative;">Symbols</div></div></div><div style="text-align: center; font-size: 10.5px; color: #AEB5BF; padding-top: 1px;">BIMAC Annotate</div></div>
+</div>
+<div style="flex-grow: 1; display: flex; min-height: 0;">
+<div style="width: 138px; flex-shrink: 0; background: #2B333D; border-right: 1px solid #1B2027; padding-top: 6px; font-size: 11px; color: #C9CED6;"><div style="padding: 0 8px 6px 8px; color: #FFFFFF; font-weight: 600;">Drawing Set</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">M-101_GF.dwg</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">M-102_L1.dwg</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">M-103_L2.dwg</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #C9CED6;">M-201_Sect.dwg</div></div>
+<div style="position: relative; flex-grow: 1; background: #212830;">
+<svg viewBox="0 0 300 270" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 8px; width: 300px; height: 270px;" aria-label="Room loads, service notes, a detail callout, flow arrows and general notes added to an MEP plan by rules"><rect x="20" y="20" width="240" height="180" fill="none" stroke="#4A535E" stroke-width="1.1"></rect><rect x="25" y="25" width="230" height="170" fill="none" stroke="#4A535E" stroke-width="1.1"></rect><path d="M140,25V90M145,25V90M140,120V195M145,120V195" stroke="#4A535E" stroke-width="1.1"></path><path d="M145,110H200M145,115H200M230,110H255M230,115H255" stroke="#4A535E" stroke-width="1.1"></path><path d="M140,90L110,90M140,90A30,30 0 0 0 110,120" fill="none" stroke="#4A535E" stroke-width="1"></path><path d="M200,115L200,145M200,115A30,30 0 0 1 230,145" fill="none" stroke="#4A535E" stroke-width="1"></path><path d="M60,200V195M90,200V195M90,195A30,30 0 0 0 60,165" fill="none" stroke="#4A535E" stroke-width="1"></path><rect x="40" y="19" width="70" height="7" fill="#212830"></rect><path d="M40,20H110M40,22.5H110M40,25H110M40,20V25M110,20V25" stroke="#4A535E" stroke-width="0.9"></path><rect x="170" y="19" width="60" height="7" fill="#212830"></rect><path d="M170,20H230M170,22.5H230M170,25H230M170,20V25M230,20V25" stroke="#4A535E" stroke-width="0.9"></path><rect x="254" y="50" width="7" height="40" fill="#212830"></rect><path d="M260,50V90M257.5,50V90M255,50V90M255,50H260M255,90H260" stroke="#4A535E" stroke-width="0.9"></path><rect x="254" y="140" width="7" height="40" fill="#212830"></rect><path d="M260,140V180M257.5,140V180M255,140V180M255,140H260M255,180H260" stroke="#4A535E" stroke-width="0.9"></path><path d="M30,145H250M30,155H250" stroke="#4DD0E1" stroke-width="1.1"></path><path d="M76,145V74M84,145V74" stroke="#4DD0E1" stroke-width="1"></path><rect x="73" y="62" width="14" height="12" fill="none" stroke="#4DD0E1" stroke-width="1"></rect><path d="M73,62L87,74M87,62L73,74" stroke="#4DD0E1" stroke-width="0.6"></path><path d="M196,145V74M204,145V74" stroke="#4DD0E1" stroke-width="1"></path><rect x="193" y="62" width="14" height="12" fill="none" stroke="#4DD0E1" stroke-width="1"></rect><path d="M193,62L207,74M207,62L193,74" stroke="#4DD0E1" stroke-width="0.6"></path><path d="M30,180H250" stroke="#5DA9FF" stroke-width="1.4"></path><path d="M30,188H250" stroke="#5DA9FF" stroke-width="1.2" stroke-dasharray="6 3" opacity="0.7"></path><path d="M30,32H250M30,40H250" stroke="#FFB74D" stroke-width="0.9"></path><path d="M36,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M46,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M56,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M66,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M76,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M86,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M96,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M106,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M116,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M126,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M136,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M146,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M156,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M166,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M176,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M186,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M196,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M206,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M216,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M226,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M236,32V40" stroke="#FFB74D" stroke-width="0.5"></path><path d="M246,32V40" stroke="#FFB74D" stroke-width="0.5"></path><rect x="236" y="100" width="16" height="22" fill="none" stroke="#FFB74D" stroke-width="1.1"></rect><text x="244" y="114" text-anchor="middle" font-size="5.5" fill="#FFB74D">DB</text><g style="" data-bind-style='[["opacity", "a0"]]'><text x="60" y="110" font-size="7" fill="#F2F2F2">OFFICE A · 6.2 kW</text><text x="170" y="92" font-size="7" fill="#F2F2F2">OFFICE B · 5.8 kW</text></g><g style="" data-bind-style='[["opacity", "a1"]]'><path d="M150,150L170,125H220" fill="none" stroke="#FF9F43" stroke-width="0.8"></path><text x="172" y="122" font-size="6.5" fill="#FF9F43">SA DUCT, INSULATED</text><path d="M110,184L90,205H40" fill="none" stroke="#FF9F43" stroke-width="0.8"></path><text x="40" y="215" font-size="6.5" fill="#FF9F43">CHW, 25 mm INSULATION</text></g><g style="" data-bind-style='[["opacity", "a2"]]'><circle cx="244" cy="80" r="12" fill="#212830" stroke="#FF9F43" stroke-width="1"></circle><path d="M232,80H256" stroke="#FF9F43" stroke-width="0.8"></path><text x="244" y="77" text-anchor="middle" font-size="6.5" font-weight="700" fill="#FF9F43">2</text><text x="244" y="88" text-anchor="middle" font-size="5.5" fill="#FF9F43">M-501</text></g><g style="" data-bind-style='[["opacity", "a3"]]'><path d="M240,145L234,150L240,155" fill="none" stroke="#F2F2F2" stroke-width="1"></path><text x="224" y="170" font-size="6" fill="#F2F2F2">FLOW</text><path d="M30,176L24,180L30,184" fill="none" stroke="#F2F2F2" stroke-width="1"></path><text x="130" y="226" text-anchor="middle" font-size="6.5" fill="#F2F2F2">ALL SERVICES PER [STANDARD] · BOD UNO</text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px; color: #2B2F36;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">Annotation rules · MEP</div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k0"]]'><div style="color: #4A515C;">Room labels + loads</div><div style="font-weight: 700; color: #16181C;">from room data</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k1"]]'><div style="color: #4A515C;">Service notes</div><div style="font-weight: 700; color: #16181C;">by layer rule</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k2"]]'><div style="color: #4A515C;">Callouts</div><div style="font-weight: 700; color: #16181C;">detail ref M-501</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "k3"]]'><div style="color: #4A515C;">Flow arrows + notes</div><div style="font-weight: 700; color: #16181C;">symbols</div></div></div><div style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;" data-bind-style='[["opacity", "fin"]]'><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Annotations placed by rule</span></div>
+</div>
+</div>
+<div style="position: relative; height: 26px; flex-shrink: 0; background: #1B2027; border-top: 1px solid #0F1318; color: #E6E9ED; font-size: 11.5px; font-family: Consolas, 'Courier New', monospace;"><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on0"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_LABEL <span style="color: #8C95A3;">·</span> Labelling rooms</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on1"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_NOTE <span style="color: #8C95A3;">·</span> Adding service notes</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on2"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_CALLOUT <span style="color: #8C95A3;">·</span> Placing detail callouts</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on3"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div><span style="color: #8C95A3;">Command: </span>BX_SYMBOL <span style="color: #8C95A3;">·</span> Placing flow arrows and notes</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "done3"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #2E8B57;"></div><div>Annotations placed by rule</div></div></div>
+</div>
+<div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; gap: 28px;"><div style="display: flex; align-items: center; gap: 14px;"><div style="width: 3px; height: 34px; border-radius: 2px; background: #F28C28;"></div><div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 12px; color: #5A626E;">Add-in for</div><div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 700; font-size: 18px; color: #172B4D;">Autodesk® AutoCAD®</div></div></div><a href="#demo" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div>
+</div>
+</div>
+</div>
+</section>
+<script>
+(function () {
+  var root = document.currentScript.previousElementSibling;
+  var stage = root.querySelector('.bimac-stage');
+  function fit() { stage.style.transform = 'scale(' + (root.clientWidth / 1280) + ')'; }
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(root); else window.addEventListener('resize', fit);
+  var DCLogic = function () {};
+
+
+class Component extends DCLogic {
+componentDidMount() {
+  var rm = false;
+  try { rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (rm) { this.setState({ p: 88 }); return; }
+  var t0 = Date.now(), self = this;
+  this._iv = setInterval(function () { self.setState({ p: ((Date.now() - t0) % 15000) / 150 }); }, 40);
+}
+componentWillUnmount() { if (this._iv) clearInterval(this._iv); }
+renderVals() {
+  var p = (this.state && typeof this.state.p === 'number') ? this.state.p : 88;
+  function lin(k) {
+    if (p <= k[0][0]) return k[0][1];
+    for (var i = 1; i < k.length; i++) if (p <= k[i][0]) { var a = k[i-1], b = k[i], f = (p - a[0]) / (b[0] - a[0]); f = 1 - Math.pow(1 - f, 3); return a[1] + (b[1] - a[1]) * f; }
+    return k[k.length-1][1];
+  }
+  var out = p < 94 ? 1 : Math.max(0, 1 - (p - 94) / 6);
+  var v = {};
+  function phases(ph) { for (var i = 0; i < ph.length; i++) { v['on'+i] = (p >= ph[i][0] && p < ph[i][1]) ? 1 : 0; v['done'+i] = (p >= ph[i][1] && p < 97) ? out : 0; } }
+
+  phases([[0,24],[24,44],[44,62],[62,80]]);
+  for (var i = 0; i < 4; i++) { v['a'+i] = lin([[4 + i * 19, 0],[9 + i * 19, 1]]) * out; v['k'+i] = p >= 4 + i * 19 ? out : 0.25 * out; }
+  v.fin = (p >= 74 && p < 97) ? out : 0;
+
+  return { v: v };
+}
+}
+
+
+  var comp = new Component();
+  function get(o, path) { return path.split('.').reduce(function (a, k) { return a == null ? a : a[k]; }, o); }
+  function fill(tpl, v) { return tpl.split('[[').map(function (part, n) { if (n === 0) return part; var k = part.indexOf(']]'); var r = get(v, part.slice(0, k)); return (r == null ? '' : r) + part.slice(k + 2); }).join(''); }
+  var cssEls = root.querySelectorAll('[data-bind-css]'), txtEls = root.querySelectorAll('[data-bind-text]');
+  var styleMap = Array.prototype.map.call(root.querySelectorAll('[data-bind-style]'), function (el) { return [el, JSON.parse(el.getAttribute('data-bind-style'))]; });
+  var ATTRS = [], attrMap = [];
+  ATTRS.forEach(function (a) { root.querySelectorAll('[data-bind-' + a + ']').forEach(function (el) { attrMap.push([el, a, JSON.parse(el.getAttribute('data-bind-' + a))]); }); });
+  function render(p) {
+    comp.state = { p: p };
+    var v = comp.renderVals().v;
+    cssEls.forEach(function (el) { el.style.cssText = get(v, el.getAttribute('data-bind-css')); });
+    styleMap.forEach(function (e) { e[1].forEach(function (pr) { e[0].style.setProperty(pr[0], get(v, pr[1])); }); });
+    attrMap.forEach(function (e) { e[0].setAttribute(e[1], fill(e[2], v)); });
+    txtEls.forEach(function (el) { el.textContent = get(v, el.getAttribute('data-bind-text')); });
+  }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { render(88); return; }
+  var t0 = performance.now(), visible = true;
+  if (window.IntersectionObserver) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(root);
+  function tick(now) { if (visible) render(((now - t0) % 15000) / 15000 * 100); requestAnimationFrame(tick); }
+  render(0); requestAnimationFrame(tick);
+})();
+</script>
+<!-- ===== Drawing Annotation Automation: end ===== -->
+
+</body>
+</html>

@@ -1,113 +1,128 @@
-import Link from "next/link";
 import Container from "@/components/ui/Container";
+import HeroIntro from "@/components/sections/HeroIntro";
 import Button from "@/components/ui/Button";
-import Icon from "@/components/ui/Icon";
-import WireframeSkyline from "@/components/common/WireframeSkyline";
-import DotGrid from "@/components/common/DotGrid";
-import ProductMark from "@/components/common/ProductMark";
-import CountUp from "@/components/common/CountUp";
-import { tools } from "@/data/tools";
-import { disciplines } from "@/data/disciplines";
-import { softwarePlatforms } from "@/data/software";
-import { impact } from "@/lib/site";
-import type { GlyphId } from "@/types";
+import HeroBackdrop from "@/components/common/HeroBackdrop";
+import { PLANE_MS } from "@/lib/hero-timing";
+import { cn } from "@/lib/utils";
 
-/** The delivery record, counted from real data rather than typed in. */
-const stats: { value: number; label: string; glyph: GlyphId }[] = [
-  { value: impact.projectsCompleted, label: "Projects\nDelivered", glyph: "building" },
-  { value: tools.length, label: "Tools\nAutomated", glyph: "package" },
-  { value: disciplines.length, label: "Disciplines\nCovered", glyph: "layers" },
-  { value: softwarePlatforms.length, label: "Platforms\nIntegrated", glyph: "box" },
-];
+/**
+ * The opening runs in three acts.
+ *
+ * First intro.mp4 plays on black — see `HeroIntro`. That panel then fades
+ * into the white plane behind it, which is the same colour, so there is no
+ * seam; the plane shrinks away to open the page.
+ *
+ * While the plane is still up, only what is orange can be seen against it: the
+ * headline's first line and the button. Everything white is held back until the
+ * plane has gone, so it arrives on the blue rather than appearing out of the
+ * white.
+ *
+ * Every delay below is counted from the moment the panel leaves, not from page
+ * load: the animations are marked `hero-staged` and held at their first frame
+ * until then. See the gate in globals.css.
+ */
 
-/** Entrance stagger — each hero row lands a beat after the one above it. */
+/** A delay, counted from the moment the opening panel leaves. */
 function enter(delayMs: number) {
   return { animationDelay: `${delayMs}ms` } as const;
+}
+
+
+/**
+ * A line that arrives a word at a time.
+ *
+ * Each word is its own inline-block riding the shared fade-up keyframe on a
+ * stagger, so the sentence assembles itself rather than appearing whole. Words
+ * stay separate text nodes with real spaces between them, so the line still
+ * wraps and still reads as one sentence to a screen reader.
+ */
+function Words({
+  text,
+  start = 0,
+  step = 55,
+  className,
+}: {
+  text: string;
+  /** When the first word lands, in ms. */
+  start?: number;
+  /** Gap between one word and the next, in ms. */
+  step?: number;
+  className?: string;
+}) {
+  const words = text.split(" ");
+  return (
+    <>
+      {words.map((word, index) => (
+        <span key={`${word}-${index}`}>
+          <span
+            className={cn("hero-staged inline-block animate-fade-up", className)}
+            style={enter(start + index * step)}
+          >
+            {word}
+          </span>
+          {index < words.length - 1 ? " " : null}
+        </span>
+      ))}
+    </>
+  );
 }
 
 export function Hero() {
   // Ocean blue ground: deep navy behind the copy, opening to a lighter azure
   // at the lower right where the massing rises.
   return (
-    <section className="relative overflow-hidden bg-ink-950 bg-[linear-gradient(145deg,#061422_0%,#0B2440_28%,#123A66_55%,#17558F_78%,#1E6BB0_100%)] text-white">
-      {/* Backdrop, back to front: a faint dot grid across the whole section,
-          then the wireframe towers filling the empty right. */}
-      <DotGrid className="opacity-[0.3]" />
-      <WireframeSkyline className="bottom-0 right-0 top-0 hidden w-[36%] opacity-[0.42] lg:block xl:w-[32%]" />
+    // data-hero-intro is the gate: it ships closed in the markup, so nothing
+    // has moved by the time the opening panel appears over it, and HeroIntro
+    // opens it when the panel leaves.
+    <section
+      data-hero-intro="running"
+      className="relative overflow-hidden bg-ink-950 text-white"
+    >
+      {/* The towers, revealing themselves from the street up. */}
+      <HeroBackdrop />
 
-      {/* Scrim: heaviest behind the copy at the top left, clearing toward the
-          lower right where the towers rise. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(6,20,34,0.86)_0%,rgba(6,20,34,0.54)_32%,rgba(6,20,34,0.12)_64%,rgba(6,20,34,0)_100%)]"
-      />
-      {/* The two accents, one at each corner — orange leads, azure answers.
-          Both drift slowly and out of phase, so the backdrop is never static. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-14rem] top-[-12rem] h-[42rem] w-[42rem] animate-drift rounded-full bg-brand-500/15 blur-[140px]"
-      />
-      <div
-        aria-hidden="true"
-        style={{ animationDelay: "-9s" }}
-        className="pointer-events-none absolute bottom-[-16rem] left-[-16rem] h-[38rem] w-[38rem] animate-drift rounded-full bg-azure-500/12 blur-[150px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink-950 to-transparent"
-      />
+      <HeroIntro />
 
       <Container className="relative">
-        {/* One column now the diagram is gone, so the headline gets full width. */}
-        <div className="pb-12 pt-16 lg:pb-14 lg:pt-24">
-          <div className="max-w-6xl">
-            <p
-              style={enter(0)}
-              className="mb-6 flex animate-fade-up items-center gap-2.5 text-2xs font-semibold uppercase tracking-[0.16em] text-brand-400"
-            >
-              <span className="h-px w-6 bg-brand-500" />
-              CAD, BIM &amp; Engineering Automation Platform
-            </p>
-
-            {/*
-              Two lines, always: "Powerful CAD & BIM Tools for" / "Smarter
-              Workflows". The first line is held on one line from lg up, where
-              the headline shares the row with the visual, so the size steps
-              down there to fit the narrower column rather than wrapping.
-            */}
-            {/* Full width now, so the type can go back up a couple of steps. */}
-            <h1 className="font-display text-[2.25rem] font-semibold leading-[1.06] tracking-tightest text-white sm:text-[2.75rem] lg:text-[3.5rem] xl:text-[4rem]">
+        {/* One centred column: the headline, the promise and the one action
+            stack on the same axis, with the record underneath. */}
+        <div className="flex min-h-[calc(100vh-4.5rem)] flex-col justify-center py-20 lg:py-24">
+          <div className="mx-auto max-w-5xl text-center">
+            {/* Two lines, always: "Smart Automation for" / "Every Software You
+                Use". The first is held on one line from lg up so the break
+                never lands mid-phrase. Orange carries the two words that name
+                what BIMAC sells; the rest of the sentence stays white. */}
+            <h1 className="font-display font-semibold leading-[1.02] tracking-tightest text-white">
+              {/* The name of the thing, and the only words the white plane
+                  leaves standing. Everything else is sized against this. */}
               <span
                 style={enter(90)}
-                className="block animate-fade-up lg:whitespace-nowrap"
+                className="hero-staged block animate-fade-up font-bold text-brand-500 text-[3rem] sm:text-[4rem] lg:text-[5.25rem] xl:text-[6.25rem]"
               >
-                Powerful CAD &amp; BIM Tools for
+                Smart Automation
               </span>
-              <span style={enter(200)} className="relative mt-1 inline-block animate-fade-up">
-                <span className="relative z-10 text-brand-500">Smarter Workflows</span>
-                {/* The marker stroke wipes in after the words land. */}
-                <span
-                  aria-hidden="true"
-                  style={{ animationDelay: "620ms" }}
-                  className="absolute inset-x-0 bottom-1 z-0 h-2.5 origin-left animate-[fade-in_0.7s_cubic-bezier(0.22,1,0.36,1)_both] bg-brand-500/20"
-                />
+              {/* The rest of the sentence, arriving a word at a time once the
+                  plane has gone. */}
+              <span className="mt-2 block text-[1.625rem] sm:text-[2.125rem] lg:text-[2.75rem] xl:text-[3.25rem]">
+                <Words text="for Every Software You Use" start={PLANE_MS - 150} step={130} />
               </span>
             </h1>
 
-            <p
-              style={enter(310)}
-              className="mt-6 max-w-xl animate-fade-up text-[1.0625rem] leading-relaxed text-ink-300 sm:text-lg"
-            >
-              A complete suite of automation tools for AEC and engineering teams — from design
-              and documentation to coordination, construction, and project management.
+            {/* The promise assembles a word at a time under the headline. */}
+            <p className="mx-auto mt-6 max-w-2xl text-[1rem] leading-relaxed text-ink-300 sm:text-[1.125rem] sm:leading-relaxed">
+              <Words
+                text="Automate BIM, AEC, and industry workflows across 20+ software platforms — with custom tools built around the way you work."
+                start={PLANE_MS + 700}
+                step={46}
+              />
             </p>
 
             {/*
-              One call to action. Software and stages are both reachable from
+              One call to action. Software is reachable from
               the header, and contact lives up there too, so the hero does not
               repeat them — it points at the catalogue and gets out of the way.
             */}
-            <div style={enter(420)} className="mt-9 animate-fade-up">
+            <div style={enter(760)} className="hero-staged mt-10 flex animate-fade-up justify-center">
               <Button
                 href="/tools"
                 size="lg"
@@ -130,81 +145,9 @@ export function Hero() {
               </Button>
             </div>
 
-            {/* Four columns on one baseline — a wrapping flex row never lines up. */}
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-4">
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  style={enter(520 + index * 80)}
-                  className="group flex animate-fade-up items-start gap-3"
-                >
-                  <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/12 bg-white/[0.05] text-brand-400 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-brand-400/40 group-hover:bg-brand-500/15">
-                    <Icon name={stat.glyph} className="text-base" />
-                  </span>
-                  <div className="min-w-0">
-                    <dd className="font-display text-xl font-semibold leading-none tracking-tight text-white">
-                      <CountUp value={stat.value} suffix="+" />
-                    </dd>
-                    <dt className="mt-1.5 whitespace-pre-line text-[0.8125rem] leading-tight text-ink-400">
-                      {stat.label}
-                    </dt>
-                  </div>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          {/* The visual now sits alone in its column, so it centres against
-              the copy on the left instead of overshooting it. */}
-        </div>
-
-        {/* The software axis, one linear row across the foot of the hero. */}
-        <div className="border-t border-white/10 pb-12 pt-6">
-          <div className="mb-3 flex items-center justify-between gap-4">
-            <p className="flex items-center gap-2 text-2xs font-semibold uppercase tracking-[0.16em] text-ink-300">
-              <span className="h-px w-4 bg-azure-400" />
-              Automates inside
-            </p>
-            <Link
-              href="/software"
-              className="group inline-flex shrink-0 items-center gap-1.5 text-[0.8125rem] font-semibold text-azure-300 transition-colors hover:text-azure-200"
-            >
-              All software
-              <Icon
-                name="arrow-right"
-                className="text-[0.8rem] transition-transform duration-200 group-hover:translate-x-0.5"
-              />
-            </Link>
-          </div>
-
-          {/* All eight inside one rectangle. Eight explicit columns keep it to a
-              single row on desktop rather than however many a wrapping flex
-              happens to produce. */}
-          <div className="rounded-2xl border border-white/12 bg-white/[0.045] p-2 backdrop-blur">
-            <ul className="grid grid-cols-2 gap-1 sm:grid-cols-4 lg:grid-cols-8">
-              {softwarePlatforms.map((platform, index) => (
-                <li
-                  key={platform.id}
-                  data-reveal=""
-                  style={{ "--reveal-delay": `${index * 60}ms` } as React.CSSProperties}
-                >
-                  <Link
-                    href={`/software/${platform.slug}`}
-                    title={`${platform.name} — ${platform.role}`}
-                    className="group flex h-full items-center gap-2.5 rounded-xl px-2.5 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_8px_20px_-10px_rgba(46,146,240,0.65)] hover:ring-1 hover:ring-inset hover:ring-azure-400/40 active:scale-[0.97]"
-                  >
-                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-white/95 transition-transform duration-200 group-hover:scale-110">
-                      <ProductMark platform={platform} size="xs" />
-                    </span>
-                    <span className="truncate text-[0.75rem] font-medium leading-tight text-ink-200 transition-colors group-hover:text-white">
-                      {platform.shortName}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
+
       </Container>
     </section>
   );

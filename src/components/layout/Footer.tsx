@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Icon from "@/components/ui/Icon";
-import { LogoMark, Wordmark } from "@/components/common/Logo";
+import Logo from "@/components/common/Logo";
 import { emailLink, footerNav, site, whatsappLink } from "@/lib/site";
 import { tools } from "@/data/tools";
 import { disciplines } from "@/data/disciplines";
@@ -9,17 +9,10 @@ import { disciplines } from "@/data/disciplines";
 export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-ink-800 bg-ink-950 text-ink-300">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-grid-dark bg-grid opacity-[0.55] [mask-image:linear-gradient(to_bottom,black,transparent_60%)]"
-      />
       <Container className="relative">
         <div className="grid gap-10 border-b border-white/10 py-14 lg:grid-cols-[20rem_1fr] lg:gap-16">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="BIMAC — home">
-              <LogoMark />
-              <Wordmark onDark />
-            </Link>
+            <Logo onDark />
             <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-ink-400">
               BIM automation tools for architecture, structure and MEPF — built stage by stage,
               from the first site study through to as-built handover.

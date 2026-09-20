@@ -13,7 +13,7 @@ export const site = {
   legalName: "BIM Automation Consulting",
   tagline: "BIM Automation Tools for Architecture, Structure and MEPF",
   description:
-    "BIMAC builds BIM automation plugins for architecture, structure and MEPF — stage by stage, from the site study and concept design through detailed design, documentation and coordination to as-built handover.",
+    "BIMAC builds BIM automation plugins for architecture, structure and MEPF — from the site study and concept design through detailed design, documentation and coordination to as-built handover.",
   url: "https://bimac.vercel.app",
   email: "bimautomationconsulting@gmail.com",
   phoneDisplay: "+971 50 605 5153",
@@ -30,8 +30,8 @@ export const site = {
  * behind. Fill these in from real project records before launch.
  */
 export const impact = {
-  /** Projects delivered using BIMAC automation. */
-  projectsCompleted: 17,
+  /** Projects delivered using BIMAC automation. Shown as "7+". */
+  projectsCompleted: 7,
 
   /**
    * Typical time saved against manual production, on the tasks that get
@@ -48,11 +48,25 @@ export const impact = {
   hoursSaved: null as number | null,
 };
 
-/** WhatsApp deep link with the enquiry pre-filled. */
-export function whatsappLink(context?: string): string {
-  const message = context
-    ? `Hello BIMAC, I'd like to know more about ${context}.`
-    : "Hello BIMAC, I'd like to know more about your BIM automation tools.";
+/**
+ * WhatsApp deep link with the enquiry pre-filled.
+ *
+ * There is no checkout yet, so "Buy" is a conversation too — but it should not
+ * arrive worded like a question. `intent: "buy"` sends someone who has already
+ * decided, which is worth knowing at the other end of the thread.
+ */
+export function whatsappLink(
+  context?: string,
+  intent: "enquire" | "buy" | "demo" = "enquire",
+): string {
+  const message =
+    intent === "buy" && context
+      ? `Hello BIMAC, I'd like to buy ${context}. Could you send pricing and the next steps?`
+      : intent === "demo" && context
+        ? `Hello BIMAC, I'd like to book a demo of ${context}. When are you free?`
+        : context
+          ? `Hello BIMAC, I'd like to know more about ${context}.`
+          : "Hello BIMAC, I'd like to know more about your BIM automation tools.";
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
@@ -70,21 +84,19 @@ export function emailLink(context?: string): string {
 /* ------------------------------------------------------------------ */
 
 export const primaryNav: NavLink[] = [
-  { label: "Tools", href: "/tools" },
+  { label: "Products", href: "/tools" },
   { label: "Architecture", href: "/tools/architecture" },
   { label: "Structure", href: "/tools/structure" },
-  { label: "MEPF", href: "/tools/mepf" },
-  { label: "BIM & Revit", href: "/tools/bim-revit" },
-  { label: "Custom Development", href: "/custom-development" },
+  { label: "MEP", href: "/tools/mep" },
+  { label: "Custom Automation", href: "/custom-automation" },
   { label: "About", href: "/about" },
 ];
 
-/** Links shown in the header bar; the rest live in the Tools mega menu. */
+/** Links shown in the header bar; the rest live in the Products mega menu. */
 export const headerNav: NavLink[] = [
-  { label: "Tools", href: "/tools" },
+  { label: "Products", href: "/tools" },
   { label: "Software", href: "/software" },
-  { label: "Project Stages", href: "/stages" },
-  { label: "Custom Development", href: "/custom-development" },
+  { label: "Custom Automation", href: "/custom-automation" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -94,52 +106,24 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     title: "Architecture",
     links: [
       { label: "All architecture tools", href: "/tools/architecture" },
-      { label: "Site & Feasibility", href: "/tools/architecture#site-feasibility" },
-      { label: "Concept Design", href: "/tools/architecture#concept-design" },
-      { label: "Schematic Design", href: "/tools/architecture#schematic-design" },
-      { label: "Detailed Design", href: "/tools/architecture#detailed-design" },
-      { label: "Documentation", href: "/tools/architecture#documentation" },
-      { label: "Coordination", href: "/tools/architecture#coordination" },
-      { label: "Construction", href: "/tools/architecture#construction" },
-      { label: "As-Built", href: "/tools/architecture#as-built" },
+      { label: "Revit add-ins", href: "/software/revit#architecture" },
+      { label: "AutoCAD add-ins", href: "/software/autocad#architecture" },
     ],
   },
   {
     title: "Structure",
     links: [
       { label: "All structure tools", href: "/tools/structure" },
-      { label: "Concept Design", href: "/tools/structure#concept-design" },
-      { label: "Schematic Design", href: "/tools/structure#schematic-design" },
-      { label: "Detailed Design", href: "/tools/structure#detailed-design" },
-      { label: "Analysis & Optimization", href: "/tools/structure#analysis" },
-      { label: "Documentation", href: "/tools/structure#documentation" },
-      { label: "Coordination", href: "/tools/structure#coordination" },
-      { label: "Construction", href: "/tools/structure#construction" },
-      { label: "As-Built", href: "/tools/structure#as-built" },
+      { label: "Revit add-ins", href: "/software/revit#structure" },
+      { label: "AutoCAD add-ins", href: "/software/autocad#structure" },
     ],
   },
   {
-    title: "MEPF",
+    title: "MEP",
     links: [
-      { label: "All MEPF tools", href: "/tools/mepf" },
-      { label: "HVAC", href: "/tools/hvac" },
-      { label: "Electrical", href: "/tools/electrical" },
-      { label: "Plumbing", href: "/tools/plumbing" },
-      { label: "Fire Fighting", href: "/tools/fire-fighting" },
-      { label: "Fire Alarm", href: "/tools/fire-alarm" },
-      { label: "ELV / ICT", href: "/tools/elv-ict" },
-      { label: "BMS & Controls", href: "/tools/bms" },
-    ],
-  },
-  {
-    title: "BIM & Revit",
-    links: [
-      { label: "All BIM tools", href: "/tools/bim-revit" },
-      { label: "Project & Model Management", href: "/tools/bim-revit#project-model-management" },
-      { label: "BIM Conversion", href: "/tools/bim-revit#conversion" },
-      { label: "Data & Documentation", href: "/tools/bim-revit#data-documentation" },
-      { label: "Coordination", href: "/tools/bim-revit#coordination" },
-      { label: "Export & Deliverables", href: "/tools/bim-revit#export" },
+      { label: "All mep tools", href: "/tools/mep" },
+      { label: "Revit add-ins", href: "/software/revit#mep" },
+      { label: "AutoCAD add-ins", href: "/software/autocad#mep" },
     ],
   },
   {
@@ -148,21 +132,15 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
       { label: "All software", href: "/software" },
       { label: "Revit", href: "/software/revit" },
       { label: "AutoCAD", href: "/software/autocad" },
-      { label: "Navisworks", href: "/software/navisworks" },
-      { label: "Excel", href: "/software/excel" },
-      { label: "Power BI", href: "/software/power-bi" },
-      { label: "Primavera P6", href: "/software/primavera-p6" },
-      { label: "ETABS", href: "/software/etabs" },
-      { label: "MS Project", href: "/software/ms-project" },
     ],
   },
   {
     title: "Explore",
     links: [
       { label: "All tools", href: "/tools" },
+      { label: "Projects", href: "/projects" },
       { label: "Automation by software", href: "/software" },
-      { label: "Project stages", href: "/stages" },
-      { label: "Custom development", href: "/custom-development" },
+      { label: "Custom automation", href: "/custom-automation" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],

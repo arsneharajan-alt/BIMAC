@@ -62,7 +62,7 @@ const config: Config = {
           700: "#3B4D5F",
           800: "#22333F",
           900: "#0F2131",
-          950: "#071726",
+          950: "#061422",
         },
       },
       fontFamily: {
@@ -138,6 +138,43 @@ const config: Config = {
           from: { strokeDashoffset: "var(--draw-length, 900)" },
           to: { strokeDashoffset: "0" },
         },
+        /* The skyline drawing itself in, the way a line drawing is built up:
+           strokes run on, the drawing holds, then it fades and starts again.
+           Paths carry pathLength=1 so one keyframe suits every path whatever
+           its true length. The reset happens at zero opacity, so the jump back
+           to a blank drawing is never seen. */
+        "draw-loop": {
+          "0%": { strokeDashoffset: "var(--draw-length, 1)", opacity: "0" },
+          "4%": { strokeDashoffset: "var(--draw-length, 1)", opacity: "1" },
+          "34%, 88%": { strokeDashoffset: "0", opacity: "1" },
+          "99%, 100%": { strokeDashoffset: "0", opacity: "0" },
+        },
+        /* The hero backdrop revealing itself: a soft edge travels up the
+           towers, so the wireframe arrives from the street up rather than
+           simply fading on. The mask is 2.6x the height of the frame, so
+           sliding its position is what moves the edge. */
+        "hero-reveal": {
+          from: { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" },
+          to: { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" },
+        },
+        /* A very slow push in and across, so the still never sits dead. */
+        "hero-drift": {
+          "0%, 100%": { transform: "scale(1.06) translate3d(0, 0, 0)" },
+          "50%": { transform: "scale(1.14) translate3d(-1.5%, -1%, 0)" },
+        },
+        /* The wireframe building itself outward from the vanishing point, the
+           way the reference video draws a building: the mask is a disc that
+           grows from the centre of the perspective, so edges arrive near-to-far
+           rather than the whole picture fading up at once. */
+        "lines-build": {
+          from: { maskSize: "0% 0%", WebkitMaskSize: "0% 0%" },
+          to: { maskSize: "320% 320%", WebkitMaskSize: "320% 320%" },
+        },
+        /* The solid massing settling in behind the lines, once they are drawn. */
+        "plate-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
         /* Exactly one tile, so the dot grid loops without a visible seam. */
         "grid-drift": {
           from: { transform: "translate3d(0,0,0)" },
@@ -146,6 +183,64 @@ const config: Config = {
         "grid-breathe": {
           "0%, 100%": { opacity: "0.25", transform: "scale(1)" },
           "50%": { opacity: "1", transform: "scale(1.12)" },
+        },
+        /* The software strip in the hero: one copy of the list scrolls out
+           while its duplicate scrolls in, so the row never shows a seam. */
+        marquee: {
+          from: { transform: "translate3d(0,0,0)" },
+          to: { transform: "translate3d(-50%,0,0)" },
+        },
+        "marquee-reverse": {
+          from: { transform: "translate3d(-50%,0,0)" },
+          to: { transform: "translate3d(0,0,0)" },
+        },
+        /* ---------------------------------------------------------------- */
+        /* Tool card scenes. Every scene runs one 9s story and starts again,  */
+        /* so a row of six cards stays in step instead of flickering against  */
+        /* each other. Elements stagger with animation-delay.                 */
+        /* ---------------------------------------------------------------- */
+        "scene-in": {
+          "0%, 6%": { opacity: "0", transform: "translateY(7px)" },
+          "14%, 90%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(7px)" },
+        },
+        "scene-pop": {
+          "0%, 6%": { opacity: "0", transform: "scale(0.4)" },
+          "13%": { opacity: "1", transform: "scale(1.15)" },
+          "18%, 90%": { opacity: "1", transform: "scale(1)" },
+          "100%": { opacity: "0", transform: "scale(0.4)" },
+        },
+        /* One of three options on screen at a time, on a shared 9s loop. */
+        "scene-cycle": {
+          "0%": { opacity: "0" },
+          "3%, 30%": { opacity: "1" },
+          "34%, 100%": { opacity: "0" },
+        },
+        "scene-bar": {
+          "0%, 10%": { transform: "scaleX(0)" },
+          "45%, 90%": { transform: "scaleX(1)" },
+          "100%": { transform: "scaleX(0)" },
+        },
+        "scene-flag": {
+          "0%, 90%, 100%": { opacity: "0.9", transform: "translateY(0)" },
+          "45%": { opacity: "1", transform: "translateY(-3px)" },
+        },
+        /* The logo rings behind the hero. One keyframe, per-ring duration and
+           direction set inline, so three rings cost one rule. */
+        orbit: {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        /* Depth of field for the hero orbits: an icon is sharp as it passes
+           the top of its circle and softens as it travels down. Each icon runs
+           this on the same period as its ring, phase-shifted by where it sits
+           on the circle, so the focal zone stays put in the frame while the
+           icons move through it. */
+        "orbit-focus": {
+          "0%, 100%": { filter: "blur(0px)", opacity: "1", transform: "scale(1.06)" },
+          "28%": { filter: "blur(var(--focus-soft, 1.4px))", opacity: "0.86", transform: "scale(0.97)" },
+          "50%": { filter: "blur(var(--focus-blur, 3px))", opacity: "0.66", transform: "scale(0.92)" },
+          "72%": { filter: "blur(var(--focus-soft, 1.4px))", opacity: "0.86", transform: "scale(0.97)" },
         },
         /* A pass of light that brightens the nodes as it crosses them. */
         "grid-scan": {
@@ -163,9 +258,23 @@ const config: Config = {
         "pulse-node": "pulse-node 2.6s ease-out infinite",
         dash: "dash 1.2s linear infinite",
         draw: "draw 1.6s cubic-bezier(0.22,1,0.36,1) both",
+        "draw-loop": "draw-loop 18s cubic-bezier(0.33,0.9,0.35,1) infinite",
         "grid-drift": "grid-drift 16s linear infinite",
         "grid-breathe": "grid-breathe 9s ease-in-out infinite",
         "grid-scan": "grid-scan 13s linear infinite",
+        "hero-reveal": "hero-reveal 2.8s cubic-bezier(0.22,1,0.36,1) both",
+        "hero-drift": "hero-drift 44s ease-in-out infinite",
+        "lines-build": "lines-build 3.4s cubic-bezier(0.33,0.9,0.35,1) both",
+        "plate-in": "plate-in 2.4s ease-out both",
+        orbit: "orbit 90s linear infinite",
+        "orbit-focus": "orbit-focus 90s linear infinite",
+        "scene-in": "scene-in 9s cubic-bezier(0.22,1,0.36,1) infinite",
+        "scene-pop": "scene-pop 9s cubic-bezier(0.22,1,0.36,1) infinite",
+        "scene-cycle": "scene-cycle 9s ease-in-out infinite",
+        "scene-bar": "scene-bar 9s cubic-bezier(0.22,1,0.36,1) infinite",
+        "scene-flag": "scene-flag 2.4s ease-in-out infinite",
+        marquee: "marquee 38s linear infinite",
+        "marquee-reverse": "marquee-reverse 38s linear infinite",
       },
     },
   },

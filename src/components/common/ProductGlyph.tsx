@@ -11,7 +11,7 @@ const sizes = {
 
 /**
  * The tile a product wears everywhere it appears — cards, hero, search,
- * related lists. A drafting-grid surface with the product's glyph in brand
+ * related lists. A plain surface with the product's glyph in brand
  * orange, so the catalogue reads as one family rather than a pile of logos.
  */
 export function ProductGlyph({
@@ -36,13 +36,6 @@ export function ProductGlyph({
         className,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          "absolute inset-0 bg-grid-sm",
-          onDark ? "bg-grid-dark opacity-60" : "bg-grid-light opacity-70",
-        )}
-      />
       <span
         aria-hidden="true"
         className={cn(

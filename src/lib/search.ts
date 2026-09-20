@@ -1,6 +1,5 @@
 import { disciplineFamilies, disciplines } from "@/data/disciplines";
 import { softwarePlatforms } from "@/data/software";
-import { stages } from "@/data/stages";
 import { toolHref, tools } from "@/data/tools";
 import type { SearchResult } from "@/types";
 
@@ -8,7 +7,7 @@ import type { SearchResult } from "@/types";
  * Global search index, built from the same data the pages render.
  *
  * A search for "sprinkler" returns the sprinkler tools and the Fire Fighting
- * discipline; "massing" returns the massing generator and the Concept stage.
+ * discipline; "massing" returns the massing generator and its discipline.
  */
 
 interface IndexEntry extends Omit<SearchResult, "score"> {
@@ -20,7 +19,7 @@ const staticPages: IndexEntry[] = [
   {
     kind: "page",
     title: "All tools",
-    description: "Browse every BIMAC tool by discipline, stage, software, and availability.",
+    description: "Browse every BIMAC tool by discipline, software, and availability.",
     href: "/tools",
     glyph: "grid",
     primary: "tools all catalogue browse plugins",
@@ -38,11 +37,11 @@ const staticPages: IndexEntry[] = [
   },
   {
     kind: "page",
-    title: "Custom Development",
+    title: "Custom Automation",
     description: "Bespoke plugins and automation built for your specific workflow.",
-    href: "/custom-development",
+    href: "/custom-automation",
     glyph: "code",
-    primary: "custom development bespoke build",
+    primary: "custom automation development bespoke build",
     secondary: "quote consulting tailored plugin request",
   },
   {
@@ -102,7 +101,7 @@ const index: IndexEntry[] = [
       .join(" ")}`,
   })),
   ...disciplineFamilies
-    .filter((family) => family.id === "mepf")
+    .filter((family) => family.id === "mep")
     .map<IndexEntry>((family) => ({
       kind: "discipline",
       title: `${family.name} tools`,
@@ -130,16 +129,6 @@ const index: IndexEntry[] = [
       ...platform.groups.flatMap((group) => [group.name, ...group.capabilities]),
     ].join(" "),
   })),
-  ...stages.map<IndexEntry>((stage) => ({
-    kind: "stage",
-    title: stage.name,
-    description: stage.tagline,
-    href: `/stages/${stage.slug}`,
-    meta: stage.lod,
-    glyph: stage.glyph,
-    primary: `${stage.name} ${stage.slug}`,
-    secondary: `${stage.tagline} ${stage.description} ${stage.lod}`,
-  })),
   ...staticPages,
 ];
 
@@ -147,7 +136,6 @@ const kindWeight: Record<SearchResult["kind"], number> = {
   tool: 3,
   discipline: 2.2,
   software: 2,
-  stage: 1.8,
   page: 1,
 };
 
@@ -187,14 +175,12 @@ export function groupResults(results: SearchResult[]) {
     "tool",
     "discipline",
     "software",
-    "stage",
     "page",
   ];
   const labels: Record<SearchResult["kind"], string> = {
     tool: "Tools",
     discipline: "Disciplines",
     software: "Software",
-    stage: "Project stages",
     page: "Pages",
   };
 

@@ -1,6 +1,9 @@
+import { architectureLineup } from "@/data/catalogue/architecture";
+import { mepLineup } from "@/data/catalogue/mep";
+import { structureLineup } from "@/data/catalogue/structure";
 import { disciplineMap, disciplines, getFamily } from "@/data/disciplines";
 import { stages } from "@/data/stages";
-import { tools } from "@/data/tools";
+import { toolMap, tools } from "@/data/tools";
 import type {
   DisciplineFamilyId,
   DisciplineId,
@@ -22,7 +25,6 @@ export const statusOrder: ToolStatus[] = ["available", "in-development", "planne
 
 export const sortOptions: { id: SortId; label: string }[] = [
   { id: "featured", label: "Featured" },
-  { id: "stage", label: "Project stage" },
   { id: "status", label: "Availability" },
   { id: "az", label: "A–Z" },
 ];
@@ -30,7 +32,6 @@ export const sortOptions: { id: SortId; label: string }[] = [
 export const emptyFilters: ToolFilterState = {
   query: "",
   disciplines: [],
-  stages: [],
   software: [],
   statuses: [],
   sort: "featured",
@@ -45,16 +46,37 @@ export function toolsForDiscipline(id: DisciplineId): Tool[] {
   return tools.filter((tool) => tool.disciplines.includes(id));
 }
 
+/**
+ * The line-up for a discipline hub: the cards it shows, in the order it shows
+ * them.
+ *
+ * Architecture, Structure and MEP name their cards explicitly — the order on
+ * the page is a decision, and a line-up may include a tool another discipline
+ * owns. Everything else takes its catalogue in file order, which is already
+ * workflow order.
+ *
+ * It lives here rather than in the hub page because the homepage counts off it
+ * too, and a card saying "40 tools" that opens onto 37 is the sort of thing
+ * only a visitor ever notices.
+ */
+const LINEUPS: Partial<Record<DisciplineId, string[]>> = {
+  architecture: architectureLineup,
+  structure: structureLineup,
+  mep: mepLineup,
+};
+
+export function disciplineLineup(id: DisciplineId): Tool[] {
+  const named = LINEUPS[id];
+  if (named) return named.map((toolId) => toolMap[toolId]).filter(Boolean);
+  return toolsForDiscipline(id);
+}
+
 /** Every tool across a family — MEPF returns all seven services disciplines. */
 export function toolsForFamily(id: DisciplineFamilyId): Tool[] {
   const members = getFamily(id).members;
   return tools.filter((tool) =>
     tool.disciplines.some((discipline) => members.includes(discipline)),
   );
-}
-
-export function toolsForStage(id: StageId): Tool[] {
-  return tools.filter((tool) => tool.stage === id);
 }
 
 /** Tools within one group of a discipline, for the hub's grouped sections. */
@@ -78,6 +100,8 @@ export function featuredTools(limit = 6): Tool[] {
 /* Filtering + sorting                                                 */
 /* ------------------------------------------------------------------ */
 
+// Lifecycle order is no longer a browsing axis, but it is still what makes the
+// default "featured" sort read as a workflow rather than as a pile.
 const stageRank: Record<StageId, number> = stages.reduce(
   (acc, stage, index) => {
     acc[stage.id] = index;
@@ -117,10 +141,6 @@ export function sortTools(list: Tool[], sort: SortId): Tool[] {
   switch (sort) {
     case "az":
       return sorted.sort((a, b) => a.name.localeCompare(b.name));
-    case "stage":
-      return sorted.sort(
-        (a, b) => stageRank[a.stage] - stageRank[b.stage] || a.name.localeCompare(b.name),
-      );
     case "status":
       return sorted.sort(
         (a, b) => statusRank[a.status] - statusRank[b.status] || a.name.localeCompare(b.name),
@@ -146,7 +166,6 @@ export function filterTools(list: Tool[], filters: ToolFilterState): Tool[] {
     ) {
       return false;
     }
-    if (filters.stages.length > 0 && !filters.stages.includes(tool.stage)) return false;
     if (
       filters.software.length > 0 &&
       !filters.software.some((id) => tool.software.includes(id))
@@ -199,19 +218,21 @@ export function relatedTools(tool: Tool, limit = 4): Tool[] {
     .map((entry) => entry.candidate);
 }
 
-/** The tool immediately before and after this one in the lifecycle. */
-export function adjacentStageTools(tool: Tool): { previous?: Tool; next?: Tool } {
-  const rank = stageRank[tool.stage];
+/**
+ * The tool either side of this one in its discipline catalogue.
+ *
+ * Catalogue order is workflow order — the architecture line-up runs 1 to 20
+ * from the incoming CAD set to the as-built drawings — so stepping through it
+ * is stepping through the job.
+ */
+export function adjacentWorkflowTools(tool: Tool): { previous?: Tool; next?: Tool } {
   const sameDiscipline = toolsForDiscipline(tool.disciplines[0]);
-  const previous = sortTools(
-    sameDiscipline.filter((item) => stageRank[item.stage] < rank),
-    "stage",
-  ).pop();
-  const next = sortTools(
-    sameDiscipline.filter((item) => stageRank[item.stage] > rank),
-    "stage",
-  )[0];
-  return { previous, next };
+  const index = sameDiscipline.findIndex((item) => item.id === tool.id);
+  if (index === -1) return {};
+  return {
+    previous: sameDiscipline[index - 1],
+    next: sameDiscipline[index + 1],
+  };
 }
 
 /* ------------------------------------------------------------------ */

@@ -5,10 +5,10 @@ import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
-import ProductMark from "@/components/common/ProductMark";
+import LogoTile from "@/components/common/LogoTile";
 import { ContactBand } from "@/components/common/ContactActions";
 import { crossPlatformFlows, softwarePlatforms } from "@/data/software";
+import { additionalSoftware } from "@/data/software-menu";
 import { capabilityCount, groupNames, totalCapabilities } from "@/lib/software";
 
 export const metadata: Metadata = {
@@ -23,11 +23,6 @@ export default function SoftwarePage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-ink-200 bg-white">
-        <BlueprintGrid
-          variant="light"
-          fade={false}
-          className="opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]"
-        />
         <Container className="relative">
           <div className="py-6">
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Software" }]} />
@@ -72,10 +67,10 @@ export default function SoftwarePage() {
                   className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-azure-500 transition-transform duration-300 group-hover:scale-x-100"
                 />
                 <div className="flex items-start gap-4">
-                  <ProductMark
+                  <LogoTile
                     platform={platform}
-                    size="xl"
-                    className="transition-transform duration-200 group-hover:scale-105"
+                    size="lg"
+                    className="transition-colors duration-200 group-hover:border-azure-300"
                   />
                   <div className="min-w-0">
                     <h2 className="font-display text-xl font-semibold tracking-tight text-ink-950 group-hover:text-azure-700">
@@ -118,12 +113,53 @@ export default function SoftwarePage() {
               </Link>
             ))}
           </div>
+
+          {/* The rest of the stack. These are applications we work in daily but
+              have not written a capability page for — listed so the header menu
+              always lands somewhere, and so the board on our profile and the
+              site agree with each other. */}
+          <div className="mt-14 border-t border-ink-200 pt-10">
+            <h2 className="font-display text-xl font-semibold tracking-tight text-ink-950">
+              Also in the stack
+            </h2>
+            <p className="mt-2 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-600">
+              We model, analyse, review and report in these too. Automation here is scoped per
+              project rather than shipped as listed plugins — tell us what the task is and we
+              will tell you what can be automated.
+            </p>
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {additionalSoftware.map((item) => (
+                <li
+                  key={item.id}
+                  id={`sw-${item.id}`}
+                  className="flex scroll-mt-28 items-start gap-3.5 rounded-xl border border-ink-200 bg-white px-5 py-4 transition-colors target:border-azure-400"
+                >
+                  <LogoTile platform={item} size="md" />
+                  <div className="min-w-0">
+                    <p className="font-display text-[0.9375rem] font-semibold tracking-tight text-ink-950">
+                      {item.label}
+                    </p>
+                    <p className="mt-0.5 font-mono text-2xs text-ink-400">{item.vendor}</p>
+                    <p className="mt-2 text-[0.8125rem] leading-relaxed text-ink-600">
+                      {item.role}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/contact"
+              className="mt-7 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-azure-600 hover:text-azure-700"
+            >
+              Ask what we can automate in yours
+              <Icon name="arrow-right" className="text-sm" />
+            </Link>
+          </div>
         </Container>
       </section>
 
       {/* The point of the whole thing: the platforms are not eight islands. */}
       <section className="relative overflow-hidden border-y border-ink-200 bg-ink-950 py-16 text-white sm:py-20">
-        <BlueprintGrid variant="dark" fade={false} className="opacity-40" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-[-10rem] top-[-8rem] h-[32rem] w-[32rem] rounded-full bg-azure-500/14 blur-[130px]"

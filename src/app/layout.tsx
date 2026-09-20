@@ -1,19 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/common/ScrollReveal";
 import { site } from "@/lib/site";
 
-const sans = Inter({
+/**
+ * Manrope carries the whole site — body copy and headings both. One family,
+ * two roles: the display variable is the same font, so a heading and a
+ * paragraph share letterforms and only weight and size separate them.
+ */
+const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const display = Space_Grotesk({
+const display = Manrope({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
@@ -60,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0C1015",
+  themeColor: "#061422",
   width: "device-width",
   initialScale: 1,
 };
@@ -73,7 +78,8 @@ export default function RootLayout({
       <head>
         {/* Without JS nothing can add `.is-revealed`, so nothing may start hidden. */}
         <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}` +
+            `[data-hero-intro] .hero-staged{animation-play-state:running!important}`}</style>
         </noscript>
       </head>
       <body className="flex min-h-screen flex-col">

@@ -13,20 +13,17 @@
 /* Disciplines                                                         */
 /* ------------------------------------------------------------------ */
 
-export type DisciplineId =
-  | "architecture"
-  | "structure"
-  | "hvac"
-  | "electrical"
-  | "plumbing"
-  | "fire-fighting"
-  | "fire-alarm"
-  | "elv-ict"
-  | "bms"
-  | "bim-revit";
+export type DisciplineId = "architecture" | "structure" | "mep";
 
-/** MEPF is a parent that collects the seven services disciplines. */
-export type DisciplineFamilyId = "architecture" | "structure" | "mepf" | "bim-revit";
+/**
+ * One family per discipline.
+ *
+ * MEP used to be a parent collecting seven services — HVAC, Electrical,
+ * Plumbing, Fire Fighting, Fire Alarm, ELV/ICT and BMS — each with its own
+ * catalogue. What is actually sold is a single MEP product line, so the family
+ * and the discipline are now the same thing.
+ */
+export type DisciplineFamilyId = DisciplineId;
 
 export interface DisciplineGroup {
   id: string;
@@ -63,7 +60,7 @@ export interface DisciplineFamily {
 }
 
 /* ------------------------------------------------------------------ */
-/* Project stages — the lifecycle axis                                 */
+/* Project stages — internal lifecycle ordering, not a browsing axis    */
 /* ------------------------------------------------------------------ */
 
 /**
@@ -163,6 +160,8 @@ export interface SoftwarePlatform {
    * Takes precedence over `mark` everywhere a platform is shown.
    */
   logo?: string;
+  /** The logo is a wordmark rather than a square icon — ETABS, SAP2000. */
+  logoWide?: boolean;
   /** Fallback used until the real logo is dropped in. */
   mark: ProductMark;
   /** Where this platform sits in the design → handover chain. */
@@ -235,12 +234,11 @@ export type MockupLayout = "panel" | "table" | "dashboard" | "viewer" | "wizard"
 /* Filtering + sorting                                                 */
 /* ------------------------------------------------------------------ */
 
-export type SortId = "featured" | "az" | "stage" | "status";
+export type SortId = "featured" | "az" | "status";
 
 export interface ToolFilterState {
   query: string;
   disciplines: DisciplineId[];
-  stages: StageId[];
   software: SoftwareId[];
   statuses: ToolStatus[];
   sort: SortId;
@@ -285,7 +283,7 @@ export interface NavLink {
 /* Search                                                              */
 /* ------------------------------------------------------------------ */
 
-export type SearchResultKind = "tool" | "discipline" | "stage" | "software" | "page";
+export type SearchResultKind = "tool" | "discipline" | "software" | "page";
 
 export interface SearchResult {
   kind: SearchResultKind;

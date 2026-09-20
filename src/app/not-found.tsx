@@ -2,13 +2,11 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
 import { disciplineFamilies } from "@/data/disciplines";
 
 export default function NotFound() {
   return (
     <section className="relative overflow-hidden bg-ink-950 text-white">
-      <BlueprintGrid variant="dark" fade={false} className="opacity-[0.5]" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/12 blur-[130px]"

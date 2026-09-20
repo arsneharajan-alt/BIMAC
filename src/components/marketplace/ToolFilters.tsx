@@ -2,24 +2,23 @@
 
 import Icon from "@/components/ui/Icon";
 import { disciplineFamilies, disciplineMap } from "@/data/disciplines";
-import { softwareList, stages } from "@/data/stages";
+import { softwareList } from "@/data/stages";
 import { statusLabels, statusOrder } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 import type {
   DisciplineId,
   SoftwareId,
-  StageId,
   ToolFilterState,
   ToolStatus,
 } from "@/types";
 
-type FacetKey = "disciplines" | "stages" | "software" | "statuses";
+type FacetKey = "disciplines" | "software" | "statuses";
 
 /** Synthetic row id for the MEPF group toggle — never stored in filter state. */
 const MEP_PARENT = "__mep__";
 
 const MEP_MEMBERS: DisciplineId[] =
-  disciplineFamilies.find((family) => family.id === "mepf")?.members ?? [];
+  disciplineFamilies.find((family) => family.id === "mep")?.members ?? [];
 
 interface FacetRow {
   value: string;
@@ -143,7 +142,7 @@ function FacetGroup({
 function disciplineRows(counts: Record<string, number>): FacetRow[] {
   const rows: FacetRow[] = [];
   for (const family of disciplineFamilies) {
-    if (family.id === "mepf") {
+    if (family.id === "mep") {
       const memberCount = family.members.reduce(
         (total, id) => total + (counts[id] ?? 0),
         0,
@@ -184,7 +183,6 @@ export function ToolFilters({
   onChange: (next: ToolFilterState) => void;
   counts: {
     disciplines: Record<string, number>;
-    stages: Record<string, number>;
     software: Record<string, number>;
     statuses: Record<string, number>;
   };
@@ -211,7 +209,6 @@ export function ToolFilters({
 
   const activeCount =
     filters.disciplines.length +
-    filters.stages.length +
     filters.software.length +
     filters.statuses.length;
 
@@ -234,7 +231,6 @@ export function ToolFilters({
               onChange({
                 ...filters,
                 disciplines: [],
-                stages: [],
                 software: [],
                 statuses: [],
               })
@@ -251,17 +247,6 @@ export function ToolFilters({
         selected={filters.disciplines}
         onToggle={(value) => toggle("disciplines", value as DisciplineId)}
         rows={disciplineRows(counts.disciplines)}
-      />
-
-      <FacetGroup
-        title="Project Stage"
-        selected={filters.stages}
-        onToggle={(value) => toggle("stages", value as StageId)}
-        rows={stages.map((stage) => ({
-          value: stage.id,
-          label: stage.name,
-          count: counts.stages[stage.id] ?? 0,
-        }))}
       />
 
       <FacetGroup

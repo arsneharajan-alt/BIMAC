@@ -4,11 +4,9 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
 import Button from "@/components/ui/Button";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
 import ContactActions, { ContactBand } from "@/components/common/ContactActions";
 import ProjectImpact from "@/components/sections/ProjectImpact";
 import { disciplines } from "@/data/disciplines";
-import { stages } from "@/data/stages";
 import { tools } from "@/data/tools";
 import { impact, site } from "@/lib/site";
 import type { GlyphId } from "@/types";
@@ -56,7 +54,6 @@ export default function AboutPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-ink-950 text-white">
-        <BlueprintGrid variant="dark" fade={false} className="opacity-[0.5]" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-[-10rem] top-[-12rem] h-[36rem] w-[36rem] rounded-full bg-brand-500/12 blur-[140px]"
@@ -88,7 +85,6 @@ export default function AboutPage() {
                   { value: String(impact.projectsCompleted), label: "Projects delivered" },
                   { value: String(tools.length), label: "Tools in the catalogue" },
                   { value: String(disciplines.length), label: "Disciplines covered" },
-                  { value: String(stages.length), label: "Project stages" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-ink-950 px-5 py-5">
                     <dt className="text-2xs uppercase tracking-[0.14em] text-ink-500">

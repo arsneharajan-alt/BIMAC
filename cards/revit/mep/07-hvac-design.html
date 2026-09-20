@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HVAC Design Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; }
+  /* Card is designed at 1280 x 616 and scales down to fit its container. */
+  .bimac-card { width: 100%; max-width: 1280px; margin: 0 auto; aspect-ratio: 1280 / 616; position: relative; overflow: hidden;
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+  .bimac-card .bimac-stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .bimac-card a:hover { filter: brightness(1.08); }
+  .bimac-card a:focus-visible { outline: 3px solid #3B8EEA; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ===== HVAC Design Automation: start ===== -->
+<section class="bimac-card" aria-label="HVAC Design Automation">
+<div class="bimac-stage" style="width: 1280px; height: 616px; box-sizing: border-box; display: flex; flex-direction: column; background-color: #FFFFFF; color: #16181C; overflow: hidden;">
+<div style="flex-grow: 1; min-height: 0; box-sizing: border-box; padding: 30px 48px 36px 48px; display: flex; gap: 40px;">
+<div style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; padding-top: 14px;">
+<h1 style="margin: 0; font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 82%; font-weight: 800; font-size: 50px; line-height: 1.0; letter-spacing: -0.6px; color: #172B4D;"><span style="white-space: nowrap;">HVAC Design</span><br><span style="color: #F28C28; white-space: nowrap;">Automation</span></h1>
+<h2 style="margin: 0; font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 600; font-size: 22px; line-height: 1.2; color: #5A626E;">Loads, airflows, AHU, duct routing, sizing and pressure drop.</h2>
+<div style="display: flex; flex-direction: column; gap: 2px; margin-left: -12px;">
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on0"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">1
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done0"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Heat loads</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Cooling load calculated for every room.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on1"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">2
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done1"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Airflow &amp; equipment</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Airflows set and the AHU placed.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on2"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">3
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done2"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Route &amp; size ducts</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Supply ducts routed and sized, diffusers placed.</div></div>
+</div>
+<div style="position: relative; display: flex; gap: 14px; padding: 8px 12px; border-radius: 8px;">
+<div style="position: absolute; inset: 0; border-radius: 8px; background: #E8F1FA; box-shadow: inset 0 0 0 1px #8DBBE3;" data-bind-style='[["opacity", "on3"]]'></div>
+<div style="position: relative; flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; border: 1px solid #B9BFC8; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #5A626E;">4
+<div style="position: absolute; inset: -1px; border-radius: 13px; background: #F28C28; color: #FFFFFF; display: flex; align-items: center; justify-content: center;" data-bind-style='[["opacity", "done3"]]'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px;"><div style="font-size: 15px; font-weight: 600; color: #16181C;">Pressure drop</div><div style="font-size: 13px; line-height: 1.45; color: #5A626E;">Index run found and pressure drop checked.</div></div>
+</div>
+</div>
+</div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<div style="height: 470px; flex-shrink: 0; display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6, 0 24px 50px rgba(22,24,28,0.14); font-size: 12px; color: #2B2F36;">
+<div style="height: 30px; flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: #E4E7EB; color: #3A4048;"><div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 5px; background: #B9BFC8;"></div><div style="width: 10px; height: 10px; border-radius: 5px; background: #B9BFC8;"></div><div style="width: 10px; height: 10px; border-radius: 5px; background: #B9BFC8;"></div></div><div style="flex-grow: 1; text-align: center;">Tower_MEP.rvt  —  Floor Plan: L3 · HVAC</div></div>
+<div style="height: 28px; flex-shrink: 0; display: flex; background: #F1F3F5; font-size: 12px;"><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">File</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">Architecture</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">Structure</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">Systems</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">Insert</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">Annotate</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">Analyze</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #4A515C;">View</div><div style="padding: 0 10px; height: 28px; display: flex; align-items: center; color: #16181C; font-weight: 600; box-shadow: inset 0 -2px 0 #F28C28;">Add-Ins</div></div>
+<div style="height: 84px; flex-shrink: 0; display: flex; align-items: stretch; background: #FAFBFC; border-bottom: 1px solid #D5D9DF;">
+<div style="display: flex; flex-direction: column; padding: 4px 8px 0 8px; border-right: 1px solid #D5D9DF;"><div style="display: flex; gap: 4px;"><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #2B2F36; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on0"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13M14 5l3 3-3 3M20 16H7M10 13l-3 3 3 3"></path></svg></div><div style="position: relative;">Loads</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #2B2F36; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on1"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="1"></rect><circle cx="9" cy="12" r="3"></circle><path d="M15 9h3M15 12h3M15 15h3"></path></svg></div><div style="position: relative;">AHU</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #2B2F36; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on2"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h13l5 5v3H8l-5-5z"></path></svg></div><div style="position: relative;">Ducts</div></div><div style="position: relative; width: 66px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: #2B2F36; font-size: 11px;"><div style="position: absolute; inset: 0; border-radius: 6px; background: rgba(242,140,40,0.14); box-shadow: inset 0 0 0 1px #F28C28;" data-bind-style='[["opacity", "on3"]]'></div><div style="position: relative; display: flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg></div><div style="position: relative;">ΔP</div></div></div><div style="text-align: center; font-size: 10.5px; color: #5A626E; padding-top: 1px;">HVAC Design</div></div>
+</div>
+<div style="flex-grow: 1; display: flex; min-height: 0;">
+<div style="width: 130px; flex-shrink: 0; background: #F7F8FA; border-right: 1px solid #D5D9DF; padding-top: 6px; font-size: 11.5px;"><div style="padding: 0 8px 6px 8px; color: #16181C; font-weight: 600;">Project Browser</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #2B2F36;">Views (all)</div><div style="padding-left: 20px; height: 21px; display: flex; align-items: center; color: #2B2F36;">Mechanical</div><div style="padding-left: 32px; height: 21px; display: flex; align-items: center; color: #C9690F;">L3 · HVAC</div><div style="padding-left: 8px; height: 21px; display: flex; align-items: center; color: #2B2F36;">Schedules</div><div style="padding-left: 20px; height: 21px; display: flex; align-items: center; color: #5A626E;">Room Loads</div></div>
+<div style="position: relative; flex-grow: 1; background: #FFFFFF;">
+<svg viewBox="0 0 400 290" preserveAspectRatio="xMinYMin meet" style="position: absolute; left: 0; top: 6px; width: 400px; height: 290px;" aria-label="Room heat loads and airflows calculated, AHU placed, supply ducts routed and sized, index run pressure drop highlighted"><rect x="20" y="30" width="130" height="100" fill="#FFFFFF" stroke="#2B2F36" stroke-width="1.4"></rect><text x="26" y="42" font-size="8" font-weight="700" fill="#16181C">Office A</text><rect x="150" y="30" width="130" height="100" fill="#FFFFFF" stroke="#2B2F36" stroke-width="1.4"></rect><text x="156" y="42" font-size="8" font-weight="700" fill="#16181C">Office B</text><rect x="280" y="30" width="110" height="100" fill="#FFFFFF" stroke="#2B2F36" stroke-width="1.4"></rect><text x="286" y="42" font-size="8" font-weight="700" fill="#16181C">Meeting</text><rect x="20" y="170" width="100" height="90" fill="#FFFFFF" stroke="#2B2F36" stroke-width="1.4"></rect><text x="26" y="182" font-size="8" font-weight="700" fill="#16181C">Plant</text><rect x="120" y="170" width="270" height="90" fill="#FFFFFF" stroke="#2B2F36" stroke-width="1.4"></rect><text x="126" y="182" font-size="8" font-weight="700" fill="#16181C">Open office</text><rect x="20" y="130" width="370" height="40" fill="#F7F8FA" stroke="#2B2F36" stroke-width="1.4"></rect><text x="200" y="154" font-size="7.5" fill="#6F7782">Corridor</text><g style="" data-bind-style='[["opacity", "du0"]]'><path d="M102,206H120V150H370" fill="none" stroke="#2A93C8" stroke-width="14" stroke-opacity="0.35" stroke-linejoin="round"></path><path d="M102,206H120V150H370" fill="none" stroke="#2A93C8" stroke-width="1.1" stroke-linejoin="round"></path></g><g style="" data-bind-style='[["opacity", "du1"]]'><path d="M85,150V100" fill="none" stroke="#2A93C8" stroke-width="10" stroke-opacity="0.35" stroke-linejoin="round"></path><path d="M85,150V100" fill="none" stroke="#2A93C8" stroke-width="1.1" stroke-linejoin="round"></path></g><g style="" data-bind-style='[["opacity", "du2"]]'><path d="M215,150V100" fill="none" stroke="#2A93C8" stroke-width="10" stroke-opacity="0.35" stroke-linejoin="round"></path><path d="M215,150V100" fill="none" stroke="#2A93C8" stroke-width="1.1" stroke-linejoin="round"></path></g><g style="" data-bind-style='[["opacity", "du3"]]'><path d="M335,150V100" fill="none" stroke="#2A93C8" stroke-width="9" stroke-opacity="0.35" stroke-linejoin="round"></path><path d="M335,150V100" fill="none" stroke="#2A93C8" stroke-width="1.1" stroke-linejoin="round"></path></g><g style="" data-bind-style='[["opacity", "du4"]]'><path d="M255,150V200" fill="none" stroke="#2A93C8" stroke-width="10" stroke-opacity="0.35" stroke-linejoin="round"></path><path d="M255,150V200" fill="none" stroke="#2A93C8" stroke-width="1.1" stroke-linejoin="round"></path></g><path d="M102,206H120V150H335V100" fill="none" stroke="#F28C28" stroke-width="3" stroke-linejoin="round" style="" data-bind-style='[["opacity", "ix"]]'></path><rect x="79" y="88" width="12" height="12" fill="#FFFFFF" stroke="#2A93C8" stroke-width="1.2" style="" data-bind-style='[["opacity", "df"]]'></rect><path d="M79,88L91,100M91,88L79,100" stroke="#2A93C8" stroke-width="0.7" style="" data-bind-style='[["opacity", "df"]]'></path><rect x="209" y="88" width="12" height="12" fill="#FFFFFF" stroke="#2A93C8" stroke-width="1.2" style="" data-bind-style='[["opacity", "df"]]'></rect><path d="M209,88L221,100M221,88L209,100" stroke="#2A93C8" stroke-width="0.7" style="" data-bind-style='[["opacity", "df"]]'></path><rect x="329" y="88" width="12" height="12" fill="#FFFFFF" stroke="#2A93C8" stroke-width="1.2" style="" data-bind-style='[["opacity", "df"]]'></rect><path d="M329,88L341,100M341,88L329,100" stroke="#2A93C8" stroke-width="0.7" style="" data-bind-style='[["opacity", "df"]]'></path><rect x="249" y="200" width="12" height="12" fill="#FFFFFF" stroke="#2A93C8" stroke-width="1.2" style="" data-bind-style='[["opacity", "df"]]'></rect><path d="M249,200L261,212M261,200L249,212" stroke="#2A93C8" stroke-width="0.7" style="" data-bind-style='[["opacity", "df"]]'></path><g style="" data-bind-style='[["opacity", "ahu"]]'><rect x="36" y="196" width="66" height="40" rx="2" fill="#E4E7EB" stroke="#16181C" stroke-width="1.1"></rect><text x="69" y="214" text-anchor="middle" font-size="8" font-weight="700" fill="#16181C">AHU-1</text><text x="69" y="226" text-anchor="middle" font-size="7" fill="#4A515C">2,140 l/s</text></g><g style="" data-bind-style='[["opacity", "ld0"]]'><rect x="26" y="48" width="58" height="24" rx="3" fill="#FFF4E8" stroke="#F28C28" stroke-width="0.8"></rect><text x="30" y="58" font-size="7.5" font-weight="700" fill="#9A4F08">6.2 kW</text><text x="30" y="68" font-size="7.5" fill="#1D4E7A" style="" data-bind-style='[["opacity", "af"]]'>520 l/s</text></g><g style="" data-bind-style='[["opacity", "ld1"]]'><rect x="156" y="48" width="58" height="24" rx="3" fill="#FFF4E8" stroke="#F28C28" stroke-width="0.8"></rect><text x="160" y="58" font-size="7.5" font-weight="700" fill="#9A4F08">5.8 kW</text><text x="160" y="68" font-size="7.5" fill="#1D4E7A" style="" data-bind-style='[["opacity", "af"]]'>480 l/s</text></g><g style="" data-bind-style='[["opacity", "ld2"]]'><rect x="286" y="48" width="58" height="24" rx="3" fill="#FFF4E8" stroke="#F28C28" stroke-width="0.8"></rect><text x="290" y="58" font-size="7.5" font-weight="700" fill="#9A4F08">4.1 kW</text><text x="290" y="68" font-size="7.5" fill="#1D4E7A" style="" data-bind-style='[["opacity", "af"]]'>340 l/s</text></g><g style="" data-bind-style='[["opacity", "ld4"]]'><rect x="126" y="188" width="58" height="24" rx="3" fill="#FFF4E8" stroke="#F28C28" stroke-width="0.8"></rect><text x="130" y="198" font-size="7.5" font-weight="700" fill="#9A4F08">9.6 kW</text><text x="130" y="208" font-size="7.5" fill="#1D4E7A" style="" data-bind-style='[["opacity", "af"]]'>800 l/s</text></g><g style="" data-bind-style='[["opacity", "sz"]]'><text x="250" y="145" font-size="7" font-weight="700" fill="#1D4E7A">800×500</text><text x="90" y="124" font-size="7" font-weight="700" fill="#1D4E7A">500×400</text><text x="220" y="124" font-size="7" font-weight="700" fill="#1D4E7A">500×400</text><text x="340" y="124" font-size="7" font-weight="700" fill="#1D4E7A">400×300</text><text x="260" y="182" font-size="7" font-weight="700" fill="#1D4E7A">600×400</text></g></svg><div style="position: absolute; right: 10px; top: 10px; width: 196px; padding: 8px 10px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 0 0 1px #C9CED6; font-size: 10.5px;"><div style="font-weight: 600; color: #16181C; padding-bottom: 3px;">HVAC calculation · L3</div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "c0"]]'><div style="color: #4A515C;">Total cooling load</div><div style="font-weight: 700; color: #16181C;">25.7 kW</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "c1"]]'><div style="color: #4A515C;">Total airflow</div><div style="font-weight: 700; color: #16181C;">2,140 l/s</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "c2"]]'><div style="color: #4A515C;">Main duct</div><div style="font-weight: 700; color: #16181C;">800×500 · 5.4 m/s</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "c3"]]'><div style="color: #4A515C;">Index run ΔP</div><div style="font-weight: 700; color: #16181C;">245 Pa</div></div><div style="display: flex; justify-content: space-between; min-height: 20px; align-items: center; border-top: 1px solid #EEF0F2;" data-bind-style='[["opacity", "c4"]]'><div style="color: #4A515C;">Design basis</div><div style="font-weight: 700; color: #16181C;">[STANDARD]</div></div></div><div style="position: absolute; left: 12px; bottom: 10px; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 13px; background: #E3F4EA; color: #1E7F4F; font-size: 11px; font-weight: 600;" data-bind-style='[["opacity", "fin"]]'><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>HVAC laid out, sized and checked</span></div>
+</div>
+</div>
+<div style="position: relative; height: 26px; flex-shrink: 0; background: #F1F3F5; border-top: 1px solid #D5D9DF; color: #2B2F36; font-size: 11.5px;"><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on0"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div>Calculating room loads</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on1"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div>Setting airflows, placing AHU-1</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on2"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div>Routing and sizing ducts</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "on3"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #F28C28;"></div><div>Checking index run pressure drop</div></div><div style="position: absolute; left: 12px; top: 0; height: 26px; display: flex; align-items: center; gap: 8px;" data-bind-style='[["opacity", "done3"]]'><div style="width: 7px; height: 7px; border-radius: 4px; background: #2E8B57;"></div><div>HVAC laid out, sized and checked</div></div></div>
+</div>
+<div style="height: 48px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; gap: 28px;"><div style="display: flex; align-items: center; gap: 14px;"><div style="width: 3px; height: 34px; border-radius: 2px; background: #F28C28;"></div><div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 12px; color: #5A626E;">Add-in for</div><div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 700; font-size: 18px; color: #172B4D;">Autodesk® Revit®</div></div></div><a href="#demo" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 6px; background: #F28C28; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none;">Book a demo</a></div>
+</div>
+</div>
+</div>
+</section>
+<script>
+(function () {
+  var root = document.currentScript.previousElementSibling;
+  var stage = root.querySelector('.bimac-stage');
+  function fit() { stage.style.transform = 'scale(' + (root.clientWidth / 1280) + ')'; }
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(root); else window.addEventListener('resize', fit);
+  var DCLogic = function () {};
+
+
+class Component extends DCLogic {
+componentDidMount() {
+  var rm = false;
+  try { rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (rm) { this.setState({ p: 88 }); return; }
+  var t0 = Date.now(), self = this;
+  this._iv = setInterval(function () { self.setState({ p: ((Date.now() - t0) % 15000) / 150 }); }, 40);
+}
+componentWillUnmount() { if (this._iv) clearInterval(this._iv); }
+renderVals() {
+  var p = (this.state && typeof this.state.p === 'number') ? this.state.p : 88;
+  function lin(k) {
+    if (p <= k[0][0]) return k[0][1];
+    for (var i = 1; i < k.length; i++) if (p <= k[i][0]) { var a = k[i-1], b = k[i], f = (p - a[0]) / (b[0] - a[0]); f = 1 - Math.pow(1 - f, 3); return a[1] + (b[1] - a[1]) * f; }
+    return k[k.length-1][1];
+  }
+  var out = p < 94 ? 1 : Math.max(0, 1 - (p - 94) / 6);
+  var v = {};
+  function phases(ph) { for (var i = 0; i < ph.length; i++) { v['on'+i] = (p >= ph[i][0] && p < ph[i][1]) ? 1 : 0; v['done'+i] = (p >= ph[i][1] && p < 97) ? out : 0; } }
+
+  phases([[0,20],[20,40],[40,62],[62,80]]);
+  for (var i = 0; i < 5; i++) v['ld'+i] = lin([[3 + i * 3, 0],[5 + i * 3, 1]]) * out;
+  v.af = lin([[21,0],[26,1]]); v.ahu = lin([[27,0],[32,1]]) * out;
+  for (var i = 0; i < 5; i++) v['du'+i] = lin([[41 + i * 2.5, 0],[43 + i * 2.5, 1]]) * out;
+  v.df = lin([[53,0],[57,1]]) * out; v.sz = lin([[56,0],[60,1]]) * out;
+  v.ix = (p >= 64 && p < 97) ? out : 0;
+  v.c0 = p >= 15 ? out : 0.25 * out; v.c1 = p >= 26 ? out : 0.25 * out; v.c2 = p >= 58 ? out : 0.25 * out; v.c3 = p >= 66 ? out : 0.25 * out; v.c4 = out;
+  v.fin = (p >= 72 && p < 97) ? out : 0;
+
+  return { v: v };
+}
+}
+
+
+  var comp = new Component();
+  function get(o, path) { return path.split('.').reduce(function (a, k) { return a == null ? a : a[k]; }, o); }
+  function fill(tpl, v) { return tpl.split('[[').map(function (part, n) { if (n === 0) return part; var k = part.indexOf(']]'); var r = get(v, part.slice(0, k)); return (r == null ? '' : r) + part.slice(k + 2); }).join(''); }
+  var cssEls = root.querySelectorAll('[data-bind-css]'), txtEls = root.querySelectorAll('[data-bind-text]');
+  var styleMap = Array.prototype.map.call(root.querySelectorAll('[data-bind-style]'), function (el) { return [el, JSON.parse(el.getAttribute('data-bind-style'))]; });
+  var ATTRS = [], attrMap = [];
+  ATTRS.forEach(function (a) { root.querySelectorAll('[data-bind-' + a + ']').forEach(function (el) { attrMap.push([el, a, JSON.parse(el.getAttribute('data-bind-' + a))]); }); });
+  function render(p) {
+    comp.state = { p: p };
+    var v = comp.renderVals().v;
+    cssEls.forEach(function (el) { el.style.cssText = get(v, el.getAttribute('data-bind-css')); });
+    styleMap.forEach(function (e) { e[1].forEach(function (pr) { e[0].style.setProperty(pr[0], get(v, pr[1])); }); });
+    attrMap.forEach(function (e) { e[0].setAttribute(e[1], fill(e[2], v)); });
+    txtEls.forEach(function (el) { el.textContent = get(v, el.getAttribute('data-bind-text')); });
+  }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { render(88); return; }
+  var t0 = performance.now(), visible = true;
+  if (window.IntersectionObserver) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(root);
+  function tick(now) { if (visible) render(((now - t0) % 15000) / 15000 * 100); requestAnimationFrame(tick); }
+  render(0); requestAnimationFrame(tick);
+})();
+</script>
+<!-- ===== HVAC Design Automation: end ===== -->
+
+</body>
+</html>

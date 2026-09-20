@@ -57,29 +57,41 @@ export function Wordmark({
   );
 }
 
+/**
+ * The real lockup — mark and wordmark together, as drawn.
+ *
+ * Two files, not one recoloured by CSS: the navy artwork disappears on a dark
+ * ground, so the dark version is a separate export with the navy turned white
+ * and the orange kept. The strapline is cropped off both, because at header
+ * height it is unreadable and only makes the lockup wider than it needs to be.
+ * Generated from `public/images/hero/bimac-logo.jpeg` — see the note in
+ * public/logos/README.md.
+ */
 export function Logo({
   className,
   onDark = false,
   href = "/",
-  showWordmark = true,
 }: {
   className?: string;
   onDark?: boolean;
   href?: string;
-  showWordmark?: boolean;
 }) {
   return (
     <Link
       href={href}
       aria-label="BIMAC — home"
       className={cn(
-        "group inline-flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2",
+        "group inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2",
         onDark ? "focus-visible:ring-offset-ink-950" : "focus-visible:ring-offset-white",
         className,
       )}
     >
-      <LogoMark className="transition-transform duration-300 group-hover:-translate-y-px" />
-      {showWordmark ? <Wordmark onDark={onDark} /> : null}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={onDark ? "/logos/bimac-lockup-light.png" : "/logos/bimac-lockup.png"}
+        alt="BIMAC — BIM Automation Consulting"
+        className="h-9 w-auto transition-transform duration-300 group-hover:-translate-y-px sm:h-10"
+      />
     </Link>
   );
 }

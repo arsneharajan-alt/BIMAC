@@ -4,10 +4,9 @@ import Icon from "@/components/ui/Icon";
 import Badge from "@/components/ui/Badge";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProductGlyph from "@/components/common/ProductGlyph";
-import BlueprintGrid from "@/components/common/BlueprintGrid";
 import ContactActions from "@/components/common/ContactActions";
 import { disciplineMap, getFamily } from "@/data/disciplines";
-import { getStage, softwareMap } from "@/data/stages";
+import { softwareMap } from "@/data/stages";
 import { statusLabels } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 import type { Tool, ToolStatus } from "@/types";
@@ -20,13 +19,11 @@ const statusDot: Record<ToolStatus, string> = {
 
 export function ToolHero({ tool }: { tool: Tool }) {
   const primary = disciplineMap[tool.disciplines[0]];
-  const stage = getStage(tool.stage);
   const family = getFamily(primary.family);
   const group = primary.groups.find((item) => item.id === tool.group);
 
   return (
     <section className="relative overflow-hidden bg-ink-950 text-white">
-      <BlueprintGrid variant="dark" fade={false} className="opacity-[0.5]" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-40 top-[-10rem] h-[34rem] w-[34rem] rounded-full bg-brand-500/15 blur-[120px]"
@@ -40,7 +37,7 @@ export function ToolHero({ tool }: { tool: Tool }) {
               { label: "Home", href: "/" },
               { label: "Tools", href: "/tools" },
               { label: family.shortName, href: `/tools/${family.slug}` },
-              ...(family.id === "mepf"
+              ...(family.id === "mep"
                 ? [{ label: primary.shortName, href: `/tools/${primary.slug}` }]
                 : []),
               { label: tool.name },
@@ -80,12 +77,11 @@ export function ToolHero({ tool }: { tool: Tool }) {
           </p>
 
           {/* spec strip */}
-          <dl className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-4">
+          <dl className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-3">
             {[
               { label: "Discipline", value: primary.shortName },
               { label: "Group", value: group?.name ?? "—" },
-              { label: "Stage", value: stage.name },
-              { label: "Detail", value: stage.lod },
+              { label: "Software", value: tool.software.map((id) => softwareMap[id].shortName).join(", ") },
             ].map((spec) => (
               <div key={spec.label} className="bg-ink-950 px-4 py-3.5">
                 <dt className="text-2xs uppercase tracking-[0.14em] text-ink-500">

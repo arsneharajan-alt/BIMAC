@@ -127,3 +127,98 @@
     text-wrap: pretty;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* The hero opening                                                     */
+/*                                                                      */
+/* A white plane covers the hero, shrinks toward the middle, rounds into */
+/* a circle as it goes, and disappears — leaving the blue and the        */
+/* wireframe behind it.                                                  */
+/*                                                                      */
+/* While the plane is up it does the work of staging the copy: the white */
+/* words are invisible against it and only the orange ones — "Smart      */
+/* Automation" and the button — are left standing. The rest of the       */
+/* sentence is held back until the plane has gone, so it arrives against */
+/* the blue rather than appearing out of the white.                      */
+/*                                                                      */
+/* Transform and border-radius are both cheap to animate and both run on */
+/* the compositor, so the plane costs nothing while it moves.            */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Everything the opening stages — the plane and the copy it hides — is held at
+ * its first frame until the black intro panel has gone, and then released.
+ *
+ * It is a gate rather than a set of delays because the two clocks never agreed:
+ * a CSS delay is counted from the moment the stylesheet applies, the panel's
+ * from the moment React hydrates, and whichever ran first ran behind the other.
+ * The hero ships with the gate closed — data-hero-intro is in the markup — and
+ * `HeroIntro` takes the attribute off when the panel leaves, so everything
+ * downstream starts from that one instant.
+ *
+ * Without JavaScript nothing ever takes it off, so the <noscript> block in the
+ * layout releases it: the hero then simply plays on load.
+ *
+ * The third state is "skip": someone who has already watched the opening this
+ * visit and has come back to the page. Nothing is staged for them — the copy is
+ * simply there, and the plane never runs at all.
+ */
+[data-hero-intro="running"] .hero-staged {
+  animation-play-state: paused;
+}
+
+[data-hero-intro="skip"] .hero-staged {
+  animation: none;
+}
+
+[data-hero-intro="skip"] .hero-plane {
+  display: none;
+}
+
+@keyframes hero-plane-out {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 0;
+    opacity: 1;
+  }
+
+  50% {
+    border-radius: 50%;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    opacity: 0;
+  }
+}
+
+/*
+ * The plane is a square, not the shape of the viewport, and that is the whole
+ * reason it rounds into a circle rather than an ellipse: a 50% radius on a
+ * 16:9 box gives an ellipse every time. 150vmax is wide enough to cover any
+ * screen it starts on, and it is centred on the point the towers converge.
+ */
+.hero-plane {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 150vmax;
+  height: 150vmax;
+  transform: translate(-50%, -50%);
+  /* Slow while it is still big enough to cover the headline, then away
+     quickly once it has cleared it — an ease-in curve, not a symmetric one. */
+  /* Must match PLANE_MS in lib/hero-timing. */
+  animation: hero-plane-out 2s cubic-bezier(0.5, 0.01, 0.86, 0.42) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-plane {
+    animation: none;
+    opacity: 0;
+  }
+}

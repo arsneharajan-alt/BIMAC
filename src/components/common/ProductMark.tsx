@@ -1,4 +1,4 @@
-import type { SoftwarePlatform } from "@/types";
+import type { ProductMark as Mark } from "@/types";
 import { cn } from "@/lib/utils";
 
 /**
@@ -31,23 +31,54 @@ const logoSizes: Record<keyof typeof sizes, string> = {
   xl: "h-14 w-14",
 };
 
+/**
+ * ETABS and SAP2000 publish a wordmark, not a square icon — four times wider
+ * than it is tall. Squeezed into the square slot it becomes an unreadable
+ * smudge, so a wide mark keeps its height and takes the width it needs,
+ * left-aligned so the labels beside it still line up.
+ */
+const wideLogoSizes: Record<keyof typeof sizes, string> = {
+  xs: "h-5 w-7",
+  sm: "h-6 w-10",
+  md: "h-8 w-12",
+  lg: "h-9 w-14",
+  xl: "h-10 w-16",
+};
+
+/**
+ * Anything that can be drawn as a product mark. `SoftwarePlatform` satisfies
+ * it, and so do the menu entries for applications that have no page yet — the
+ * marks are the same artwork either way.
+ */
+export interface ProductMarkSource {
+  name: string;
+  logo?: string;
+  /** The logo is a wordmark rather than a square icon. */
+  logoWide?: boolean;
+  mark: Mark;
+}
+
 export function ProductMark({
   platform,
   size = "md",
   className,
 }: {
-  platform: SoftwarePlatform;
+  platform: ProductMarkSource;
   size?: keyof typeof sizes;
   className?: string;
 }) {
   if (platform.logo) {
-    // Vendor logos are small static SVGs — the image optimiser adds nothing.
+    // Vendor logos are small static files — the image optimiser adds nothing.
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={platform.logo}
         alt={`${platform.name} logo`}
-        className={cn("shrink-0 object-contain", logoSizes[size], className)}
+        className={cn(
+          "shrink-0 object-contain",
+          platform.logoWide ? `${wideLogoSizes[size]} object-left` : logoSizes[size],
+          className,
+        )}
       />
     );
   }

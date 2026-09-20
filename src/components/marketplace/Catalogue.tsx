@@ -9,7 +9,7 @@ import ToolGrid, { EmptyState } from "./ToolGrid";
 import SearchBar from "./SearchBar";
 import SortSelect from "./SortSelect";
 import { disciplineFamilies, disciplineMap } from "@/data/disciplines";
-import { getStage, softwareMap } from "@/data/stages";
+import { softwareMap } from "@/data/stages";
 import {
   countBy,
   emptyFilters,
@@ -26,7 +26,7 @@ import type {
 } from "@/types";
 
 interface ActiveChip {
-  key: keyof Pick<ToolFilterState, "disciplines" | "stages" | "software" | "statuses">;
+  key: keyof Pick<ToolFilterState, "disciplines" | "software" | "statuses">;
   value: string;
   label: string;
 }
@@ -74,7 +74,6 @@ export function Catalogue({
     const base = filterTools(scoped, { ...emptyFilters, query: filters.query });
     return {
       disciplines: countBy(base, (tool) => tool.disciplines),
-      stages: countBy(base, (tool) => tool.stage),
       software: countBy(base, (tool) => tool.software),
       statuses: countBy(base, (tool) => tool.status),
     };
@@ -95,11 +94,6 @@ export function Catalogue({
       key: "disciplines" as const,
       value,
       label: disciplineMap[value].shortName,
-    })),
-    ...filters.stages.map((value) => ({
-      key: "stages" as const,
-      value,
-      label: getStage(value).name,
     })),
     ...filters.software.map((value) => ({
       key: "software" as const,

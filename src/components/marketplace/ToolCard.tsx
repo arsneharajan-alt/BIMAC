@@ -4,7 +4,7 @@ import Badge from "@/components/ui/Badge";
 import ProductGlyph from "@/components/common/ProductGlyph";
 import { ContactActionsCompact } from "@/components/common/ContactActions";
 import { disciplineMap } from "@/data/disciplines";
-import { getStage, softwareMap } from "@/data/stages";
+import { softwareMap } from "@/data/stages";
 import { toolHref } from "@/data/tools";
 import { statusLabels } from "@/lib/tools";
 import { cn } from "@/lib/utils";
@@ -33,7 +33,6 @@ function StatusPill({ status }: { status: ToolStatus }) {
  * CAD-to-Revit reads as one product rather than six.
  */
 export function ToolCard({ tool, className }: { tool: Tool; className?: string }) {
-  const stage = getStage(tool.stage);
   const shownDisciplines = tool.disciplines.slice(0, 3);
   const extraCount = tool.disciplines.length - shownDisciplines.length;
 
@@ -59,9 +58,6 @@ export function ToolCard({ tool, className }: { tool: Tool; className?: string }
             <h3 className="text-balance font-display text-[1.0625rem] font-semibold leading-snug tracking-tight text-ink-950">
               {tool.name}
             </h3>
-            <p className="mt-1 font-mono text-2xs text-ink-400">
-              {stage.name} · {stage.lod}
-            </p>
           </div>
           <StatusPill status={tool.status} />
         </div>

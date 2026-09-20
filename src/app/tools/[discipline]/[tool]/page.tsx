@@ -11,9 +11,9 @@ import { ToolFeatures, ToolIO, ToolProcess } from "@/components/tool/ToolSection
 import { ToolCardCompact } from "@/components/marketplace/ToolCard";
 import { ContactBand } from "@/components/common/ContactActions";
 import { disciplineMap } from "@/data/disciplines";
-import { getStage, softwareMap } from "@/data/stages";
+import { softwareMap } from "@/data/stages";
 import { getToolByPath, toolHref, tools } from "@/data/tools";
-import { adjacentStageTools, relatedTools } from "@/lib/tools";
+import { adjacentWorkflowTools, relatedTools } from "@/lib/tools";
 
 export function generateStaticParams() {
   return tools.map((tool) => ({
@@ -57,9 +57,8 @@ export default async function ToolDetailPage({
   if (!tool) notFound();
 
   const primary = disciplineMap[tool.disciplines[0]];
-  const stage = getStage(tool.stage);
   const related = relatedTools(tool, 4);
-  const { previous, next } = adjacentStageTools(tool);
+  const { previous, next } = adjacentWorkflowTools(tool);
 
   return (
     <>
@@ -108,15 +107,6 @@ export default async function ToolDetailPage({
                   At a glance
                 </p>
                 <dl className="space-y-3.5 text-[0.875rem]">
-                  <div className="flex items-start justify-between gap-4">
-                    <dt className="shrink-0 text-ink-500">Stage</dt>
-                    <dd className="text-right font-medium text-ink-900">
-                      {stage.name}
-                      <span className="block font-mono text-2xs font-normal text-ink-400">
-                        {stage.lod}
-                      </span>
-                    </dd>
-                  </div>
                   <div className="flex items-start justify-between gap-4">
                     <dt className="shrink-0 text-ink-500">Software</dt>
                     <dd className="text-right font-medium text-ink-900">
@@ -254,7 +244,7 @@ export default async function ToolDetailPage({
             <SectionHeading
               eyebrow="Related tools"
               title="Works well alongside"
-              lede="Tools sharing a discipline, a stage, or a place in the same workflow."
+              lede="Tools sharing a discipline, or a place in the same workflow."
             />
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((item) => (

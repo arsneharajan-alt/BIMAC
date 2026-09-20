@@ -106,10 +106,6 @@ export function ContactBand({
     <section className="relative overflow-hidden bg-ink-950 py-20 text-white sm:py-24">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-grid-dark bg-grid opacity-[0.5] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_78%)]"
-      />
-      <div
-        aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/15 blur-[130px]"
       />
       <div className="relative mx-auto w-full max-w-container px-5 sm:px-8">
