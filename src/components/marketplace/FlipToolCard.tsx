@@ -241,7 +241,11 @@ export function FlipToolCard({
     <div className={cn("group [perspective:1600px]", className)}>
       <div
         className={cn(
-          "relative aspect-[1280/616] w-full",
+          // The stage is drawn 1280x616, but the Lite cards pin their content
+          // to the top of it — the tallest animation panel ends at 418 and the
+          // rest is the design's own trailing space. Cropping to 480 keeps
+          // every panel and its bottom padding and drops the empty third.
+          "relative aspect-[1280/480] w-full",
           "transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
           "[transform-style:preserve-3d]",
           "[@media(hover:hover)]:group-hover:[transform:rotateY(180deg)]",

@@ -117,13 +117,20 @@ export function CardScene({ toolId, className }: { toolId: string; className?: s
     const stage = stageRef.current;
     if (!host || !stage || !card) return undefined;
 
-    // The design is a fixed size; scale it to whatever box the card gives it,
-    // keeping the whole of it in view rather than cropping its edges off.
+    // The design is a fixed size; lay it across the card's full width and let
+    // the card decide how much of its height to show.
+    //
+    // It used to be fitted whole, which was right while the card's box was cut
+    // to the design's own 1280x616. The Lite cards pin their content to the
+    // top of that box and leave the bottom third empty, so the card is now cut
+    // to the content instead and the rest is cropped away. Fitting the whole
+    // design into that shorter box would only shrink it and keep the gap, so
+    // the scale is taken off the width alone and the design is hung from the
+    // top edge.
     const fit = () => {
-      const { width, height } = host.getBoundingClientRect();
-      if (!width || !height) return;
-      const scale = Math.min(width / card.width, height / card.height);
-      stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      const { width } = host.getBoundingClientRect();
+      if (!width) return;
+      stage.style.transform = `translate(-50%, 0) scale(${width / card.width})`;
     };
 
     // The design carries its own call to action, and the card it sits on lays
@@ -223,12 +230,12 @@ export function CardScene({ toolId, className }: { toolId: string; className?: s
     >
       <div
         ref={stageRef}
-        className="absolute left-1/2 top-1/2 origin-center"
+        className="absolute left-1/2 top-0 origin-top"
         style={{
           ...card.stage,
           width: card.width,
           height: card.height,
-          transform: "translate(-50%, -50%)",
+          transform: "translate(-50%, 0)",
         }}
         // Static, local markup, generated from a file in this repository —
         // nothing here comes from a user.

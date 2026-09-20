@@ -169,34 +169,42 @@ const PRODUCTS = {
   AutoCAD: { logo: "/logos/autocad.png", label: "AutoCAD" },
 };
 
-const drawnLockup = (product) =>
-  '<div style="display: flex; align-items: center; gap: 14px;">' +
-  '<div style="width: 3px; height: 34px; border-radius: 2px; background: #F28C28;"></div>' +
-  '<div style="display: flex; flex-direction: column; gap: 2px;">' +
-  '<div style="font-size: 12px; color: #5A626E;">Add-in for</div>' +
-  "<div style=\"font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 700; font-size: 18px; color: #172B4D;\">Autodesk® " +
-  product +
-  "®</div></div></div>";
+/**
+ * The drawn lockup, matched rather than quoted.
+ *
+ * It used to be compared as an exact string, which broke the day the cards
+ * were redrawn: the Lite set is identical except that the orange rule is 32px
+ * tall instead of 34px, and every one of the 112 cards silently kept the
+ * design's own lockup instead of the site's. A pattern that lets the rule be
+ * any height survives that, and says out loud which part is allowed to vary.
+ */
+const DRAWN_LOCKUP =
+  /<div style="display: flex; align-items: center; gap: 14px;"><div style="width: 3px; height: \d+px; border-radius: 2px; background: #F28C28;"><\/div><div style="display: flex; flex-direction: column; gap: 2px;"><div style="font-size: 12px; color: #5A626E;">Add-in for<\/div><div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-stretch: 88%; font-weight: 700; font-size: 18px; color: #172B4D;">Autodesk® (Revit|AutoCAD)®<\/div><\/div><\/div>/g;
 
+/**
+ * The lockup the site puts in its place: "Add-in for", a rule, the product's
+ * own mark.
+ *
+ * The mark carries the product name better than setting it as type beside the
+ * mark did — that repeated "Revit" twice, once as a logo and once as a word.
+ * The name stays in the image's alt text, which is where a screen reader
+ * wants it anyway.
+ */
 const houseLockup = (product) =>
   '<div style="display: flex; align-items: center; gap: 14px;">' +
-  `<div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">${PRODUCTS[product].label} Add-in</div>` +
+  '<div style="font-size: 15px; font-weight: 600; letter-spacing: -0.1px; color: #16181C; white-space: nowrap;">Add-in for</div>' +
   '<div style="width: 1px; height: 30px; background: #D5D9DF;"></div>' +
-  `<img src="${PRODUCTS[product].logo}" alt="${PRODUCTS[product].label}" width="32" height="32" style="display: block; width: 32px; height: 32px; object-fit: contain;">` +
-  '<div style="display: flex; flex-direction: column; gap: 1px; line-height: 1.05;">' +
-  "<div style=\"font-family: Archivo, 'Arial Narrow', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.2px; color: #16181C;\">AUTODESK</div>" +
-  `<div style="font-family: Archivo, 'Arial Narrow', sans-serif; font-weight: 500; font-size: 14px; color: #16181C;">${PRODUCTS[product].label}</div>` +
-  "</div></div>";
+  `<img src="${PRODUCTS[product].logo}" alt="Autodesk ${PRODUCTS[product].label}" width="34" height="34" style="display: block; width: 34px; height: 34px; object-fit: contain;">` +
+  "</div>";
 
 function swapLockup(markup, label) {
-  for (const product of Object.keys(PRODUCTS)) {
-    const drawn = drawnLockup(product);
-    if (markup.includes(drawn)) {
-      return markup.split(drawn).join(houseLockup(product));
-    }
-  }
-  console.warn(`  ${label}: no add-in lockup to swap — left as drawn`);
-  return markup;
+  let swapped = 0;
+  const out = markup.replace(DRAWN_LOCKUP, (_, product) => {
+    swapped += 1;
+    return houseLockup(product);
+  });
+  if (!swapped) console.warn(`  ${label}: no add-in lockup to swap — left as drawn`);
+  return out;
 }
 
 /* ------------------------------------------------------------------ */
@@ -324,12 +332,24 @@ const ATTR_SEED = {
   stroke: "none",
 };
 
+/**
+ * Seeded by attribute, not by where the attribute sits.
+ *
+ * This used to look for `r="" data-bind-r=` as one string, which only worked
+ * because the cards happened to emit the plain attribute immediately before
+ * its binding. The Lite set sorts every element's attributes alphabetically,
+ * so `data-bind-r` now comes first and the pair never met — and 112 cards
+ * shipped with `r=""`, which the browser rejects as an invalid length.
+ *
+ * An empty value is invalid for every attribute a card drives, so any empty
+ * one belongs to a binding and can be seeded on sight.
+ */
 function seedAttrs(markup, attrs) {
   let out = markup;
   for (const attr of attrs) {
     // A length wants a number; a path wants a moveto; a paint wants a paint.
     const seed = ATTR_SEED[attr] ?? "0";
-    out = out.split(` ${attr}="" data-bind-${attr}=`).join(` ${attr}="${seed}" data-bind-${attr}=`);
+    out = out.split(` ${attr}=""`).join(` ${attr}="${seed}"`);
   }
   return out;
 }
