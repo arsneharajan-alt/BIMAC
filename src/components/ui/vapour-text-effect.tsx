@@ -169,11 +169,20 @@ export default function VaporizeTextCycle({
     };
   }, [image?.src]);
 
+  /**
+   * Device pixels per CSS pixel on the particle canvas — capped, deliberately.
+   *
+   * This was `devicePixelRatio * 1.5`, which is unbounded. The canvas is the
+   * full panel, so on a 4K display at 200% scaling it asked for a 5760x3240
+   * buffer: 74MB out of `getImageData` before a single particle existed, and
+   * a particle array behind it big enough to take the tab out. That is what
+   * was killing Chrome on the way into the opening.
+   *
+   * 2 is past the point where more resolution is visible on a field of dust.
+   */
   const globalDpr = useMemo(() => {
-    if (typeof window !== "undefined") {
-      return window.devicePixelRatio * 1.5 || 1;
-    }
-    return 1;
+    if (typeof window === "undefined") return 1;
+    return Math.min(window.devicePixelRatio || 1, MAX_DPR);
   }, []);
 
   const wrapperStyle = useMemo(
@@ -587,6 +596,47 @@ const renderCanvas = ({
   canvas.textBoundaries = textBoundaries;
 };
 
+/**
+ * The ceiling on canvas resolution, in device pixels per CSS pixel.
+ *
+ * The cost of this effect is quadratic in the ratio: every step up multiplies
+ * both the pixel buffer that is read back and the particle field built from
+ * it. Past 2 none of that is visible — it is dust.
+ */
+const MAX_DPR = 2;
+
+/**
+ * The most particles the field is ever allowed to hold.
+ *
+ * A bound rather than a target. The sampler normally lands well under it; this
+ * is what stops an unusually large panel, or a picture that fills one, from
+ * turning into an allocation the tab cannot survive. Roughly 120k is still far
+ * more dust than an eye resolves at this duration.
+ */
+const MAX_PARTICLES = 120000;
+
+/**
+ * How many device pixels to step between samples.
+ *
+ * Two jobs. The first is to sample about one particle per CSS pixel rather
+ * than one per device pixel — the old expression divided the ratio by 3, which
+ * rounds to a step of 1 at every ratio a real display reports, so a 2x screen
+ * paid 4x the particles for dust nobody can see.
+ *
+ * The second is the ceiling: if the region is large enough that even a
+ * per-CSS-pixel walk would blow past MAX_PARTICLES, the step widens until it
+ * does not. Thinning the dust is a visual compromise; running out of memory is
+ * not a compromise at all.
+ */
+function sampleStep(currentDPR: number, width: number, height: number) {
+  let step = Math.max(1, Math.round(currentDPR || 1));
+  const candidates = Math.ceil(width / step) * Math.ceil(height / step);
+  if (candidates > MAX_PARTICLES) {
+    step = Math.ceil(step * Math.sqrt(candidates / MAX_PARTICLES));
+  }
+  return step;
+}
+
 const createParticles = (
   ctx: CanvasRenderingContext2D,
   canvas: HTMLCanvasElement,
@@ -625,14 +675,22 @@ const createParticles = (
 
     ctx.drawImage(image.element, left, top, drawW, finalH);
 
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    // Only the rectangle the picture was drawn into. The canvas is the whole
+    // panel and the mark occupies a fraction of it, so reading the lot meant
+    // walking millions of transparent pixels to reach the few that carry it.
+    const rectX = Math.max(0, Math.floor(left));
+    const rectY = Math.max(0, Math.floor(top));
+    const rectW = Math.max(1, Math.min(canvas.width - rectX, Math.ceil(drawW)));
+    const rectH = Math.max(1, Math.min(canvas.height - rectY, Math.ceil(finalH)));
+
+    const imageData = ctx.getImageData(rectX, rectY, rectW, rectH);
     const data = imageData.data;
     const currentDPR = canvas.width / parseInt(canvas.style.width, 10);
-    const sampleRate = Math.max(1, Math.round(currentDPR / 3));
+    const sampleRate = sampleStep(currentDPR, rectW, rectH);
 
-    for (let y = 0; y < canvas.height; y += sampleRate) {
-      for (let x = 0; x < canvas.width; x += sampleRate) {
-        const index = (y * canvas.width + x) * 4;
+    for (let y = 0; y < rectH; y += sampleRate) {
+      for (let x = 0; x < rectW; x += sampleRate) {
+        const index = (y * rectW + x) * 4;
         const alpha = data[index + 3];
         // Drop the ground the logo is carrying with it — the near-black of a
         // dark plate, or the near-white of a light one.
@@ -640,11 +698,14 @@ const createParticles = (
         const isSubject = image.onLight ? luminance < 206 : luminance > 24;
         if (alpha > 12 && isSubject) {
           const originalAlpha = (alpha / 255) * (sampleRate / currentDPR);
+          // Back into canvas coordinates — the sampler walked the sub-rect.
+          const px = x + rectX;
+          const py = y + rectY;
           particles.push({
-            x,
-            y,
-            originalX: x,
-            originalY: y,
+            x: px,
+            y: py,
+            originalX: px,
+            originalY: py,
             color: `rgba(${data[index]}, ${data[index + 1]}, ${data[index + 2]}, ${originalAlpha})`,
             opacity: originalAlpha,
             originalAlpha,
@@ -683,9 +744,8 @@ const createParticles = (
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
 
-  const baseDPR = 3;
   const currentDPR = canvas.width / parseInt(canvas.style.width, 10);
-  const sampleRate = Math.max(1, Math.round(Math.max(1, Math.round(currentDPR / baseDPR))));
+  const sampleRate = sampleStep(currentDPR, canvas.width, canvas.height);
 
   for (let y = 0; y < canvas.height; y += sampleRate) {
     for (let x = 0; x < canvas.width; x += sampleRate) {

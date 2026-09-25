@@ -15,7 +15,7 @@ export const site = {
   description:
     "BIMAC builds BIM automation plugins for architecture, structure and MEPF — from the site study and concept design through detailed design, documentation and coordination to as-built handover.",
   url: "https://bimac.vercel.app",
-  email: "bimautomationconsulting@gmail.com",
+  email: "info@bimautomationconsulting.com",
   phoneDisplay: "+971 50 605 5153",
   /** Digits only, with country code — required by the wa.me link format. */
   whatsapp: "971506055153",
@@ -140,6 +140,12 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
       { label: "All tools", href: "/tools" },
       { label: "Projects", href: "/projects" },
       { label: "Automation by software", href: "/software" },
+    ],
+  },
+  {
+    /* The footer puts the WhatsApp and Email buttons under this column. */
+    title: "Custom Automation",
+    links: [
       { label: "Custom automation", href: "/custom-automation" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },

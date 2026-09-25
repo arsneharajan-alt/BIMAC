@@ -73,7 +73,7 @@ export default function SoftwarePage() {
                     className="transition-colors duration-200 group-hover:border-azure-300"
                   />
                   <div className="min-w-0">
-                    <h2 className="font-display text-xl font-semibold tracking-tight text-ink-950 group-hover:text-azure-700">
+                    <h2 className="font-display text-card-title font-semibold text-ink-950 group-hover:text-azure-700 lg:text-card-title-lg">
                       {platform.shortName}
                     </h2>
                     <p className="mt-0.5 font-mono text-2xs text-ink-400">{platform.vendor}</p>
@@ -88,9 +88,7 @@ export default function SoftwarePage() {
                   </span>
                 </div>
 
-                <p className="mt-5 text-[0.9375rem] leading-relaxed text-ink-600">
-                  {platform.tagline}
-                </p>
+                <p className="mt-5 text-card-body text-ink-600">{platform.tagline}</p>
 
                 <ul className="mt-5 flex flex-wrap gap-1.5 border-t border-ink-100 pt-5">
                   {groupNames(platform).map((name) => (
@@ -103,7 +101,7 @@ export default function SoftwarePage() {
                   ))}
                 </ul>
 
-                <span className="mt-5 inline-flex items-center gap-1.5 text-[0.8125rem] font-medium text-azure-600">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-card-meta font-medium text-azure-600">
                   View {platform.shortName} automation
                   <Icon
                     name="arrow-right"
@@ -136,13 +134,11 @@ export default function SoftwarePage() {
                 >
                   <LogoTile platform={item} size="md" />
                   <div className="min-w-0">
-                    <p className="font-display text-[0.9375rem] font-semibold tracking-tight text-ink-950">
+                    <p className="font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
                       {item.label}
                     </p>
                     <p className="mt-0.5 font-mono text-2xs text-ink-400">{item.vendor}</p>
-                    <p className="mt-2 text-[0.8125rem] leading-relaxed text-ink-600">
-                      {item.role}
-                    </p>
+                    <p className="mt-2 text-card-meta text-ink-600">{item.role}</p>
                   </div>
                 </li>
               ))}

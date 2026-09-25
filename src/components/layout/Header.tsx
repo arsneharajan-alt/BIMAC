@@ -10,6 +10,7 @@ import MegaMenu from "./MegaMenu";
 import SoftwareMenu from "./SoftwareMenu";
 import MobileNav from "./MobileNav";
 import SearchOverlay from "./SearchOverlay";
+import EnquiryForm from "@/components/common/EnquiryForm";
 import { headerNav, whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<MenuId | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
@@ -203,12 +205,24 @@ export function Header() {
                 <Icon name="search" className="text-[1.05rem]" />
               </button>
 
-              {/* No checkout — the primary action is a direct line to BIMAC. */}
+              {/* No checkout — the primary action is a direct line to BIMAC.
+                  Two roads to the same place: the form for someone who wants
+                  to leave their details and get on, WhatsApp for someone who
+                  would rather just start talking. */}
+              <button
+                type="button"
+                onClick={() => setEnquiryOpen(true)}
+                className="hidden h-9 items-center gap-2 rounded-lg bg-brand-500 px-3.5 text-[0.8125rem] font-medium text-white transition-colors hover:bg-brand-600 sm:inline-flex"
+              >
+                <Icon name="mail" className="text-[1.05rem]" />
+                Enquire
+              </button>
+
               <a
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden h-9 items-center gap-2 rounded-lg bg-[#25D366] px-3.5 text-[0.8125rem] font-medium text-[#0B2E13] transition-colors hover:bg-[#1FBB58] sm:inline-flex"
+                className="hidden h-9 items-center gap-2 rounded-lg bg-[#25D366] px-3.5 text-[0.8125rem] font-medium text-[#0B2E13] transition-colors hover:bg-[#1FBB58] md:inline-flex"
               >
                 <Icon name="whatsapp" className="text-[1.05rem]" />
                 WhatsApp
@@ -245,6 +259,7 @@ export function Header() {
         onOpenSearch={() => setSearchOpen(true)}
       />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <EnquiryForm open={enquiryOpen} onClose={() => setEnquiryOpen(false)} />
     </>
   );
 }

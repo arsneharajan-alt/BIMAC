@@ -2,7 +2,15 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import VaporizeTextCycle, { Tag } from "@/components/ui/vapour-text-effect";
-import { FADE_MS, INTRO_FAILSAFE_MS, VAPORIZE_S } from "@/lib/hero-timing";
+import {
+  DUST_FADE_S,
+  FADE_MS,
+  GATE_MAX_MS,
+  INTRO_FAILSAFE_MS,
+  INTRO_RATE,
+  VAPORIZE_FAILSAFE_MS,
+  VAPORIZE_S,
+} from "@/lib/hero-timing";
 
 /**
  * The opening, in two movements on black.
@@ -47,6 +55,23 @@ import { FADE_MS, INTRO_FAILSAFE_MS, VAPORIZE_S } from "@/lib/hero-timing";
  */
 
 const INTRO_SRC = "/intro.mp4";
+
+/**
+ * Whether the mark is blown apart into particles, or simply fades.
+ *
+ * On. It was turned off for a while on the suspicion that its particle field
+ * was taking the page's JavaScript down with it — the whole site was rendering
+ * white. It was not: the dev server was answering 404 for its own runtime
+ * chunks, so React never hydrated and nothing client-side ran at all. The
+ * vaporiser was simply never reached.
+ *
+ * It stays a switch rather than being inlined again, because it is the most
+ * expensive thing the opening does — see the DPR and particle ceilings in
+ * `vapour-text-effect.tsx` — and one word here is the quickest way to rule it
+ * out if the opening ever misbehaves again. VAPORIZE_FAILSAFE_MS covers the
+ * case where it stalls rather than crashes.
+ */
+const DUST = true;
 
 /** Used only if the video never produces a frame we can read. */
 const FALLBACK_LOGO = "/logos/bimac-logo.png";
@@ -135,8 +160,26 @@ function rememberPlayed() {
   }
 }
 
+/**
+ * A way past the opening that does not depend on the opening working.
+ *
+ * `?nointro` on any URL. Four seconds is nothing to a visitor and a great deal
+ * to someone loading the page for the twentieth time in an afternoon to look
+ * at something underneath it — and when the opening is the thing that is
+ * broken, "watch it again" is not a debugging step. It reads the real query
+ * string rather than a router hook so it is available to `skipped()` before
+ * anything else has run.
+ */
+function bypassed() {
+  try {
+    return new URLSearchParams(window.location.search).has("nointro");
+  } catch {
+    return false;
+  }
+}
+
 function skipped() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches || hasPlayed();
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches || bypassed() || hasPlayed();
 }
 
 /** Layout effects do not exist on the server; this keeps the console quiet. */
@@ -238,18 +281,42 @@ export function HeroIntro() {
     handedRef.current = true;
     const video = videoRef.current;
     setFrame(video ? captureFrame(video) : null);
-    setPhase("vaporizing");
+    // Straight to the fade when the dust is off: there is no particle field to
+    // wait on, so there is nothing to hand over to.
+    setPhase(DUST ? "vaporizing" : "leaving");
   }, []);
 
   useEffect(() => {
     if (skipped()) return undefined;
     const video = videoRef.current;
+    // Every frame of the animation, sooner. Set before play so the clip never
+    // starts at 1x and jumps.
+    if (video) video.playbackRate = INTRO_RATE;
     // Autoplay is allowed for a muted video, but a refusal must not strand the
     // visitor on a black panel — take the frame there is and move on.
     video?.play?.().catch(() => toDust());
     const failsafe = window.setTimeout(toDust, INTRO_FAILSAFE_MS);
     return () => window.clearTimeout(failsafe);
   }, [toDust]);
+
+  /**
+   * The dust's backstop.
+   *
+   * `onVaporized` is what normally moves this on, and it can only fire if the
+   * whole hand-off worked: a readable frame, a picture that loads, a sampler
+   * that finds the subject in it, and a field that paints. Every one of those
+   * is a way for the opening to stop dead with the panel still up — and
+   * because the visit is only marked played once it *finishes*, a reload puts
+   * the visitor straight back into it. The site is then unreachable.
+   *
+   * So the stage ends on a timer as well as on the signal, exactly as the
+   * video's does. Whichever comes first wins; `leaving` is idempotent.
+   */
+  useEffect(() => {
+    if (phase !== "vaporizing") return undefined;
+    const id = window.setTimeout(() => setPhase("leaving"), VAPORIZE_FAILSAFE_MS);
+    return () => window.clearTimeout(id);
+  }, [phase]);
 
   useEffect(() => {
     if (phase !== "leaving") return undefined;
@@ -259,6 +326,31 @@ export function HeroIntro() {
     }, FADE_MS);
     return () => window.clearTimeout(id);
   }, [phase]);
+
+  /**
+   * The gate's own ceiling — counted from mount, and deliberately not from the
+   * phase.
+   *
+   * Every other timer here is a backstop for one stage, and each of them can
+   * only fire if the machine reached that stage. This one does not care what
+   * the machine is doing: from the moment the panel mounts, the hero has at
+   * most GATE_MAX_MS of being hidden, and then it is shown whatever state
+   * anything is in. It is the difference between an opening that failed and a
+   * homepage that is blank.
+   *
+   * The empty dependency list is the point. This must not be restarted by a
+   * re-render, or a component that keeps re-rendering would keep pushing its
+   * own deadline back and never reach it.
+   */
+  useEffect(() => {
+    if (skipped()) return undefined;
+    const id = window.setTimeout(() => {
+      openGate();
+      setPhase("gone");
+    }, GATE_MAX_MS);
+    return () => window.clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Remember it has run, but only once it has actually finished: reloading
   // halfway through should still give the whole thing.
@@ -287,7 +379,7 @@ export function HeroIntro() {
       {/* One stage, one centre: the video and the canvas sit on top of each
           other so the change of hands is invisible. */}
       <div ref={stageRef} className="relative h-full w-full">
-        {!playing && box ? (
+        {DUST && !playing && box ? (
           <div className={["absolute inset-0", handedOver ? "visible" : "invisible"].join(" ")}>
             <VaporizeTextCycle
               texts={["BIMAC"]}
@@ -295,7 +387,7 @@ export function HeroIntro() {
               color="rgb(255, 255, 255)"
               spread={4}
               density={6}
-              animation={{ vaporizeDuration: VAPORIZE_S, fadeInDuration: 0.4, waitDuration: 0 }}
+              animation={{ vaporizeDuration: VAPORIZE_S, fadeInDuration: DUST_FADE_S, waitDuration: 0 }}
               direction="left-to-right"
               alignment="center"
               tag={Tag.P}

@@ -55,16 +55,14 @@ export function ToolCard({ tool, className }: { tool: Tool; className?: string }
         <div className="flex items-start gap-3.5">
           <ProductGlyph glyph={tool.glyph} size="md" />
           <div className="min-w-0 flex-1">
-            <h3 className="text-balance font-display text-[1.0625rem] font-semibold leading-snug tracking-tight text-ink-950">
+            <h3 className="text-balance font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
               {tool.name}
             </h3>
           </div>
           <StatusPill status={tool.status} />
         </div>
 
-        <p className="mt-3.5 line-clamp-2 text-[0.875rem] leading-relaxed text-ink-600">
-          {tool.summary}
-        </p>
+        <p className="mt-3.5 line-clamp-2 text-card-body text-ink-600">{tool.summary}</p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {shownDisciplines.map((id) => (
@@ -93,7 +91,7 @@ export function ToolCard({ tool, className }: { tool: Tool; className?: string }
         <Link
           href={toolHref(tool)}
           className={cn(
-            "inline-flex items-center gap-1.5 rounded text-[0.8125rem] font-medium text-ink-900",
+            "inline-flex items-center gap-1.5 rounded text-card-meta font-medium text-ink-900",
             "transition-colors hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2",
             "focus-visible:ring-brand-500/50 focus-visible:ring-offset-2",
             "after:absolute after:inset-0 after:content-['']",
@@ -121,7 +119,7 @@ export function ToolCardCompact({ tool }: { tool: Tool }) {
       <ProductGlyph glyph={tool.glyph} size="sm" />
       <div className="min-w-0 flex-1">
         <div className="flex items-start gap-2">
-          <h4 className="text-[0.9375rem] font-medium leading-snug tracking-tight text-ink-950 group-hover:text-brand-600">
+          <h4 className="text-card-title font-medium text-ink-950 group-hover:text-brand-600 lg:text-card-title-lg">
             {tool.name}
           </h4>
           <Icon
@@ -129,9 +127,7 @@ export function ToolCardCompact({ tool }: { tool: Tool }) {
             className="ml-auto mt-0.5 shrink-0 text-sm text-ink-300 transition-all group-hover:translate-x-0.5 group-hover:text-brand-500"
           />
         </div>
-        <p className="mt-1 line-clamp-2 text-[0.8125rem] leading-snug text-ink-500">
-          {tool.summary}
-        </p>
+        <p className="mt-1 line-clamp-2 text-card-body text-ink-500">{tool.summary}</p>
         <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
           <Badge tone="brand">{disciplineMap[tool.disciplines[0]].shortName}</Badge>
           <Badge tone="outline">

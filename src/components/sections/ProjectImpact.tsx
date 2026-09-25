@@ -144,11 +144,15 @@ export function ProjectImpact({ className }: { className?: string }) {
               </p>
             </div>
 
-            <p className="relative mt-3 text-[0.9375rem] font-semibold tracking-tight text-ink-900">
+            {/* The numeral above is this card's heading; the label is the
+                caption under it. Giving the label the card-title size put 24px
+                of it directly beneath a 40px figure, and the two then argued
+                over which one the eye should read first. */}
+            <p className="relative mt-3 text-card-body font-semibold text-ink-900">
               {stat.label}
             </p>
             {stat.note ? (
-              <p className="relative mt-1 max-w-[24ch] text-pretty text-[0.8125rem] leading-snug text-ink-500">
+              <p className="relative mt-1 max-w-[24ch] text-pretty text-card-meta text-ink-500">
                 {stat.note}
               </p>
             ) : null}

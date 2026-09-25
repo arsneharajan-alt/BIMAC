@@ -59,7 +59,7 @@ export function ProjectCard({ project, delay = 0 }: { project: Project; delay?: 
         {/* The name and who it was for; the way in, bottom right. */}
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
           <div className="min-w-0">
-            <h3 className="font-display text-lg font-semibold tracking-tight text-white">
+            <h3 className="font-display text-card-title font-semibold text-white lg:text-card-title-lg">
               {project.name}
             </h3>
             <p className="mt-1 font-mono text-2xs uppercase tracking-[0.12em] text-ink-300">

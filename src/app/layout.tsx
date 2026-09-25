@@ -61,6 +61,30 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
+  /**
+   * Google Search Console ownership, as the HTML-tag method: Search Console
+   * hands out a <meta name="google-site-verification" content="…"> and this
+   * writes it into every page's head. The code lives in
+   * GOOGLE_SITE_VERIFICATION (set it in Vercel → Settings → Environment
+   * Variables, or in .env.local) — nothing is emitted until it is set.
+   */
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+  /**
+   * The tab mark.
+   *
+   * Declared rather than left to the app/icon.png convention alone, so the
+   * <link rel="icon"> is explicit in the head and the Apple touch icon has
+   * somewhere to point. The artwork is the BIMAC mark cropped to itself: it
+   * used to ship inside a 512 square it only filled a third of, which reads
+   * at 512 and disappears at 16.
+   */
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
+    shortcut: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   robots: { index: true, follow: true },
 };
 
@@ -76,6 +100,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <head>
+        {/*
+          Start fetching the opening while the HTML is still being parsed.
+
+          The <video> that plays it only exists after hydration, so without
+          this the 650KB is not even requested until the page is interactive —
+          a second of the opening's four spent waiting on a file the server
+          already knows it needs.
+        */}
+        <link rel="preload" as="video" type="video/mp4" href="/intro.mp4" />
+
         {/* Without JS nothing can add `.is-revealed`, so nothing may start hidden. */}
         <noscript>
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}` +

@@ -104,12 +104,10 @@ export default function CustomAutomationPage() {
                     <span className="hidden h-px flex-1 bg-gradient-to-r from-ink-200 to-transparent sm:block" />
                   ) : null}
                 </div>
-                <h3 className="mt-4 text-[0.9375rem] font-semibold tracking-tight text-ink-950">
+                <h3 className="mt-4 text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
                   {step.title}
                 </h3>
-                <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-600">
-                  {step.description}
-                </p>
+                <p className="mt-1.5 text-card-body text-ink-600">{step.description}</p>
               </li>
             ))}
           </ol>

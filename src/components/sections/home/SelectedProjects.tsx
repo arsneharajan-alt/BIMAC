@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Icon from "@/components/ui/Icon";
+import StackedHeading from "@/components/ui/StackedHeading";
 import ProjectCard from "./ProjectCard";
 import { featuredProjects } from "@/data/projects";
 
@@ -13,22 +14,20 @@ import { featuredProjects } from "@/data/projects";
  */
 export function SelectedProjects() {
   return (
-    <section className="border-b border-ink-200 bg-white py-20 sm:py-28">
+    <section className="border-b border-ink-200 bg-white py-14 sm:py-20">
       <Container>
-        <div data-reveal="" className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="flex items-center gap-2.5 text-[0.8125rem] font-semibold uppercase tracking-[0.13em] text-brand-600">
-              <span className="h-px w-6 bg-brand-500" />
-              Selected projects
-            </p>
-            <h2 className="mt-5 font-display text-[2rem] font-semibold leading-[1.08] tracking-tightest text-ink-950 sm:text-[2.6rem]">
-              Real Projects. <span className="text-brand-500">Measurable Results.</span>
-            </h2>
-          </div>
+        <StackedHeading eyebrow="Selected projects" title="Real Projects." accent="Measurable Results." />
 
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} delay={index * 90} />
+          ))}
+        </div>
+
+        <div data-reveal="" className="mt-10 flex justify-center">
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-1.5 pb-1 text-[0.8125rem] font-medium text-ink-700 transition-colors hover:text-brand-600"
+            className="group inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-ink-700 transition-colors hover:text-brand-600"
           >
             View All Projects
             <Icon
@@ -36,12 +35,6 @@ export function SelectedProjects() {
               className="text-[0.8rem] text-brand-500 transition-transform duration-200 group-hover:translate-x-0.5"
             />
           </Link>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} delay={index * 90} />
-          ))}
         </div>
       </Container>
     </section>

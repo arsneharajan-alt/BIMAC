@@ -77,15 +77,15 @@ export default function ContactPage() {
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#25D366]/10 text-[#128C4A]">
                 <Icon name="whatsapp" className="text-3xl" />
               </span>
-              <h2 className="mt-6 font-display text-2xl font-semibold tracking-tight text-ink-950">
+              <h2 className="mt-6 font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
                 WhatsApp
               </h2>
-              <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">
+              <p className="mt-2 text-card-body text-ink-600">
                 Fastest route. Send a message describing the task and we will reply the same day
                 during working hours.
               </p>
-              <p className="mt-5 font-mono text-[0.9375rem] text-ink-900">{site.phoneDisplay}</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-[#128C4A]">
+              <p className="mt-5 font-mono text-card-meta text-ink-900">{site.phoneDisplay}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-card-meta font-medium text-[#128C4A]">
                 Open WhatsApp
                 <Icon
                   name="arrow-up-right"
@@ -105,17 +105,15 @@ export default function ContactPage() {
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-50 text-brand-600">
                 <Icon name="mail" className="text-3xl" />
               </span>
-              <h2 className="mt-6 font-display text-2xl font-semibold tracking-tight text-ink-950">
+              <h2 className="mt-6 font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
                 Email
               </h2>
-              <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">
+              <p className="mt-2 text-card-body text-ink-600">
                 Better for anything with detail — a scope, a sample file, or a list of the tasks
                 you want automated.
               </p>
-              <p className="mt-5 break-all font-mono text-[0.9375rem] text-ink-900">
-                {site.email}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-brand-600">
+              <p className="mt-5 break-all font-mono text-card-meta text-ink-900">{site.email}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-card-meta font-medium text-brand-600">
                 Compose email
                 <Icon
                   name="arrow-up-right"

@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import Container from "@/components/ui/Container";
 import Icon from "@/components/ui/Icon";
 import { GLOSS, LIFT, Sheen } from "@/components/ui/Gloss";
+import StackedHeading from "@/components/ui/StackedHeading";
 import type { GlyphId } from "@/types";
 
 /**
@@ -20,15 +21,9 @@ const POINTS: { title: string; line: string; glyph: GlyphId }[] = [
 
 export function WhyBimac() {
   return (
-    <section className="border-b border-ink-200 bg-ink-50/60 py-20 sm:py-24">
+    <section className="border-b border-ink-200 bg-ink-50/60 py-14 sm:py-20">
       <Container>
-        <p
-          data-reveal=""
-          className="flex items-center gap-2.5 text-[0.8125rem] font-semibold uppercase tracking-[0.13em] text-brand-600"
-        >
-          <span className="h-px w-6 bg-brand-500" />
-          Why BIMAC
-        </p>
+        <StackedHeading eyebrow="Why BIMAC" />
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {POINTS.map((point, index) => (
@@ -42,10 +37,10 @@ export function WhyBimac() {
                 <Icon name={point.glyph} className="text-base" />
               </span>
 
-              <h3 className="mt-4 font-display text-[0.9375rem] font-semibold tracking-tight text-ink-950">
+              <h3 className="mt-4 font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
                 {point.title}
               </h3>
-              <p className="mt-1 text-[0.8125rem] leading-snug text-ink-500">{point.line}</p>
+              <p className="mt-1 text-card-body text-ink-500">{point.line}</p>
 
               <Sheen />
             </div>

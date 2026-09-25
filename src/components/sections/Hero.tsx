@@ -1,28 +1,20 @@
 import Container from "@/components/ui/Container";
-import HeroIntro from "@/components/sections/HeroIntro";
 import Button from "@/components/ui/Button";
 import HeroBackdrop from "@/components/common/HeroBackdrop";
-import { PLANE_MS } from "@/lib/hero-timing";
 import { cn } from "@/lib/utils";
 
 /**
- * The opening runs in three acts.
+ * The hero opens straight onto the page — there is no intro panel any more.
  *
- * First intro.mp4 plays on black — see `HeroIntro`. That panel then fades
- * into the white plane behind it, which is the same colour, so there is no
- * seam; the plane shrinks away to open the page.
- *
- * While the plane is still up, only what is orange can be seen against it: the
- * headline's first line and the button. Everything white is held back until the
- * plane has gone, so it arrives on the blue rather than appearing out of the
- * white.
- *
- * Every delay below is counted from the moment the panel leaves, not from page
- * load: the animations are marked `hero-staged` and held at their first frame
- * until then. See the gate in globals.css.
+ * The orange line and the button land first; the white half of the headline
+ * and the promise follow a word at a time. Every delay is counted from page
+ * load.
  */
 
-/** A delay, counted from the moment the opening panel leaves. */
+/** How long after load the white half of the headline starts to arrive. */
+const LEAD_MS = 250;
+
+/** A delay, counted from page load. */
 function enter(delayMs: number) {
   return { animationDelay: `${delayMs}ms` } as const;
 }
@@ -67,26 +59,22 @@ function Words({
   );
 }
 
-export function Hero() {
+export function Hero({ className }: { className?: string }) {
   // Ocean blue ground: deep navy behind the copy, opening to a lighter azure
   // at the lower right where the massing rises.
   return (
-    // data-hero-intro is the gate: it ships closed in the markup, so nothing
-    // has moved by the time the opening panel appears over it, and HeroIntro
-    // opens it when the panel leaves.
     <section
-      data-hero-intro="running"
-      className="relative overflow-hidden bg-ink-950 text-white"
+      className={cn("relative flex flex-col overflow-hidden bg-ink-950 text-white", className)}
     >
       {/* The towers, revealing themselves from the street up. */}
       <HeroBackdrop />
 
-      <HeroIntro />
-
-      <Container className="relative">
-        {/* One centred column: the headline, the promise and the one action
-            stack on the same axis, with the record underneath. */}
-        <div className="flex min-h-[calc(100vh-4.5rem)] flex-col justify-center py-20 lg:py-24">
+      <Container className="relative flex flex-1 flex-col justify-center">
+        {/* One centred column: the headline, the promise and the one action,
+            centred up and down in the navy. The home page lets the section
+            grow to fill whatever the software strip leaves of the first
+            screen — see the first-screen wrapper in app/page.tsx. */}
+        <div className="flex flex-col py-12 sm:py-14">
           <div className="mx-auto max-w-5xl text-center">
             {/* Two lines, always: "Smart Automation for" / "Every Software You
                 Use". The first is held on one line from lg up so the break
@@ -97,22 +85,25 @@ export function Hero() {
                   leaves standing. Everything else is sized against this. */}
               <span
                 style={enter(90)}
-                className="hero-staged block animate-fade-up font-bold text-brand-500 text-[3rem] sm:text-[4rem] lg:text-[5.25rem] xl:text-[6.25rem]"
+                className="hero-staged block animate-fade-up font-bold text-brand-500 text-[2.75rem] sm:text-[3.75rem] lg:text-[4.5rem] xl:text-[5.25rem] [@media(max-height:820px)]:lg:text-[4rem]"
               >
                 Smart Automation
               </span>
               {/* The rest of the sentence, arriving a word at a time once the
-                  plane has gone. */}
-              <span className="mt-2 block text-[1.625rem] sm:text-[2.125rem] lg:text-[2.75rem] xl:text-[3.25rem]">
-                <Words text="for Every Software You Use" start={PLANE_MS - 150} step={130} />
+                  plane has actually gone — not just once it has started to
+                  shrink. The two lines are a beat apart on purpose: the white
+                  closes to a circle carrying only the orange, and the sentence
+                  finishes itself on the blue behind it. */}
+              <span className="mt-1 block text-[1.5rem] sm:text-[2rem] lg:text-[2.5rem] xl:text-[2.875rem] [@media(max-height:820px)]:lg:text-[2.25rem]">
+                <Words text="for Every Software You Use" start={LEAD_MS} step={130} />
               </span>
             </h1>
 
             {/* The promise assembles a word at a time under the headline. */}
-            <p className="mx-auto mt-6 max-w-2xl text-[1rem] leading-relaxed text-ink-300 sm:text-[1.125rem] sm:leading-relaxed">
+            <p className="mx-auto mt-5 max-w-2xl text-[1rem] leading-relaxed text-ink-300 sm:text-[1.125rem] sm:leading-relaxed">
               <Words
-                text="Automate BIM, AEC, and industry workflows across 20+ software platforms — with custom tools built around the way you work."
-                start={PLANE_MS + 700}
+                text="Purpose-built plugins that automate AEC workflows across Architecture, Structure and MEP — inside the software you already use."
+                start={LEAD_MS + 400}
                 step={46}
               />
             </p>
@@ -122,14 +113,17 @@ export function Hero() {
               the header, and contact lives up there too, so the hero does not
               repeat them — it points at the catalogue and gets out of the way.
             */}
-            <div style={enter(760)} className="hero-staged mt-10 flex animate-fade-up justify-center">
+            {/* Up beside the headline rather than after the plane. These two —
+                the name and the one action — are what the white is holding
+                when it closes; everything else arrives on the blue. */}
+            <div style={enter(220)} className="hero-staged mt-8 flex animate-fade-up justify-center">
               <Button
                 href="/tools"
                 size="lg"
                 icon="arrow-right"
                 className={[
                   // Scaled up to sit against the headline rather than under it.
-                  "h-16 px-10 text-lg",
+                  "h-14 px-9 text-lg",
                   // A light sweeps across on hover; the whole button presses in
                   // on click, so the tap has something to answer it.
                   // The base already carries `transition-all`, so the press

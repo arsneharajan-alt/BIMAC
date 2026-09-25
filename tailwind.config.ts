@@ -72,6 +72,27 @@ const config: Config = {
       },
       fontSize: {
         "2xs": ["0.6875rem", { lineHeight: "1rem" }],
+
+        /* ----------------------------------------------------------------
+           The card type scale.
+
+           Every card on the site sets its title and its copy from these two
+           steps and nothing else. They are the sizes the back of a flip card
+           was already using, which is the pairing that reads best at card
+           size; the fronts, the catalogue cards, the feature cards and the
+           rest were each carrying their own hand-typed pixel value, eight
+           title sizes and four body sizes between them.
+
+           Line height and tracking travel with the size deliberately. A
+           title set at 24px with the body's leading is the other half of the
+           same mistake, and leaving them separate is how the sizes drifted
+           apart in the first place.
+           ---------------------------------------------------------------- */
+        "card-title": ["1.25rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "card-title-lg": ["1.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "card-body": ["0.875rem", { lineHeight: "1.625" }],
+        /* Supporting copy inside a card — step lists, meta rows, captions. */
+        "card-meta": ["0.8125rem", { lineHeight: "1.5" }],
       },
       letterSpacing: {
         tightest: "-0.045em",
@@ -242,6 +263,22 @@ const config: Config = {
           "50%": { filter: "blur(var(--focus-blur, 3px))", opacity: "0.66", transform: "scale(0.92)" },
           "72%": { filter: "blur(var(--focus-soft, 1.4px))", opacity: "0.86", transform: "scale(0.97)" },
         },
+        /* Data running along a connector, left to right or top to bottom. The
+           runner is a third of the track, so it starts and ends off it. */
+        "flow-x": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(300%)" },
+        },
+        "flow-y": {
+          from: { transform: "translateY(-100%)" },
+          to: { transform: "translateY(300%)" },
+        },
+        /* An input lighting up as it is fed to the automation, in turn. */
+        feed: {
+          "0%, 100%": { borderColor: "rgba(255,255,255,0.10)", backgroundColor: "rgba(255,255,255,0.04)" },
+          "8%": { borderColor: "rgba(251,124,60,0.6)", backgroundColor: "rgba(245,95,22,0.12)" },
+          "22%": { borderColor: "rgba(255,255,255,0.10)", backgroundColor: "rgba(255,255,255,0.04)" },
+        },
         /* A pass of light that brightens the nodes as it crosses them. */
         "grid-scan": {
           "0%": { transform: "translateX(-45%)" },
@@ -273,6 +310,9 @@ const config: Config = {
         "scene-cycle": "scene-cycle 9s ease-in-out infinite",
         "scene-bar": "scene-bar 9s cubic-bezier(0.22,1,0.36,1) infinite",
         "scene-flag": "scene-flag 2.4s ease-in-out infinite",
+        "flow-x": "flow-x 2.2s cubic-bezier(0.45,0,0.55,1) infinite",
+        "flow-y": "flow-y 2.2s cubic-bezier(0.45,0,0.55,1) infinite",
+        feed: "feed 3s ease-in-out infinite",
         marquee: "marquee 38s linear infinite",
         "marquee-reverse": "marquee-reverse 38s linear infinite",
       },

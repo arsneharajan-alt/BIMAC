@@ -57,10 +57,10 @@ export function EmptyState({
       <span className="grid h-12 w-12 place-items-center rounded-xl border border-ink-200 bg-white text-ink-400">
         <Icon name="search" className="text-xl" />
       </span>
-      <h3 className="mt-4 font-display text-lg font-semibold tracking-tight text-ink-900">
+      <h3 className="mt-4 font-display text-card-title font-semibold text-ink-900 lg:text-card-title-lg">
         {title}
       </h3>
-      <p className="mt-1.5 max-w-sm text-[0.875rem] leading-relaxed text-ink-500">{message}</p>
+      <p className="mt-1.5 max-w-sm text-card-body text-ink-500">{message}</p>
       {action ? <div className="mt-5">{action}</div> : null}
     </div>
   );

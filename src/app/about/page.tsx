@@ -142,10 +142,10 @@ export default function AboutPage() {
                   <span className="grid h-11 w-11 place-items-center rounded-xl border border-ink-200 bg-ink-50 text-brand-600 transition-colors group-hover:border-brand-200 group-hover:bg-brand-50">
                     <Icon name={item.glyph} className="text-xl" />
                   </span>
-                  <h3 className="mt-4 font-display text-[1.0625rem] font-semibold tracking-tight text-ink-950">
+                  <h3 className="mt-4 font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-600">{item.body}</p>
+                  <p className="mt-2 text-card-body text-ink-600">{item.body}</p>
                 </div>
               ))}
             </div>

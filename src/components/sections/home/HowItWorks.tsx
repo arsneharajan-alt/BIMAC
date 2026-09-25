@@ -79,10 +79,19 @@ export function HowItWorks() {
                   </span>
                 </div>
 
-                <h3 className="mt-5 font-display text-[0.9375rem] font-semibold uppercase tracking-[0.12em] text-ink-950">
+                {/* Sized off the card *body* step, not the title one, even
+                    though this is the h3.
+
+                    Four uppercase words tracked at 0.12em are an eyebrow in
+                    everything but the tag name — they name the stages of a
+                    sequence, they do not head four articles. Set at the title
+                    size the strip stops being a strip and starts shouting
+                    across the section, which is the opposite of what pulling
+                    the card scale down was for. */}
+                <h3 className="mt-5 font-display text-card-body font-semibold uppercase tracking-[0.12em] text-ink-950">
                   {step.word}
                 </h3>
-                <p className="mt-1.5 max-w-[18ch] text-pretty text-[0.8125rem] leading-snug text-ink-500">
+                <p className="mt-1.5 max-w-[18ch] text-pretty text-card-body text-ink-500">
                   {step.label}
                 </p>
               </li>

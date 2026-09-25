@@ -2,102 +2,156 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Icon from "@/components/ui/Icon";
+import StackedHeading from "@/components/ui/StackedHeading";
 import { GLOSS, LIFT, Sheen } from "@/components/ui/Gloss";
+import { cn } from "@/lib/utils";
 import DisciplineSolid, { type SolidId } from "./DisciplineSolid";
 import type { DisciplineId } from "@/types";
 
 /**
- * What we automate — the three ways in.
+ * The three disciplines.
  *
- * Three cards and nothing else. Each is a door to the products that already
- * exist on /tools/<discipline>, so no product content is repeated here: a
- * name, three words for what the tools do, and the solid.
+ * Each card is a door to /tools/<discipline>, and now says what is behind it:
+ * the four kinds of work the plugins take over in that discipline. The solid
+ * model stays as the card's picture.
  *
- * The solid sits on the right of the card and runs past its edge, which is
- * what stops three cards of mostly white space reading as empty.
+ * One design, three accents. Orange, azure and teal are the same three colours
+ * the example automations use for architecture, structure and MEP, so the
+ * disciplines are told apart the same way everywhere on the page.
  */
+
+type Accent = { bar: string; text: string; tint: string; ring: string; check: string };
+
+const ACCENTS: Record<DisciplineId, Accent> = {
+  architecture: {
+    bar: "bg-brand-500",
+    text: "text-brand-600",
+    tint: "from-brand-50",
+    ring: "hover:border-brand-300",
+    check: "bg-brand-50 text-brand-600",
+  },
+  structure: {
+    bar: "bg-azure-500",
+    text: "text-azure-600",
+    tint: "from-azure-50",
+    ring: "hover:border-azure-300",
+    check: "bg-azure-50 text-azure-600",
+  },
+  mep: {
+    bar: "bg-teal-500",
+    text: "text-teal-600",
+    tint: "from-teal-50",
+    ring: "hover:border-teal-300",
+    check: "bg-teal-50 text-teal-600",
+  },
+} as Record<DisciplineId, Accent>;
+
 const ENTRIES: {
   id: DisciplineId;
   solid: SolidId;
   label: string;
-  tagline: string;
+  line: string;
+  work: string[];
   href: string;
 }[] = [
   {
     id: "architecture",
     solid: "architecture",
     label: "Architecture",
-    tagline: "Design. Model. Automate.",
+    line: "The repetitive half of design — modelling, documentation and sheets — handled.",
+    work: ["Rooms, walls & floors from CAD", "Sheets, views & title blocks", "Area & room schedules", "Tagging & annotation"],
     href: "/tools/architecture",
   },
   {
     id: "structure",
     solid: "structure",
-    label: "Structures",
-    tagline: "Analyze. Detail. Deliver.",
+    label: "Structure",
+    line: "Models, drawings and data that stay in step as the design moves.",
+    work: ["Grids, columns & framing from CAD", "GA & detail drawing sets", "Quantities & take-offs", "Model QA & standards checks"],
     href: "/tools/structure",
   },
   {
     id: "mep",
     solid: "mep",
     label: "MEP",
-    tagline: "Coordinate. Automate. Build.",
+    line: "Mechanical, electrical and plumbing, modelled and documented at speed.",
+    work: ["Duct, pipe & tray routing", "Equipment layout & tagging", "Schematics & system schedules", "Coordination & clash reports"],
     href: "/tools/mep",
   },
 ];
 
 export function WhatWeAutomated() {
   return (
-    <section className="border-b border-ink-200 bg-white py-20 sm:py-28">
+    <section className="border-b border-ink-200 bg-white py-14 sm:py-20">
       <Container>
-        <div data-reveal="" className="flex flex-wrap items-end justify-between gap-x-12 gap-y-6">
-          <div>
-            <p className="flex items-center gap-2.5 text-[0.8125rem] font-semibold uppercase tracking-[0.13em] text-brand-600">
-              <span className="h-px w-6 bg-brand-500" />
-              What we automate
-            </p>
-            <h2 className="mt-5 font-display text-[2rem] font-semibold leading-[1.08] tracking-tightest text-ink-950 sm:text-[2.6rem]">
-              Key Disciplines. <span className="text-brand-500">Real Impact.</span>
-            </h2>
-          </div>
+        <StackedHeading
+          eyebrow="Disciplines"
+          title="Architecture. Structure. MEP."
+          accent="Automated End to End."
+          lede="Every plugin is built around the way one discipline actually works. Pick yours to explore the catalogue."
+        />
 
-          <p className="max-w-[34ch] text-pretty text-[0.9375rem] leading-relaxed text-ink-500 lg:text-right">
-            Automate your workflow across core AEC disciplines. Click a discipline to explore our
-            products.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          {ENTRIES.map((entry, index) => (
-            <Link
-              key={entry.id}
-              href={entry.href}
-              data-reveal=""
-              style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
-              className={`group relative isolate flex min-h-[16.5rem] flex-col justify-between overflow-hidden rounded-2xl border border-ink-200 bg-[linear-gradient(168deg,#FFFFFF_0%,#F6F9FC_100%)] p-6 ${GLOSS} ${LIFT} hover:border-brand-300`}
-            >
-              {/* The solid, right of the type and running past the card edge. */}
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-7 bottom-1 top-1 w-[68%] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+        <div className="mt-10 grid gap-6 md:grid-cols-3 lg:mt-12">
+          {ENTRIES.map((entry, index) => {
+            const accent = ACCENTS[entry.id];
+            return (
+              <Link
+                key={entry.id}
+                href={entry.href}
+                data-reveal=""
+                style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
+                className={cn(
+                  "group relative isolate flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white",
+                  GLOSS,
+                  LIFT,
+                  accent.ring,
+                )}
               >
-                <DisciplineSolid id={entry.solid} />
-              </span>
+                {/* The discipline's colour, along the top edge. */}
+                <span aria-hidden="true" className={cn("absolute inset-x-0 top-0 z-10 h-1", accent.bar)} />
 
-              <div className="relative max-w-[12rem]">
-                <h3 className="font-display text-xl font-semibold tracking-tight text-ink-950">
-                  {entry.label}
-                </h3>
-                <p className="mt-1.5 text-[0.8125rem] leading-snug text-ink-500">{entry.tagline}</p>
-              </div>
+                {/* The model, on a wash of the discipline's colour. */}
+                <div className={cn("relative h-44 overflow-hidden bg-gradient-to-b to-white", accent.tint)}>
+                  <span aria-hidden="true" className="absolute inset-0 bg-grid-light bg-grid opacity-50" />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-10 bottom-0 top-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                  >
+                    <DisciplineSolid id={entry.solid} />
+                  </span>
+                  <span className={cn("absolute left-6 top-5 font-mono text-[0.75rem] font-semibold tracking-wider", accent.text)}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
 
-              <span className="relative grid h-10 w-10 place-items-center rounded-full border border-ink-200 bg-white text-ink-600 transition-colors duration-300 group-hover:border-brand-300 group-hover:bg-brand-500 group-hover:text-white">
-                <Icon name="arrow-right" className="text-sm" />
-              </span>
+                <div className="flex flex-1 flex-col p-6 pt-5">
+                  <h3 className="font-display text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
+                    {entry.label}
+                  </h3>
+                  <span aria-hidden="true" className={cn("mt-3 block h-[3px] w-7 rounded-full", accent.bar)} />
+                  <p className="mt-4 text-card-body text-ink-500">{entry.line}</p>
 
-              <Sheen />
-            </Link>
-          ))}
+                  <ul className="mt-5 space-y-2.5">
+                    {entry.work.map((item) => (
+                      <li key={item} className="flex items-center gap-2.5 text-card-meta font-medium text-ink-700">
+                        <span className={cn("grid h-5 w-5 shrink-0 place-items-center rounded-full", accent.check)}>
+                          <Icon name="check" className="text-[0.625rem]" strokeWidth={3} />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <span className={cn("mt-auto inline-flex items-center gap-1.5 pt-6 text-[0.875rem] font-semibold", accent.text)}>
+                    Explore {entry.label} plugins
+                    <Icon name="arrow-right" className="text-[0.8rem] transition-transform duration-200 group-hover:translate-x-1" />
+                  </span>
+                </div>
+
+                <Sheen />
+              </Link>
+            );
+          })}
         </div>
       </Container>
     </section>

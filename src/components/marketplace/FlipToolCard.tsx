@@ -196,17 +196,18 @@ function ToolName({ name }: { name: string }) {
 }
 
 /**
- * How big a name can be set before it stops fitting the column.
+ * The type both faces are set in.
  *
- * The designed cards do the same thing, computed at build time off a measured
- * character width. This is the house card's version, in the steps the type
- * scale actually offers.
+ * One size, not three. The front used to be sized off the length of the name
+ * — 20px for a short one, 15px for a long one — while the back was hard-coded
+ * to the top of that scale, so the same title changed size as the card turned
+ * over. Holding a title to two lines and letting it clamp is the lesser of the
+ * two faults: a card that resizes its own heading mid-flip is the thing you
+ * actually notice.
  */
-function headingSize(name: string): string {
-  if (name.length <= 24) return "text-[1.25rem] lg:text-[1.5rem]";
-  if (name.length <= 34) return "text-[1.0625rem] lg:text-[1.25rem]";
-  return "text-[0.9375rem] lg:text-[1.0625rem]";
-}
+const CARD_TITLE =
+  "line-clamp-2 text-balance font-display text-card-title font-bold lg:text-card-title-lg";
+const CARD_BODY = "text-card-body text-ink-600";
 
 /**
  * The product card, with the detail on the back of it.
@@ -295,20 +296,11 @@ export function FlipToolCard({
                   <p className="mb-2 font-mono text-2xs tracking-[0.18em] text-ink-400">{number}</p>
                 ) : null}
 
-                <h3
-                  className={cn(
-                    "text-balance font-display font-bold leading-[1.1] tracking-tight",
-                    // Sized off the name rather than clamped: a title cut off
-                    // mid-word reads as a card nobody finished.
-                    headingSize(tool.name),
-                  )}
-                >
+                <h3 className={CARD_TITLE}>
                   <ToolName name={tool.name} />
                 </h3>
 
-                <p className="mt-2 line-clamp-2 text-[0.8125rem] leading-relaxed text-ink-600">
-                  {tool.summary}
-                </p>
+                <p className={cn("mt-2 line-clamp-2", CARD_BODY)}>{tool.summary}</p>
 
                 {/* What it runs through, in order. */}
                 <ol className="mt-3.5 space-y-2">
@@ -323,7 +315,7 @@ export function FlipToolCard({
                       >
                         {stepIndex + 1}
                       </span>
-                      <span className="line-clamp-2 min-w-0 text-[0.75rem] leading-snug text-ink-700">
+                      <span className="line-clamp-2 min-w-0 text-card-meta text-ink-700">
                         {step}
                       </span>
                     </li>
@@ -386,11 +378,11 @@ export function FlipToolCard({
         >
           <PlatformCorner platform={platform} />
 
-          <h3 className="line-clamp-2 max-w-[calc(100%-3.5rem)] text-balance font-display text-[1.25rem] font-bold leading-[1.1] tracking-tight lg:text-[1.5rem]">
+          <h3 className={cn("max-w-[calc(100%-3.5rem)]", CARD_TITLE)}>
             <ToolName name={tool.name} />
           </h3>
 
-          <p className="mt-3 text-[0.875rem] leading-relaxed text-ink-600">{tool.summary}</p>
+          <p className={cn("mt-3", CARD_BODY)}>{tool.summary}</p>
 
           <div className="mt-auto flex gap-2.5 pt-5">
             <Link

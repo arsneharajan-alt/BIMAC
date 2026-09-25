@@ -62,35 +62,34 @@ function SoftwareRow({ items, reverse }: { items: SoftwareMenuItem[]; reverse?: 
 
 export function SoftwareMarquee() {
   return (
-    <section className="border-b border-ink-200 bg-white py-14 sm:py-16">
+    <section className="border-b border-ink-200 bg-white py-7 sm:py-8">
       <Container>
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="mb-2 flex items-center gap-2.5 text-2xs font-semibold uppercase tracking-[0.16em] text-azure-600">
-              <span className="h-px w-6 bg-azure-500" />
-              Automates inside
-            </p>
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-ink-950 sm:text-[1.75rem]">
-              The software you already run
-            </h2>
-          </div>
+        {/* One small line and straight into the rows: they have to be in the
+            first screen, running, under the hero. */}
+        <p className="flex items-center justify-center gap-3 text-center text-[0.75rem] font-bold uppercase tracking-[0.2em] text-[#073157]">
+          <span className="h-[3px] w-6 rounded-full bg-brand-500" />
+          Automates inside the software you already run
+          <span className="h-[3px] w-6 rounded-full bg-brand-500" />
+        </p>
+
+        {/* Held inside the page gutter, so the rows start and stop level with
+            the heading above them and the cards below. */}
+        <div className="mt-5 space-y-3">
+          <SoftwareRow items={ROW_ONE} />
+          <SoftwareRow items={ROW_TWO} reverse />
+        </div>
+
+        <div className="mt-4 flex justify-center">
           <Link
             href="/software"
-            className="group inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-azure-600 transition-colors hover:text-azure-700"
+            className="group inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-ink-700 transition-colors hover:text-brand-600"
           >
             All software
             <Icon
               name="arrow-right"
-              className="text-sm transition-transform duration-200 group-hover:translate-x-0.5"
+              className="text-sm text-brand-500 transition-transform duration-200 group-hover:translate-x-0.5"
             />
           </Link>
-        </div>
-
-        {/* Held inside the page gutter, so the rows start and stop level with
-            the heading above them and the cards below. */}
-        <div className="space-y-4">
-          <SoftwareRow items={ROW_ONE} />
-          <SoftwareRow items={ROW_TWO} reverse />
         </div>
       </Container>
     </section>

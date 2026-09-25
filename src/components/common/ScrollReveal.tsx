@@ -30,8 +30,9 @@ export function ScrollReveal() {
           io.unobserve(entry.target);
         }
       },
-      // Fire a little before the element's edge so it lands settled, not mid-flight.
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+      // Fire well before the element reaches the screen, so a visitor scrolling
+      // never meets an empty band waiting for its content to fade in.
+      { rootMargin: "0px 0px 15% 0px", threshold: 0 },
     );
 
     const observe = (root: ParentNode) => {
@@ -52,6 +53,20 @@ export function ScrollReveal() {
 
     observe(document);
 
+    /*
+     * Only now does anything become hidden.
+     *
+     * The CSS that hides `[data-reveal]` is scoped to this class, so until it
+     * lands the page is simply visible. Adding it here — after the observer is
+     * built and everything already on screen has been marked revealed — means
+     * a script that never runs, or that dies on the way here, leaves a
+     * readable page behind instead of a white one.
+     *
+     * The order matters: reveal first, then hide. The other way round and the
+     * fold flickers on every load.
+     */
+    document.documentElement.classList.add("reveal-ready");
+
     const mo = new MutationObserver((records) => {
       for (const record of records) {
         for (const node of record.addedNodes) {
@@ -70,6 +85,8 @@ export function ScrollReveal() {
     return () => {
       io.disconnect();
       mo.disconnect();
+      // Nothing is left watching, so nothing may be left hidden.
+      document.documentElement.classList.remove("reveal-ready");
     };
   }, []);
 

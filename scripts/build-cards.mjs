@@ -292,8 +292,26 @@ function dropPanel(markup, label) {
  * row below it sit at the same height on every card in a row.
  */
 
-/** Two lines at the largest size any card sets. */
-const HEADING_BLOCK = 104;
+/**
+ * One title size for every card, matching the rest of the site.
+ *
+ * The designs set each title for its own name — 49px for "Schedule", 26px for
+ * "MEP Coordination & Clash Detection" — which is right when a card is looked
+ * at on its own and wrong the moment a hundred of them sit in a grid. Worse,
+ * the stage scales to the card's width at very nearly 1:1, so a 49px title
+ * arrived on screen at roughly twice the 24px the back of the same card sets
+ * its heading at. Turning the card over changed the size of its own name.
+ *
+ * 26px is the floor of the measured set, which is what makes it the one size
+ * that is safe to use flat: every name is already known to fit two lines at
+ * it, so nothing overruns the column. Scaled into the card it lands at ~24px
+ * — the `card-title-lg` step in tailwind.config.ts, which is where the rest
+ * of the site's cards now get their headings from. Change both together.
+ */
+const CARD_TITLE_PX = 26;
+
+/** Two lines at the size above, at the 1.0 leading the designs set. */
+const HEADING_BLOCK = 56;
 
 /**
  * The size each heading fits two lines at, measured in the browser.
@@ -339,7 +357,11 @@ function fitHeading(markup, label) {
   const [whole, style, inner] = found;
   const declared = Number((style.match(/font-size:\s*([\d.]+)px/) ?? [, 0])[1]);
   const measured = HEADING_SIZES[headingKey(inner)];
-  const size = measured && declared ? Math.min(declared, measured) : declared;
+  // The house size, unless this particular name was measured as needing to be
+  // smaller still to hold two lines. In practice the measured floor *is* the
+  // house size, so this is a guard rather than a source of variation.
+  const fits = measured && declared ? Math.min(declared, measured) : declared;
+  const size = Math.min(fits || CARD_TITLE_PX, CARD_TITLE_PX);
 
   const fitted = (size ? style.replace(/font-size:\s*[\d.]+px/, `font-size: ${size}px`) : style)
     .concat(` min-height: ${HEADING_BLOCK}px;`);

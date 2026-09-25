@@ -14,7 +14,7 @@ export function ToolFeatures({ features }: { features: string[] }) {
           <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-500 group-hover:text-white">
             <Icon name="check" className="text-[0.7rem]" strokeWidth={3} />
           </span>
-          <span className="text-[0.9375rem] leading-relaxed text-ink-700">{feature}</span>
+          <span className="text-card-body text-ink-700">{feature}</span>
         </li>
       ))}
     </ul>
@@ -68,7 +68,7 @@ export function ToolIO({ inputs, outputs }: { inputs: string[]; outputs: string[
                     column.tone === "brand" ? "bg-brand-500" : "bg-ink-400",
                   )}
                 />
-                <span className="text-[0.9375rem] leading-relaxed text-ink-700">{item}</span>
+                <span className="text-card-body text-ink-700">{item}</span>
               </li>
             ))}
           </ul>
@@ -116,12 +116,10 @@ export function ToolProcess({ tool }: { tool: Tool }) {
               <span className="hidden h-px flex-1 bg-gradient-to-r from-ink-200 to-transparent sm:block" />
             ) : null}
           </div>
-          <h3 className="mt-4 text-[0.9375rem] font-semibold tracking-tight text-ink-950">
+          <h3 className="mt-4 text-card-title font-semibold text-ink-950 lg:text-card-title-lg">
             {step.title}
           </h3>
-          <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-600">
-            {step.description}
-          </p>
+          <p className="mt-1.5 text-card-body text-ink-600">{step.description}</p>
         </li>
       ))}
     </ol>

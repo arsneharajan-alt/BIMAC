@@ -1,37 +1,44 @@
 import Hero from "@/components/sections/Hero";
-import Container from "@/components/ui/Container";
 import SoftwareMarquee from "@/components/sections/SoftwareMarquee";
-import ProjectImpact from "@/components/sections/ProjectImpact";
+import WhatWeDo from "@/components/sections/home/WhatWeDo";
+import ExampleAutomations from "@/components/sections/home/ExampleAutomations";
 import WhatWeAutomated from "@/components/sections/home/WhatWeAutomated";
-import HowItWorks from "@/components/sections/home/HowItWorks";
+import CustomAutomation from "@/components/sections/home/CustomAutomation";
 import SelectedProjects from "@/components/sections/home/SelectedProjects";
 import WhyBimac from "@/components/sections/home/WhyBimac";
-import AutomateCta from "@/components/sections/home/AutomateCta";
 
+/**
+ * The home page, in the order the story is told:
+ *
+ *   the headline on the navy, and nothing else on it;
+ *   the software the plugins run inside, in the same first screen;
+ *   what we do — the idea behind the 300+ plugins;
+ *   three example automations, shown working;
+ *   the three disciplines;
+ *   custom automation, for the workflow no catalogue covers;
+ *   the projects;
+ *   why BIMAC.
+ *
+ * Custom automation is the close — it is the ask — so there is no separate
+ * call-to-action band after it.
+ */
 export default function HomePage() {
   return (
     <>
-      <Hero />
-
-      {/* The stack, on white — out of the blue so the headline owns it. */}
-      <SoftwareMarquee />
-
-      {/* Delivery record, straight under the hero — the first trust signal. */}
-      <section className="border-b border-ink-200 bg-white py-12 sm:py-14">
-        <Container>
-          <ProjectImpact />
-        </Container>
-      </section>
-
-      {/* From here down the page answers four questions in order, and asks for
-          the meeting: what is automated, how it runs, where it has run, and
-          why it is worth it. Nothing below repeats product content — the three
-          discipline cards are doors to the catalogue, not copies of it. */}
+      {/* The first screen, exactly: the hero and the software strip fill the
+          viewport under the 4.5rem header between them, the hero taking
+          whatever height the strip leaves. Nothing below is seen until the
+          visitor scrolls. */}
+      <div className="flex min-h-[calc(100svh-4.5rem)] flex-col">
+        <Hero className="flex-1" />
+        <SoftwareMarquee />
+      </div>
+      <WhatWeDo />
+      <ExampleAutomations />
       <WhatWeAutomated />
-      <HowItWorks />
+      <CustomAutomation />
       <SelectedProjects />
       <WhyBimac />
-      <AutomateCta />
     </>
   );
 }

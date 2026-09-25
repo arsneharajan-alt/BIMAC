@@ -77,7 +77,7 @@ The player replaces the preview automatically. Self-hosted files go in `public/v
 Set once in `src/lib/site.ts` and used everywhere:
 
 ```ts
-email:        "bimautomationconsulting@gmail.com"
+email:        "info@bimautomationconsulting.com"
 phoneDisplay: "+971 50 605 5153"
 whatsapp:     "971506055153"   // digits only, with country code
 ```
