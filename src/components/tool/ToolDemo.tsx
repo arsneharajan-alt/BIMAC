@@ -54,7 +54,7 @@ export function ToolDemo({ tool }: { tool: Tool }) {
           controls
           preload="metadata"
           poster={video.poster}
-          className="absolute inset-0 h-full w-full bg-ink-950 object-contain"
+          className="absolute inset-0 h-full w-full bg-navy object-contain"
         >
           <source src={video.id} type="video/mp4" />
           Your browser does not support embedded video.
@@ -87,7 +87,7 @@ export function ToolDemo({ tool }: { tool: Tool }) {
 
 function Frame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative aspect-video overflow-hidden rounded-2xl border border-ink-200 bg-ink-950 shadow-lift">
+    <div className="relative aspect-video overflow-hidden rounded-2xl border border-ink-200 bg-navy shadow-lift">
       {children}
     </div>
   );

@@ -46,10 +46,10 @@ function SoftwareRow({ items, reverse }: { items: SoftwareMenuItem[]; reverse?: 
               title={`${item.name} — ${item.role}`}
               aria-hidden={index >= items.length}
               tabIndex={index >= items.length ? -1 : undefined}
-              className="group/item flex items-center gap-3 rounded-xl border border-ink-200 bg-white px-5 py-3.5 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-azure-300 hover:shadow-lift"
+              className="group/item flex items-center gap-2.5 rounded-xl border border-ink-200 bg-white px-4 py-2 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-azure-300 hover:shadow-lift"
             >
               <LogoTile platform={item} size="md" className="border-ink-100" />
-              <span className="whitespace-nowrap text-[0.9375rem] font-medium leading-tight text-ink-800 transition-colors group-hover/item:text-azure-700">
+              <span className="whitespace-nowrap text-[0.875rem] font-medium leading-tight text-ink-800 transition-colors group-hover/item:text-azure-700">
                 {item.label}
               </span>
             </Link>
@@ -62,27 +62,21 @@ function SoftwareRow({ items, reverse }: { items: SoftwareMenuItem[]; reverse?: 
 
 export function SoftwareMarquee() {
   return (
-    <section className="border-b border-ink-200 bg-white py-7 sm:py-8">
+    <section className="border-b border-ink-200 bg-white py-5 sm:py-6">
       <Container>
-        {/* One small line and straight into the rows: they have to be in the
-            first screen, running, under the hero. */}
-        <p className="flex items-center justify-center gap-3 text-center text-[0.75rem] font-bold uppercase tracking-[0.2em] text-[#073157]">
-          <span className="h-[3px] w-6 rounded-full bg-brand-500" />
-          Automates inside the software you already run
-          <span className="h-[3px] w-6 rounded-full bg-brand-500" />
-        </p>
-
-        {/* Held inside the page gutter, so the rows start and stop level with
-            the heading above them and the cards below. */}
-        <div className="mt-5 space-y-3">
-          <SoftwareRow items={ROW_ONE} />
-          <SoftwareRow items={ROW_TWO} reverse />
-        </div>
-
-        <div className="mt-4 flex justify-center">
+        {/* One line and straight into the rows: the label centred, the link
+            to the full list at the right end of the same line, so the strip
+            costs the first screen as little height as possible. */}
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+          <span aria-hidden="true" />
+          <p className="flex items-center justify-center gap-3 text-center text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-[#073157] sm:text-[0.75rem]">
+            <span className="hidden h-[3px] w-6 rounded-full bg-brand-500 sm:block" />
+            Automates inside the software you already run
+            <span className="hidden h-[3px] w-6 rounded-full bg-brand-500 sm:block" />
+          </p>
           <Link
             href="/software"
-            className="group inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-ink-700 transition-colors hover:text-brand-600"
+            className="group inline-flex items-center gap-1.5 justify-self-end whitespace-nowrap text-[0.8125rem] font-semibold text-ink-700 transition-colors hover:text-brand-600 sm:text-[0.875rem]"
           >
             All software
             <Icon
@@ -90,6 +84,13 @@ export function SoftwareMarquee() {
               className="text-sm text-brand-500 transition-transform duration-200 group-hover:translate-x-0.5"
             />
           </Link>
+        </div>
+
+        {/* Held inside the page gutter, so the rows start and stop level with
+            the heading above them and the cards below. */}
+        <div className="mt-4 space-y-2.5">
+          <SoftwareRow items={ROW_ONE} />
+          <SoftwareRow items={ROW_TWO} reverse />
         </div>
       </Container>
     </section>

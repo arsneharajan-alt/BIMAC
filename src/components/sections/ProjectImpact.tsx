@@ -2,7 +2,8 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import CountUp from "@/components/common/CountUp";
-import MetricVisual, { type MetricVisualId } from "@/components/sections/home/MetricVisual";
+/** The picture on the right of each card, cut from the approved design. */
+type MetricVisualId = "sheets" | "dial" | "rising" | "layers";
 import { GLOSS, LIFT, Sheen } from "@/components/ui/Gloss";
 import { cn } from "@/lib/utils";
 import { impact } from "@/lib/site";
@@ -31,15 +32,22 @@ const softwareCount = softwareMenuColumns
   .filter((item) => item.id !== "render").length;
 
 /**
- * The icon tile alternates between the two house accents rather than running
+ * The icon tile alternates orange and violet, as in the approved design, rather than running
  * orange four times, which reads as a warning strip.
  */
 const TINTS = [
-  "bg-brand-50 text-brand-600 ring-brand-100",
-  "bg-azure-50 text-azure-600 ring-azure-100",
+  "bg-brand-100/70 text-brand-600 ring-brand-100",
+  "bg-violet-100 text-violet-600 ring-violet-100",
 ] as const;
 
-export function ProjectImpact({ className }: { className?: string }) {
+export function ProjectImpact({
+  className,
+  showCatalogue = true,
+}: {
+  className?: string;
+  /** The slim "N tools across N software" bar under the cards. The home page leaves it off. */
+  showCatalogue?: boolean;
+}) {
   const stats: {
     value: string;
     /** Set when the number should count up rather than simply appear. */
@@ -86,7 +94,7 @@ export function ProjectImpact({ className }: { className?: string }) {
     count: softwareCount,
     label: "Software automated",
     note: "Revit, AutoCAD, Navisworks, P6 and the rest of the stack",
-    glyph: "box",
+    glyph: "settings",
     visual: "layers",
   });
 
@@ -106,14 +114,16 @@ export function ProjectImpact({ className }: { className?: string }) {
               "hover:border-brand-300",
             )}
           >
-            {/* The ghost, bled off the right edge so the card feels deeper
-                than it is. */}
-            <span
+            {/* The picture from the approved design, on the right. Its own
+                ground is feathered away at the edges so it sits in the card
+                rather than on it. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/images/home/metric-${stat.visual}.png`}
+              alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute -right-4 top-5 h-28 w-32 opacity-80 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-            >
-              <MetricVisual id={stat.visual} />
-            </span>
+              className="pointer-events-none absolute right-5 top-5 h-28 w-auto transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [mask-image:radial-gradient(closest-side,#000_62%,transparent)] group-hover:scale-105"
+            />
 
             <span
               className={cn(
@@ -163,6 +173,7 @@ export function ProjectImpact({ className }: { className?: string }) {
       </div>
 
       {/* One slim bar under the record: the size of the catalogue behind it. */}
+      {showCatalogue ? (
       <Link
         href="/tools"
         className={cn(
@@ -172,7 +183,7 @@ export function ProjectImpact({ className }: { className?: string }) {
           "transition-colors duration-300 hover:border-ink-300",
         )}
       >
-        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-ink-950 text-white">
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-navy text-white">
           <Icon name="grid" className="text-[0.8rem]" />
         </span>
         <span className="font-display text-xl font-semibold leading-none tracking-tight tabular-nums text-ink-950">
@@ -189,6 +200,7 @@ export function ProjectImpact({ className }: { className?: string }) {
           />
         </span>
       </Link>
+      ) : null}
     </div>
   );
 }

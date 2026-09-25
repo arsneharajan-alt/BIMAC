@@ -53,7 +53,7 @@ const WHAT_WE_DO: { title: string; body: string; glyph: GlyphId }[] = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink-950 text-white">
+      <section className="relative overflow-hidden bg-navy text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-[-10rem] top-[-12rem] h-[36rem] w-[36rem] rounded-full bg-brand-500/12 blur-[140px]"
@@ -86,7 +86,7 @@ export default function AboutPage() {
                   { value: String(tools.length), label: "Tools in the catalogue" },
                   { value: String(disciplines.length), label: "Disciplines covered" },
                 ].map((stat) => (
-                  <div key={stat.label} className="bg-ink-950 px-5 py-5">
+                  <div key={stat.label} className="bg-navy px-5 py-5">
                     <dt className="text-2xs uppercase tracking-[0.14em] text-ink-500">
                       {stat.label}
                     </dt>

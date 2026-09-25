@@ -28,6 +28,8 @@ const config: Config = {
           900: "#7A2510",
           950: "#420F06",
         },
+        /* The navy of the BIMAC mark — every dark background on the site. */
+        navy: "#073157",
         /* Ocean / azure blue — the counterweight to the orange. */
         azure: {
           50: "#EFF7FF",

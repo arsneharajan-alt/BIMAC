@@ -71,7 +71,6 @@ export default async function DisciplineHubPage({
 /* Single discipline                                                   */
 /* ------------------------------------------------------------------ */
 
-
 /**
  * The line-up split by the application each tool loads into.
  *
@@ -98,7 +97,7 @@ function DisciplineHub({ discipline }: { discipline: Discipline }) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-ink-950 text-white">
+      <section className="relative overflow-hidden bg-navy text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-[-10rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-brand-500/15 blur-[130px]"
@@ -139,7 +138,7 @@ function DisciplineHub({ discipline }: { discipline: Discipline }) {
                 {discipline.description}
               </p>
               {/* One figure, not a table of them: how many tools there are. */}
-              <dl className="mt-8 overflow-hidden rounded-xl border border-white/10 bg-ink-950 px-5 py-4">
+              <dl className="mt-8 overflow-hidden rounded-xl border border-white/10 bg-navy px-5 py-4">
                 <dt className="text-2xs uppercase tracking-[0.14em] text-ink-500">Tools</dt>
                 <dd className="mt-1 font-display text-xl font-semibold tracking-tight text-white">
                   {lineup.length}

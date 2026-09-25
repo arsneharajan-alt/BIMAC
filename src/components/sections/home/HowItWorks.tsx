@@ -74,7 +74,7 @@ export function HowItWorks() {
                   >
                     <Icon name={step.glyph} className="text-xl" />
                   </span>
-                  <span className="absolute -right-2 -top-2 grid h-[1.35rem] w-[1.35rem] place-items-center rounded-full bg-ink-950 font-mono text-[0.5625rem] font-semibold tabular-nums text-white">
+                  <span className="absolute -right-2 -top-2 grid h-[1.35rem] w-[1.35rem] place-items-center rounded-full bg-navy font-mono text-[0.5625rem] font-semibold tabular-nums text-white">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>

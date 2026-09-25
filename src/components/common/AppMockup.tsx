@@ -277,7 +277,7 @@ function DashboardLayout() {
 function ViewerLayout() {
   return (
     <div className="flex">
-      <div className="relative min-h-[13rem] min-w-0 flex-1 bg-ink-950">
+      <div className="relative min-h-[13rem] min-w-0 flex-1 bg-navy">
         <span className="absolute inset-0 bg-grid-dark bg-grid opacity-50" aria-hidden="true" />
         <svg viewBox="0 0 260 180" className="relative h-full w-full" aria-hidden="true">
           <g stroke="#98A1AC" strokeOpacity="0.55" strokeWidth="1" fill="none">

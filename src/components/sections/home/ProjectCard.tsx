@@ -22,7 +22,7 @@ export function ProjectCard({ project, delay = 0 }: { project: Project; delay?: 
     <article
       data-reveal=""
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
-      className={`group relative isolate overflow-hidden rounded-2xl border border-ink-200 bg-ink-950 ${GLOSS} ${LIFT} hover:border-ink-300`}
+      className={`group relative isolate overflow-hidden rounded-2xl border border-ink-200 bg-navy ${GLOSS} ${LIFT} hover:border-ink-300`}
     >
       <div className="relative aspect-[8/5]">
         <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]">

@@ -44,7 +44,7 @@ function Connector() {
 export function CustomAutomation() {
   return (
     // Flat navy, taken from the BIMAC mark itself (#073157) — no grid, no glow.
-    <section className="relative overflow-hidden bg-[#073157] py-14 sm:py-20">
+    <section className="relative overflow-hidden bg-navy py-14 sm:py-20">
       <Container className="relative">
         <StackedHeading
           onDark

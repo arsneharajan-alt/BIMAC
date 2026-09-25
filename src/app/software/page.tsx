@@ -155,7 +155,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* The point of the whole thing: the platforms are not eight islands. */}
-      <section className="relative overflow-hidden border-y border-ink-200 bg-ink-950 py-16 text-white sm:py-20">
+      <section className="relative overflow-hidden border-y border-ink-200 bg-navy py-16 text-white sm:py-20">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-[-10rem] top-[-8rem] h-[32rem] w-[32rem] rounded-full bg-azure-500/14 blur-[130px]"

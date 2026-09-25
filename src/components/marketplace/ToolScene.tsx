@@ -484,7 +484,7 @@ export function ToolScene({
       aria-hidden="true"
       className={cn(
         "absolute inset-0 overflow-hidden",
-        hasLightScene(toolId) ? "bg-white" : "bg-ink-950",
+        hasLightScene(toolId) ? "bg-white" : "bg-navy",
         // Held on its first frame for anyone who has asked for less motion.
         "motion-reduce:[&_*]:!animate-none",
         className,

@@ -212,7 +212,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => setEnquiryOpen(true)}
-                className="hidden h-9 items-center gap-2 rounded-lg bg-brand-500 px-3.5 text-[0.8125rem] font-medium text-white transition-colors hover:bg-brand-600 sm:inline-flex"
+                className="hidden h-9 items-center gap-2 rounded-lg border-[1.5px] border-brand-500 px-3.5 text-[0.8125rem] font-semibold text-brand-600 transition-colors hover:bg-brand-50 sm:inline-flex"
               >
                 <Icon name="mail" className="text-[1.05rem]" />
                 Enquire
@@ -222,7 +222,7 @@ export function Header() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden h-9 items-center gap-2 rounded-lg bg-[#25D366] px-3.5 text-[0.8125rem] font-medium text-[#0B2E13] transition-colors hover:bg-[#1FBB58] md:inline-flex"
+                className="hidden h-9 items-center gap-2 rounded-lg border-[1.5px] border-[#25D366] px-3.5 text-[0.8125rem] font-semibold text-[#128C4A] transition-colors hover:bg-[#25D366]/10 md:inline-flex"
               >
                 <Icon name="whatsapp" className="text-[1.05rem]" />
                 WhatsApp

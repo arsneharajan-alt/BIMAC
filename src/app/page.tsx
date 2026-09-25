@@ -13,14 +13,13 @@ import WhyBimac from "@/components/sections/home/WhyBimac";
  *   the headline on the navy, and nothing else on it;
  *   the software the plugins run inside, in the same first screen;
  *   what we do — the idea behind the 300+ plugins;
+ *   why BIMAC — the case, made with the record;
  *   three example automations, shown working;
  *   the three disciplines;
  *   custom automation, for the workflow no catalogue covers;
- *   the projects;
- *   why BIMAC.
+ *   the projects.
  *
- * Custom automation is the close — it is the ask — so there is no separate
- * call-to-action band after it.
+ * There is no separate call-to-action band: custom automation carries the ask.
  */
 export default function HomePage() {
   return (
@@ -30,15 +29,17 @@ export default function HomePage() {
           whatever height the strip leaves. Nothing below is seen until the
           visitor scrolls. */}
       <div className="flex min-h-[calc(100svh-4.5rem)] flex-col">
-        <Hero className="flex-1" />
+        {/* 592px at least on desktop, so the headline has room to breathe;
+            taller screens give it whatever else the first screen has. */}
+        <Hero className="min-h-[32rem] flex-1 lg:min-h-[37rem]" />
         <SoftwareMarquee />
       </div>
       <WhatWeDo />
+      <WhyBimac />
       <ExampleAutomations />
       <WhatWeAutomated />
       <CustomAutomation />
       <SelectedProjects />
-      <WhyBimac />
     </>
   );
 }

@@ -8,7 +8,7 @@ const tones: Record<Tone, string> = {
   brand: "bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200",
   outline: "bg-white text-ink-600 ring-1 ring-inset ring-ink-200",
   solid: "bg-brand-500 text-white",
-  dark: "bg-ink-900 text-white",
+  dark: "bg-navy text-white",
   success: "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200",
   muted: "bg-white/10 text-white ring-1 ring-inset ring-white/15",
 };

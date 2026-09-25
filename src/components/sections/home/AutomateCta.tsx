@@ -10,7 +10,7 @@ import Button from "@/components/ui/Button";
  */
 export function AutomateCta() {
   return (
-    <section className="relative overflow-hidden bg-ink-950 py-24 sm:py-28">
+    <section className="relative overflow-hidden bg-navy py-24 sm:py-28">
       {/* A single soft light behind the headline, so the band is not a flat
           rectangle of navy. */}
       <span

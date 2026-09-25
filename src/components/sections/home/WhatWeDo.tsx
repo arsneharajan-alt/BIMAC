@@ -23,7 +23,7 @@ export function WhatWeDo() {
         <div data-reveal="" className="mx-auto flex max-w-5xl flex-col items-center text-center">
           <div className="mt-8 space-y-5 text-pretty text-[1.0625rem] leading-relaxed text-ink-600 sm:text-[1.1875rem]">
             <p>
-              AEC work shouldn’t mean repeating the same tasks hundreds of times. We’re building 300+ plugins
+              AEC work shouldn’t mean repeating the same tasks hundreds of times. We have 300+ plugins
               that turn complex workflows into simple, repeatable actions across Architecture, Structure, and
               MEP.
             </p>

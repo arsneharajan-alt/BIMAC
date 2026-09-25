@@ -37,7 +37,7 @@ const PROCESS = [
 export default function CustomAutomationPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink-950 text-white">
+      <section className="relative overflow-hidden bg-navy text-white">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-[-12rem] top-[-12rem] h-[38rem] w-[38rem] rounded-full bg-brand-500/15 blur-[140px]"
@@ -97,7 +97,7 @@ export default function CustomAutomationPage() {
             {PROCESS.map((step, index) => (
               <li key={step.title}>
                 <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-950 font-mono text-[0.8125rem] font-semibold text-white">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-navy font-mono text-[0.8125rem] font-semibold text-white">
                     {index + 1}
                   </span>
                   {index < PROCESS.length - 1 ? (

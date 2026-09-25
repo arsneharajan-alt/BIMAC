@@ -103,7 +103,7 @@ export function ContactBand({
   context?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink-950 py-20 text-white sm:py-24">
+    <section className="relative overflow-hidden bg-navy py-20 text-white sm:py-24">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/15 blur-[130px]"

@@ -81,8 +81,9 @@ export function Logo({
       href={href}
       aria-label="BIMAC — home"
       className={cn(
-        "group inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2",
-        onDark ? "focus-visible:ring-offset-ink-950" : "focus-visible:ring-offset-white",
+        // No ring: an orange box round the mark read as a border on the logo.
+        // Keyboard focus still shows, as a fade.
+        "group inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:opacity-70",
         className,
       )}
     >

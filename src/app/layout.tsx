@@ -88,8 +88,33 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/** The site and the company behind it, as schema.org structured data. */
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      alternateName: [site.legalName, "BIMAC Automation"],
+      url: `${site.url}/`,
+      publisher: { "@id": `${site.url}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      legalName: site.legalName,
+      url: `${site.url}/`,
+      logo: `${site.url}/icon.png`,
+      email: site.email,
+      telephone: site.phoneDisplay,
+    },
+  ],
+};
+
 export const viewport: Viewport = {
-  themeColor: "#061422",
+  themeColor: "#073157",
   width: "device-width",
   initialScale: 1,
 };
@@ -117,6 +142,14 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="flex min-h-screen flex-col">
+        {/* Who we are, for search engines. Google takes the name it shows
+            above a result from WebSite structured data; without it, a site on
+            a vercel.app address is listed under "Vercel". */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+        />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

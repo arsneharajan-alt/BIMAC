@@ -64,7 +64,7 @@ export function Hero({ className }: { className?: string }) {
   // at the lower right where the massing rises.
   return (
     <section
-      className={cn("relative flex flex-col overflow-hidden bg-ink-950 text-white", className)}
+      className={cn("relative flex flex-col overflow-hidden bg-navy text-white", className)}
     >
       {/* The towers, revealing themselves from the street up. */}
       <HeroBackdrop />
@@ -85,7 +85,7 @@ export function Hero({ className }: { className?: string }) {
                   leaves standing. Everything else is sized against this. */}
               <span
                 style={enter(90)}
-                className="hero-staged block animate-fade-up font-bold text-brand-500 text-[2.75rem] sm:text-[3.75rem] lg:text-[4.5rem] xl:text-[5.25rem] [@media(max-height:820px)]:lg:text-[4rem]"
+                className="hero-staged block animate-fade-up font-bold text-brand-500 text-[3.25rem] sm:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] [@media(max-height:820px)]:lg:text-[4.75rem]"
               >
                 Smart Automation
               </span>
@@ -94,7 +94,7 @@ export function Hero({ className }: { className?: string }) {
                   shrink. The two lines are a beat apart on purpose: the white
                   closes to a circle carrying only the orange, and the sentence
                   finishes itself on the blue behind it. */}
-              <span className="mt-1 block text-[1.5rem] sm:text-[2rem] lg:text-[2.5rem] xl:text-[2.875rem] [@media(max-height:820px)]:lg:text-[2.25rem]">
+              <span className="mt-1 block text-[1.875rem] sm:text-[2.5rem] lg:text-[3.125rem] xl:text-[3.625rem] [@media(max-height:820px)]:lg:text-[2.75rem]">
                 <Words text="for Every Software You Use" start={LEAD_MS} step={130} />
               </span>
             </h1>

@@ -18,7 +18,7 @@ export function ExampleAutomations() {
           title="From Repetitive Tasks"
           accent="to Automated Workflows."
           className="max-w-4xl"
-          lede="Three real workflows, from a single task to a whole chain of them. Click any step to jump to it."
+          lede="A glimpse of what our 300+ plugins take off your hands — from one repetitive task to a whole chain of them. Click any step to see it run."
         />
         <ExampleDemos />
       </Container>

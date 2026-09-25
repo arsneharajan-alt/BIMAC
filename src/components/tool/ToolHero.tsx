@@ -23,7 +23,7 @@ export function ToolHero({ tool }: { tool: Tool }) {
   const group = primary.groups.find((item) => item.id === tool.group);
 
   return (
-    <section className="relative overflow-hidden bg-ink-950 text-white">
+    <section className="relative overflow-hidden bg-navy text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-40 top-[-10rem] h-[34rem] w-[34rem] rounded-full bg-brand-500/15 blur-[120px]"
@@ -83,7 +83,7 @@ export function ToolHero({ tool }: { tool: Tool }) {
               { label: "Group", value: group?.name ?? "—" },
               { label: "Software", value: tool.software.map((id) => softwareMap[id].shortName).join(", ") },
             ].map((spec) => (
-              <div key={spec.label} className="bg-ink-950 px-4 py-3.5">
+              <div key={spec.label} className="bg-navy px-4 py-3.5">
                 <dt className="text-2xs uppercase tracking-[0.14em] text-ink-500">
                   {spec.label}
                 </dt>
